@@ -1,0 +1,10 @@
+/**
+ * All of the CSS for your admin-specific functionality should be
+ * included in this file.
+ */
+.select2-container .select2-choice>.select2-chosen {
+	padding: 6px;
+}
+.flance-amp-widget {
+	margin: 10px auto;
+}
