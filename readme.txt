@@ -77,3 +77,7 @@ form id can be added by parameter form_id example [flance_products_form product_
 
 * added select dropdown and splitting options
 
+= 1.1.6 =
+
+* Checked with latest Wordpress 6.2.2 and Woocommerce
+
