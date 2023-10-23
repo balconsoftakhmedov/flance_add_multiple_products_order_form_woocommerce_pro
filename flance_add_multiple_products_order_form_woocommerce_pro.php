@@ -62,6 +62,7 @@ if ( ! function_exists( 'wptlampaof_fs' ) ) {
 	// Signal that SDK was initiated.
 	do_action( 'wptlampaof_fs_loaded' );
 }
+
 /**
  * The code that runs during plugin activation.
  * This action is documented in includes/class-flance-add-multiple-products-activator.php
