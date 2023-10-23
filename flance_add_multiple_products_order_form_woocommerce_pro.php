@@ -38,7 +38,8 @@ if ( ! function_exists( 'wptlampaof_fs' ) ) {
 			require_once dirname( __FILE__ ) . '/freemius/start.php';
 			$wptlampaof_fs = fs_dynamic_init( array(
 				'id'               => '14054',
-				'slug'             => 'woocommerce-product-table-list-and-multiple-products-add-order-f',
+				'slug'             => 'woocommerce-product-table-list-and-multiple-products-add-order',
+				'premium_slug'     => 'woocommerce-product-table-list-and-multiple-products-add-order-f-premium',
 				'type'             => 'plugin',
 				'public_key'       => 'pk_b7901fa8b045662400ff3918629c1',
 				'is_premium'       => false,
@@ -107,7 +108,7 @@ function run_flance_add_multiple_products() {
 function find_valid_variations( $item_id ) {
 
 
-	$product = new WC_Product_Variable( $item_id );
+	$product      = new WC_Product_Variable( $item_id );
 	$variations   = $product->get_available_variations();
 	$attributes   = $product->get_attributes();
 	$new_variants = array();
