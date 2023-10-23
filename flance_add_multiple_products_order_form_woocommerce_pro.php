@@ -140,18 +140,18 @@ function get_variation_data_from_variation_id($item_id) {
  * Check if WooCommerce is active
  **/
 
- run_flance_add_multiple_products();
- 
+add_action( 'init', 'check_woocommerce_activation' );
 
-if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
-	run_flance_add_multiple_products();
-} else {
-	require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
-//	deactivate_plugins( plugin_basename( __FILE__ ) );
-//	add_action( 'admin_notices', 'Flance_wamp_admin_notice__error' );
+function check_woocommerce_activation() {
+	// Check if WooCommerce is active
+	if ( class_exists( 'WooCommerce' ) ) {
+		run_flance_add_multiple_products();
+	} else {
+		// WooCommerce is not active, handle it accordingly
+		add_action( 'admin_notices', 'flance_wamp_admin_notice_error' );
+	}
 }
-
-
+ 
 function Flance_wamp_admin_notice__error() {
 	$class = 'notice notice-error';
 	$message = __( 'You don\'t have WooCommerce activated. Please Activate <b>WooCommerce</b> and then try to activate again <b>Flance Add Multiple Products order form for Woocommerce</b>.', 'flance-add-multiple-products-order-form-woocommerce' );
