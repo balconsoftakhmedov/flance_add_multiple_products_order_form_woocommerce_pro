@@ -37,16 +37,19 @@ if ( ! function_exists( 'wptlampaof_fs' ) ) {
 			// Include Freemius SDK.
 			require_once dirname( __FILE__ ) . '/freemius/start.php';
 			$wptlampaof_fs = fs_dynamic_init( array(
-				'id'               => '14054',
-				'slug'             => 'woocommerce-product-table-list-and-multiple-products-add-order',
-				'premium_slug'     => 'woocommerce-product-table-list-and-multiple-products-add-order-f-premium',
-				'type'             => 'plugin',
-				'public_key'       => 'pk_b7901fa8b045662400ff3918629c1',
-				'is_premium'       => false,
-				'has_addons'       => false,
-				'has_paid_plans'   => false,
-				'is_org_compliant' => false,
-				'menu'             => array(
+				'id'                  => '14054',
+				'slug'                => 'woocommerce-product-table-list-and-multiple-products-add-order',
+				'premium_slug'        => 'woocommerce-product-table-list-and-multiple-products-add-order-f-premium',
+				'type'                => 'plugin',
+				'public_key'          => 'pk_b7901fa8b045662400ff3918629c1',
+				'is_premium'          => true,
+				'premium_suffix'      => '',
+				// If your plugin is a serviceware, set this option to false.
+				'has_premium_version' => true,
+				'has_addons'          => false,
+				'has_paid_plans'      => true,
+				'is_org_compliant'    => false,
+				'menu'                => array(
 					'slug'    => 'flance-add-multiple-products',
 					'support' => false,
 					'network' => true,
@@ -62,13 +65,23 @@ if ( ! function_exists( 'wptlampaof_fs' ) ) {
 	// Signal that SDK was initiated.
 	do_action( 'wptlampaof_fs_loaded' );
 }
+/*
+ * Activation the freemius
+ */
+function wptlampaof_verify() {
+	if ( function_exists( 'wptlampaof_fs' ) ) {
+
+		return wptlampaof_fs()->is__premium_only() && wptlampaof_fs()->can_use_premium_code();
+	}
+
+	return true;
+}
 
 /**
  * The code that runs during plugin activation.
  * This action is documented in includes/class-flance-add-multiple-products-activator.php
  */
 function activate_flance_add_multiple_products() {
-
 
 	require_once plugin_dir_path( __FILE__ ) . 'includes/class-flance-add-multiple-products-activator.php';
 	Flance_Add_Multiple_Products_order_form_Woocommerce_Activator::activate();
@@ -83,29 +96,11 @@ function deactivate_flance_add_multiple_products() {
 	Flance_Add_Multiple_Products_order_form_Woocommerce_Deactivator::deactivate();
 }
 
-register_activation_hook( __FILE__, 'activate_flance_add_multiple_products' );
-register_deactivation_hook( __FILE__, 'deactivate_flance_add_multiple_products' );
 /**
  * The core plugin class that is used to define internationalization,
  * admin-specific hooks, and public-facing site hooks.
  */
 require plugin_dir_path( __FILE__ ) . 'includes/class-flance-add-multiple-products.php';
-/**
- * Begins execution of the plugin.
- *
- * Since everything within the plugin is registered via hooks,
- * then kicking off the plugin from this point in the file does
- * not affect the page life cycle.
- *
- * @since    1.1.4
- */
-function run_flance_add_multiple_products() {
-
-	$plugin = new Flance_Add_Multiple_Products_order_form_Woocommerce();
-	$plugin->run();
-
-}
-
 function find_valid_variations( $item_id ) {
 
 
@@ -168,12 +163,17 @@ function get_variation_data_from_variation_id( $item_id ) {
  **/
 add_action( 'init', 'check_woocommerce_activation' );
 function check_woocommerce_activation() {
-	// Check if WooCommerce is active
-	if ( class_exists( 'WooCommerce' ) ) {
-		run_flance_add_multiple_products();
-	} else {
-		// WooCommerce is not active, handle it accordingly
-		add_action( 'admin_notices', 'flance_wamp_admin_notice_error' );
+	if ( wptlampaof_verify() ) {
+		// Check if WooCommerce is active
+		if ( class_exists( 'WooCommerce' ) ) {
+			register_activation_hook( __FILE__, 'activate_flance_add_multiple_products' );
+			register_deactivation_hook( __FILE__, 'deactivate_flance_add_multiple_products' );
+			$plugin = new Flance_Add_Multiple_Products_order_form_Woocommerce();
+			$plugin->run();
+		} else {
+			// WooCommerce is not active, handle it accordingly
+			add_action( 'admin_notices', 'flance_wamp_admin_notice_error' );
+		}
 	}
 }
 
