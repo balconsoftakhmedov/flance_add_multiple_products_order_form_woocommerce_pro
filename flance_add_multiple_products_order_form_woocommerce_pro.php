@@ -60,10 +60,15 @@ if ( ! function_exists( 'wptlampaof_fs' ) ) {
 		return $wptlampaof_fs;
 	}
 
-	// Init Freemius.
-	wptlampaof_fs();
-	// Signal that SDK was initiated.
-	do_action( 'wptlampaof_fs_loaded' );
+	if ( is_plugin_active( 'flance-add-multiple-products-order-form-for-woocommerce/flance_add_multiple_products_order_form_woocommerce.php' ) ) {
+		add_action( 'admin_notices', 'Flance_free_plugin_wamp_admin_notice__error_pro' );
+	} else {
+		// Init Freemius.
+		wptlampaof_fs();
+		// Signal that SDK was initiated.
+		do_action( 'wptlampaof_fs_loaded' );
+	}
+
 }
 /*
  * Activation the freemius
@@ -168,6 +173,7 @@ function check_woocommerce_activation_pro() {
 		if ( class_exists( 'WooCommerce' ) ) {
 			if ( is_plugin_active( 'flance-add-multiple-products-order-form-for-woocommerce/flance_add_multiple_products_order_form_woocommerce.php' ) ) {
 				add_action( 'admin_notices', 'Flance_free_plugin_wamp_admin_notice__error_pro' );
+				deactivate_plugins(plugin_basename(__FILE__));
 			} else {
 				// Register activation and deactivation hooks for the pro version
 				register_activation_hook( __FILE__, 'activate_flance_add_multiple_products_pro' );
