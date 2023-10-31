@@ -17,7 +17,7 @@
  * Version:           2.0.0
  * Author:            Rusty
  * Author URI:        http://www.flance.info
- * Text Domain:       flance-add-multiple-products-order-form-woocommerce
+ * Text Domain:       flance-add-multiple-products-order-form-woocommerce-pro
  * Domain Path:       /languages
  */
 
@@ -167,10 +167,15 @@ function check_woocommerce_activation_pro() {
 		// Check if WooCommerce is active
 		if ( class_exists( 'WooCommerce' ) ) {
 
-			register_activation_hook( __FILE__, 'activate_flance_add_multiple_products_pro' );
-			register_deactivation_hook( __FILE__, 'deactivate_flance_add_multiple_products_pro' );
-			$plugin = new Flance_Add_Multiple_Products_order_form_Woocommerce_pro();
-			$plugin->run();
+			if ( is_plugin_active( 'flance-add-multiple-products-order-form-for-woocommerce/flance_add_multiple_products_order_form_woocommerce.php' ) ) {
+				add_action( 'admin_notices', 'Flance_free_plugin_wamp_admin_notice__error_pro' );
+			} else {
+				// Register activation and deactivation hooks for the pro version
+				register_activation_hook( __FILE__, 'activate_flance_add_multiple_products_pro' );
+				register_deactivation_hook( __FILE__, 'deactivate_flance_add_multiple_products_pro' );
+				$plugin = new Flance_Add_Multiple_Products_order_form_Woocommerce_pro();
+				$plugin->run();
+			}
 		} else {
 			// WooCommerce is not active, handle it accordingly
 			add_action( 'admin_notices', 'flance_wamp_admin_notice_error_pro' );
@@ -180,12 +185,12 @@ function check_woocommerce_activation_pro() {
 
 function Flance_wamp_admin_notice__error_pro() {
 	$class   = 'notice notice-error';
-	$message = __( 'You don\'t have WooCommerce activated. Please Activate <b>WooCommerce</b> and then try to activate again <b>Flance Add Multiple Products order form for Woocommerce</b>.', 'flance-add-multiple-products-order-form-woocommerce' );
+	$message = __( 'You don\'t have WooCommerce activated. Please Activate <b>WooCommerce</b> and then try to activate again <b>Flance Add Multiple Products order form for Woocommerce</b>.', 'flance-add-multiple-products-order-form-woocommerce-pro' );
 	printf( '<div class="%1$s"><p>%2$s</p></div>', $class, $message );
 }
 
 function Flance_free_plugin_wamp_admin_notice__error_pro() {
 	$class   = 'notice notice-error';
-	$message = __( 'You don\'t have WooCommerce activated. Please Activate <b>WooCommerce</b> and then try to activate again <b>Flance Add Multiple Products order form for Woocommerce</b>.', 'flance-add-multiple-products-order-form-woocommerce' );
-	printf( '<div class="%1$s"><p>%2$s</p></div>', $class, $message );
+	$message = esc_html__('The free plugin "<b>Flance Add Multiple Products order form for WooCommerce</b>" must be deactivated. Please deactivate it before activating the pro version.', 'flance-add-multiple-products-order-form-woocommerce-pro');
+ 	printf( '<div class="%1$s"><p>%2$s</p></div>', $class, $message );
 }
