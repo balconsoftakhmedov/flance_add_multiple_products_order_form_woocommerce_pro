@@ -1,5 +1,5 @@
 <?php
-class Flance_Add_Multiple_Products_order_form_Woocommerce_Widget extends WP_Widget {
+class Flance_Add_Multiple_Products_order_form_Woocommerce_Widget_Pro extends WP_Widget {
      
     public function __construct() {
 	    parent::__construct(
@@ -32,7 +32,7 @@ class Flance_Add_Multiple_Products_order_form_Woocommerce_Widget extends WP_Widg
 		$title = $instance['flance-amp-title'];
         if ( get_option( 'flance_amp_user_check' ) == 1 && is_user_logged_in() ) {
         	$flance_user_role = get_option( 'flance_amp_user_role' );
-            $flance_current_user_roles = Flance_Add_Multiple_Products_order_form_Woocommerce_Public::flance_amp_get_user_role( get_current_user_id() );
+            $flance_current_user_roles = Flance_Add_Multiple_Products_order_form_Woocommerce_Public_Pro::flance_amp_get_user_role( get_current_user_id() );
             $is_auth = array_intersect( $flance_user_role, $flance_current_user_roles )  ? 'true' : 'false';
 			if ( !empty( $flance_user_role ) ) {
                 if( $is_auth ){

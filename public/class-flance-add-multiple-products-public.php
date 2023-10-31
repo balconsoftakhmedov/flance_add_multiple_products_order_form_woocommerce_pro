@@ -20,7 +20,7 @@
  * @subpackage Flance_Add_Multiple_Products_order_form_Woocommerce/public
  * @author     Rusty <tutyou1972@gmail.com>
  */
-class Flance_Add_Multiple_Products_order_form_Woocommerce_Public {
+class Flance_Add_Multiple_Products_order_form_Woocommerce_Public_Pro {
 
 	/**
 	 * The ID of this plugin.

@@ -21,7 +21,7 @@
  * @subpackage Flance_Add_Multiple_Products_order_form_Woocommerce/includes
  * @author     Rusty <tutyou1972@gmail.com>
  */
-class Flance_Add_Multiple_Products_order_form_Woocommerce_Loader {
+class Flance_Add_Multiple_Products_order_form_Woocommerce_Loader_pro {
 
 	/**
 	 * The array of actions registered with WordPress.

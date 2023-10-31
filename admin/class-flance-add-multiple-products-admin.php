@@ -20,7 +20,7 @@
  * @subpackage Flance_Add_Multiple_Products_order_form_Woocommerce/admin
  * @author     Rusty <tutyou1972@gmail.com>
  */
-class Flance_Add_Multiple_Products_order_form_Woocommerce_Admin {
+class Flance_Add_Multiple_Products_order_form_Woocommerce_Admin_Pro {
 
 	/**
 	 * The ID of this plugin.
@@ -194,7 +194,7 @@ class Flance_Add_Multiple_Products_order_form_Woocommerce_Admin {
 
 	
 	public function flance_widget() {
-		register_widget( 'Flance_Add_Multiple_Products_order_form_Woocommerce_Widget' );
+		register_widget( 'Flance_Add_Multiple_Products_order_form_Woocommerce_Widget_Pro' );
 	}
 
 	public function flance_amp_plugin_redirect() {

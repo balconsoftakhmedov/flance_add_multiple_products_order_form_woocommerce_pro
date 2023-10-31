@@ -24,7 +24,7 @@
  * @subpackage Flance_Add_Multiple_Products_order_form_Woocommerce/includes
  * @author     Rusty <tutyou1972@gmail.com>
  */
-class Flance_Add_Multiple_Products_order_form_Woocommerce_i18n {
+class Flance_Add_Multiple_Products_order_form_Woocommerce_i18n_Pro {
 
 
 	/**

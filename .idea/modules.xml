@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../flance-add-multiple-products-order-form-for-woocommerce/.idea/flance-add-multiple-products-order-form-for-woocommerce.iml" filepath="$PROJECT_DIR$/../flance-add-multiple-products-order-form-for-woocommerce/.idea/flance-add-multiple-products-order-form-for-woocommerce.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/flance_add_multiple_products_order_form_woocommerce_pro.iml" filepath="$PROJECT_DIR$/.idea/flance_add_multiple_products_order_form_woocommerce_pro.iml" />
     </modules>
   </component>

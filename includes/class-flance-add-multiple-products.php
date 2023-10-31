@@ -27,7 +27,7 @@
  * @subpackage Flance_Add_Multiple_Products_order_form_Woocommerce/includes
  * @author     Rusty <tutyou1972@gmail.com>
  */
-class Flance_Add_Multiple_Products_order_form_Woocommerce {
+class Flance_Add_Multiple_Products_order_form_Woocommerce_Pro {
 
 	/**
 	 * The loader that's responsible for maintaining and registering all hooks that power
@@ -86,7 +86,7 @@ class Flance_Add_Multiple_Products_order_form_Woocommerce {
 	 * - Flance_Add_Multiple_Products_order_form_Woocommerce_Loader. Orchestrates the hooks of the plugin.
 	 * - Flance_Add_Multiple_Products_order_form_Woocommerce_i18n. Defines internationalization functionality.
 	 * - Flance_Add_Multiple_Products_order_form_Woocommerce_Admin. Defines all hooks for the admin area.
-	 * - Flance_Add_Multiple_Products_order_form_Woocommerce_Public. Defines all hooks for the public side of the site.
+	 * - Flance_Add_Multiple_Products_order_form_Woocommerce_Public_Pro. Defines all hooks for the public side of the site.
 	 *
 	 * Create an instance of the loader which will be used to register the hooks
 	 * with WordPress.
@@ -126,7 +126,7 @@ class Flance_Add_Multiple_Products_order_form_Woocommerce {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'widget/class-flance-add-multiple-products-widget.php';
 
 
-		$this->loader = new Flance_Add_Multiple_Products_order_form_Woocommerce_Loader();
+		$this->loader = new Flance_Add_Multiple_Products_order_form_Woocommerce_Loader_Pro();
 
 	}
 
@@ -141,7 +141,7 @@ class Flance_Add_Multiple_Products_order_form_Woocommerce {
 	 */
 	private function set_locale() {
 
-		$plugin_i18n = new Flance_Add_Multiple_Products_order_form_Woocommerce_i18n();
+		$plugin_i18n = new Flance_Add_Multiple_Products_order_form_Woocommerce_i18n_Pro();
 
 		$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
 
@@ -156,7 +156,7 @@ class Flance_Add_Multiple_Products_order_form_Woocommerce {
 	 */
 	private function define_admin_hooks() {
 
-		$plugin_admin = new Flance_Add_Multiple_Products_order_form_Woocommerce_Admin( $this->get_Flance_wamp(), $this->get_version() );
+		$plugin_admin = new Flance_Add_Multiple_Products_order_form_Woocommerce_Admin_Pro( $this->get_Flance_wamp(), $this->get_version() );
 
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
@@ -177,7 +177,7 @@ class Flance_Add_Multiple_Products_order_form_Woocommerce {
 	 */
 	private function define_public_hooks() {
 
-		$plugin_public = new Flance_Add_Multiple_Products_order_form_Woocommerce_Public( $this->get_Flance_wamp(), $this->get_version() );
+		$plugin_public = new Flance_Add_Multiple_Products_order_form_Woocommerce_Public_Pro( $this->get_Flance_wamp(), $this->get_version() );
 
 		$this->loader->add_action( 'wp_enqueue_scripts', 					$plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', 					$plugin_public, 'enqueue_scripts' );

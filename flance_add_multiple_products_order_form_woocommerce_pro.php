@@ -14,7 +14,7 @@
  * @wordpress-plugin
  * Plugin Name:       Flance Add Multiple Products order form for Woocommerce Pro
  * Description:       The plugin gives functionality to have the form to add multiple products to the cart and calculate in same page the total price of the order. And you also can use shortcode to use the plugin other places. Just place the shortcode where you wanna put the input form and it's done !!! Pro vesrion has the functionality to show the product attributes on the page non commercial version does not have attribute show functionality.
- * Version:           1.1.6
+ * Version:           2.0.0
  * Author:            Rusty
  * Author URI:        http://www.flance.info
  * Text Domain:       flance-add-multiple-products-order-form-woocommerce
@@ -81,7 +81,7 @@ function wptlampaof_verify() {
  * The code that runs during plugin activation.
  * This action is documented in includes/class-flance-add-multiple-products-activator.php
  */
-function activate_flance_add_multiple_products() {
+function activate_flance_add_multiple_products_pro() {
 
 	require_once plugin_dir_path( __FILE__ ) . 'includes/class-flance-add-multiple-products-activator.php';
 	Flance_Add_Multiple_Products_order_form_Woocommerce_Activator::activate();
@@ -91,7 +91,7 @@ function activate_flance_add_multiple_products() {
  * The code that runs during plugin deactivation.
  * This action is documented in includes/class-flance-add-multiple-products-deactivator.php
  */
-function deactivate_flance_add_multiple_products() {
+function deactivate_flance_add_multiple_products_pro() {
 	require_once plugin_dir_path( __FILE__ ) . 'includes/class-flance-add-multiple-products-deactivator.php';
 	Flance_Add_Multiple_Products_order_form_Woocommerce_Deactivator::deactivate();
 }
@@ -161,23 +161,25 @@ function get_variation_data_from_variation_id( $item_id ) {
 /**
  * Check if WooCommerce is active
  **/
-add_action( 'init', 'check_woocommerce_activation' );
-function check_woocommerce_activation() {
+add_action( 'init', 'check_woocommerce_activation_pro' );
+function check_woocommerce_activation_pro() {
 	if ( wptlampaof_verify() ) {
 		// Check if WooCommerce is active
 		if ( class_exists( 'WooCommerce' ) ) {
-			register_activation_hook( __FILE__, 'activate_flance_add_multiple_products' );
-			register_deactivation_hook( __FILE__, 'deactivate_flance_add_multiple_products' );
-			$plugin = new Flance_Add_Multiple_Products_order_form_Woocommerce();
+
+			deactivate_plugins( 'flance-add-multiple-products-order-form-woocommerce' );
+			register_activation_hook( __FILE__, 'activate_flance_add_multiple_products_pro' );
+			register_deactivation_hook( __FILE__, 'deactivate_flance_add_multiple_products_pro' );
+			$plugin = new Flance_Add_Multiple_Products_order_form_Woocommerce_pro();
 			$plugin->run();
 		} else {
 			// WooCommerce is not active, handle it accordingly
-			add_action( 'admin_notices', 'flance_wamp_admin_notice_error' );
+			add_action( 'admin_notices', 'flance_wamp_admin_notice_error_pro' );
 		}
 	}
 }
 
-function Flance_wamp_admin_notice__error() {
+function Flance_wamp_admin_notice__error_pro() {
 	$class   = 'notice notice-error';
 	$message = __( 'You don\'t have WooCommerce activated. Please Activate <b>WooCommerce</b> and then try to activate again <b>Flance Add Multiple Products order form for Woocommerce</b>.', 'flance-add-multiple-products-order-form-woocommerce' );
 	printf( '<div class="%1$s"><p>%2$s</p></div>', $class, $message );
