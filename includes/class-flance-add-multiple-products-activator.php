@@ -50,13 +50,9 @@ class Flance_Add_Multiple_Products_order_form_Woocommerce_Activator {
 		add_option( 'showlink', 'y' );
 		add_option( 'instock', 'y' );
 		add_option( 'flance_amp_do_activation_redirect', true );
-		self::deactivate_free_plugin_on_pro_activation();
 
 	}
 
 
-	public static function deactivate_free_plugin_on_pro_activation() {
-		deactivate_plugins( 'flance-add-multiple-products-order-form-for-woocommerce/flance_add_multiple_products_order_form_woocommerce.php' );
-	}
 
 }
