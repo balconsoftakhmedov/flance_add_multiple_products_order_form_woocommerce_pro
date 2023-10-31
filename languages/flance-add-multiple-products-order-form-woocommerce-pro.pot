@@ -1,0 +1,83 @@
+# Copyright (C) 2023 Rusty
+# This file is distributed under the same license as the Flance Add Multiple Products order form for Woocommerce Pro plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: Flance Add Multiple Products order form for Woocommerce Pro 2.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/flance_add_multiple_products_order_form_woocommerce_pro\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2023-10-31T20:38:32+03:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.9.0\n"
+"X-Domain: flance-add-multiple-products-order-form-woocommerce-pro\n"
+
+#. Plugin Name of the plugin
+msgid "Flance Add Multiple Products order form for Woocommerce Pro"
+msgstr ""
+
+#. Description of the plugin
+msgid "The plugin gives functionality to have the form to add multiple products to the cart and calculate in same page the total price of the order. And you also can use shortcode to use the plugin other places. Just place the shortcode where you wanna put the input form and it's done !!! Pro vesrion has the functionality to show the product attributes on the page non commercial version does not have attribute show functionality."
+msgstr ""
+
+#. Author of the plugin
+msgid "Rusty"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "http://www.flance.info"
+msgstr ""
+
+#: admin/partials/html-admin-form.php:26
+msgid "Please select a product category...."
+msgstr ""
+
+#: flance_add_multiple_products_order_form_woocommerce_pro.php:193
+msgid "You don't have WooCommerce activated. Please Activate <b>WooCommerce</b> and then try to activate again <b>Flance Add Multiple Products order form for Woocommerce</b>."
+msgstr ""
+
+#: flance_add_multiple_products_order_form_woocommerce_pro.php:199
+msgid "The free plugin <b>Flance Add Multiple Products order form for WooCommerce</b> must be deactivated. Please deactivate it before activating the pro version."
+msgstr ""
+
+#: public/class-flance-add-multiple-products-public.php:287
+#: public/class-flance-add-multiple-products-public.php:301
+#: public/class-flance-add-multiple-products-public.php:342
+msgid " -- In stock"
+msgstr ""
+
+#: public/class-flance-add-multiple-products-public.php:287
+#: public/class-flance-add-multiple-products-public.php:301
+#: public/class-flance-add-multiple-products-public.php:342
+msgid " -- Out of stock"
+msgstr ""
+
+#: widget/class-flance-add-multiple-products-widget.php:9
+msgid "Flance Add Multiple Products order form for Woocommerce"
+msgstr ""
+
+#: widget/class-flance-add-multiple-products-widget.php:13
+msgid "Flance Add Multiple Products order form for Woocommerce Widget."
+msgstr ""
+
+#: widget/partials/html-admin-view.php:2
+msgid "Title:"
+msgstr ""
+
+#: widget/partials/html-public-view.php:3
+msgid "Add Product(s)..."
+msgstr ""
+
+#: widget/partials/html-public-view.php:8
+msgid "Choose a product..."
+msgstr ""
+
+#: widget/partials/html-public-view.php:9
+msgid "Choose products by SKU or Name...."
+msgstr ""
+
+#: widget/partials/html-public-view.php:13
+msgid "Add Item(s)"
+msgstr ""
