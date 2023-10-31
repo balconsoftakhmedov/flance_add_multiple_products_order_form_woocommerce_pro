@@ -161,13 +161,13 @@ function get_variation_data_from_variation_id( $item_id ) {
 /**
  * Check if WooCommerce is active
  **/
-add_action( 'init', 'check_woocommerce_activation_pro' );
+add_action('plugins_loaded', 'check_woocommerce_activation_pro');
 function check_woocommerce_activation_pro() {
 	if ( wptlampaof_verify() ) {
 		// Check if WooCommerce is active
 		if ( class_exists( 'WooCommerce' ) ) {
 
-			deactivate_plugins( 'flance-add-multiple-products-order-form-woocommerce' );
+
 			register_activation_hook( __FILE__, 'activate_flance_add_multiple_products_pro' );
 			register_deactivation_hook( __FILE__, 'deactivate_flance_add_multiple_products_pro' );
 			$plugin = new Flance_Add_Multiple_Products_order_form_Woocommerce_pro();

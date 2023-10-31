@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Fired during plugin activation
  *
@@ -30,20 +29,18 @@ class Flance_Add_Multiple_Products_order_form_Woocommerce_Activator {
 	 * @since    1.1.3
 	 */
 	public static function activate() {
-		$product_cat_option = get_option('flance_amp_product_cat');
+		$product_cat_option = get_option( 'flance_amp_product_cat' );
 		if ( empty( $product_cat_option ) ) {
 			add_option( 'flance_amp_product_cat', '-1' );
 		}
-		
 		add_option( 'showname', 'y' );
 		add_option( 'showimage', 'y' );
 		add_option( 'attribute', 'y' );
 		add_option( 'showdesc', 'y' );
 		add_option( 'showsku', 'y' );
-        add_option( 'showmfk', 'n' );
+		add_option( 'showmfk', 'n' );
 		add_option( 'showpkg', 'y' );
-        add_option( ' splitchild', 'y' );
-
+		add_option( ' splitchild', 'y' );
 		add_option( 'showprice', 'y' );
 		add_option( 'showquantity', 'y' );
 		add_option( 'showaddtocart', 'y' );
@@ -52,10 +49,14 @@ class Flance_Add_Multiple_Products_order_form_Woocommerce_Activator {
 		add_option( 'redirectlink', 'cart' );
 		add_option( 'showlink', 'y' );
 		add_option( 'instock', 'y' );
-		add_option('flance_amp_do_activation_redirect', true);
-		
-		
-	
+		add_option( 'flance_amp_do_activation_redirect', true );
+		self::deactivate_free_plugin_on_pro_activation();
+
+	}
+
+
+	public static function deactivate_free_plugin_on_pro_activation() {
+		deactivate_plugins( 'flance-add-multiple-products-order-form-for-woocommerce/flance_add_multiple_products_order_form_woocommerce.php' );
 	}
 
 }
