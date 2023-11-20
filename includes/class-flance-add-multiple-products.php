@@ -69,7 +69,7 @@ class Flance_Add_Multiple_Products_order_form_Woocommerce_Pro {
 	public function __construct() {
 
 		$this->Flance_wamp = 'flance-add-multiple-products';
-		$this->version = '1.1.5';
+		$this->version = '4.0.0';
 
 		$this->load_dependencies();
 		$this->set_locale();
