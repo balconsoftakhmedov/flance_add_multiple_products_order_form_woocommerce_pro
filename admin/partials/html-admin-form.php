@@ -1,5 +1,5 @@
 <div class="wrap about-wrap">
-    <h1><?php printf( __( 'Flance Add Multiple Products order form for Woocommerce Pro %s' ), $this->version ); ?></h1>
+    <h1><?php printf( __( 'WooMultiOrder Pro - Multiple Products Table - Orders Add Cart %s for Woocommerce ' ), $this->version ); ?></h1>
 
     <div class="about-text">
         <?php printf( __( 'Thank you for downloading this product. 
@@ -125,20 +125,7 @@
                     <span class="description"> <code>Show the SKU of the products</code> .</span>
                 </td>
             </tr>
-		  <tr valign="top">
-                <th scope="row">Show PKG</th>
-                <td>
-                    <select id="showpkg" name="showpkg"  required>
-                       <option <?php if (get_option('showpkg') == "y") echo "selected"; ?> value="y"; >Yes</option>
-                            <option <?php if (get_option('showpkg') == "n") echo "selected"; ?> value="n">No</option>
-                        
-                        
-                      
-                    </select>
-                    <br>
-                    <span class="description"> <code>Show the Packaging of the products</code> .</span>
-                </td>
-            </tr>
+
 				  <tr valign="top">
                 <th scope="row">Show Price</th>
                 <td>
@@ -249,21 +236,7 @@
                 </td>
             </tr>
 
-            <tr valign="top">
-                <th scope="row">Split/separate show of products variations as sub products</th>
-                <td>
-                    <select id="splitchild" name="splitchild"  required>
-                        <option <?php if (get_option('splitchild') == "y") echo "selected"; ?> value="y"; >Yes</option>
-                        <option <?php if (get_option('splitchild') == "n") echo "selected"; ?> value="n">No</option>
 
-
-
-
-                    </select>
-                    <br>
-                    <span class="description"> <code>Split/separate show of products variations as sub products pls see demo <a href="http://flance.info/multi/test/"> Demo site show Mulptiple product show </a></code> .</span>
-                </td>
-            </tr>
 
 
 
