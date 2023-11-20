@@ -161,10 +161,9 @@ jQuery(document).ready(function () {
 								cart.find('.wamp_add_order_item_' + formclass).nextAll().remove();
 								cart.find('.wamp_add_order_item_' + formclass).after('<b class="wamp_loading_text">Successfully Added</b>');
 
-								var redirect = 'n';
-								console.log("redirect", redirect);
-								var reload = 'n';
-								var redirectlink = 'cart';
+								var redirect = WPURLS.params.redirect;
+								var reload = WPURLS.params.reload;
+								var redirectlink = WPURLS.params.redirectlink;
 
 								setTimeout(function () {
 									if (redirect == 'y') {
@@ -173,7 +172,7 @@ jQuery(document).ready(function () {
 										window.location.reload();
 
 									}
-								}, 4000);
+								}, 3000);
 							}
 						})
 

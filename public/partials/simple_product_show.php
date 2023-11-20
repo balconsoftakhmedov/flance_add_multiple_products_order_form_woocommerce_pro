@@ -26,6 +26,7 @@ if ( 'y' == $params['showimage'] ) {
 		) );
 
 	}
+
 	if ( $params['showlink'] == 'y' ) {
 		$html .= "<a href=\"" . $url . "\">
 

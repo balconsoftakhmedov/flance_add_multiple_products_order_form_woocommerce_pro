@@ -77,6 +77,23 @@ class Flance_Add_Multiple_Products_order_form_Woocommerce_Public_Pro {
 	public function enqueue_scripts() {
 		// WooCommerce credentials.
 		global $woocommerce;
+		$params =[];
+		$params['showname']      = get_option( 'showname' );
+		$params['showimage']     = get_option( 'showimage' );
+		$params['attribute']     = get_option( 'attribute' );
+		$params['showdesc']      = get_option( 'showdesc' );
+		$params['showmfk']       = get_option( 'showmfk' );
+		$params['splitchild']    = get_option( 'splitchild' );
+		$params['showsku']       = get_option( 'showsku' );
+		$params['showpkg']       = get_option( 'showpkg' );
+		$params['showprice']     = get_option( 'showprice' );
+		$params['showlink']      = get_option( 'showlink' );
+		$params['instock']       = get_option( 'instock' );
+		$params['showaddtocart'] = get_option( 'showaddtocart' );
+		$params['redirect']      = get_option( 'redirect' );
+		$params['reload']        = get_option( 'reload' );
+		$params['redirectlink']  = get_option( 'redirectlink' );
+
 		$suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
 		// Loading Chosen Chosen jQuery from WooCommerce.
 		wp_enqueue_script( 'woocommerce-chosen-js', $woocommerce->plugin_url() . '/assets/js/select2/select2' . $suffix . '.js', array( 'jquery' ), null, true );
@@ -89,7 +106,8 @@ class Flance_Add_Multiple_Products_order_form_Woocommerce_Public_Pro {
 			'WPURLS',
 			array(
 				'ajaxurl' => admin_url( 'admin-ajax.php' ),
-				'siteurl' => plugin_dir_url( __FILE__ )
+				'siteurl' => plugin_dir_url( __FILE__ ),
+				'params' => $params,
 			)
 		);
 	}
