@@ -59,7 +59,7 @@ if ( ! function_exists( 'wptlampaof_fs' ) ) {
 
 		return $wptlampaof_fs;
 	}
-
+if ( ! function_exists( 'is_plugin_active' ) ) require_once( ABSPATH . '/wp-admin/includes/plugin.php' );
 	if ( is_plugin_active( 'flance-add-multiple-products-order-form-for-woocommerce/flance_add_multiple_products_order_form_woocommerce.php' ) ) {
 		add_action( 'admin_notices', 'Flance_free_plugin_wamp_admin_notice__error_pro' );
 	} else {
@@ -106,62 +106,7 @@ function deactivate_flance_add_multiple_products_pro() {
  * admin-specific hooks, and public-facing site hooks.
  */
 require plugin_dir_path( __FILE__ ) . 'includes/class-flance-add-multiple-products.php';
-function find_valid_variations( $item_id ) {
 
-
-	$product      = new WC_Product_Variable( $item_id );
-	$variations   = $product->get_available_variations();
-	$attributes   = $product->get_attributes();
-	$new_variants = array();
-	// Loop through all variations
-	foreach ( $variations as $variation ) {
-
-		// Peruse the attributes.
-		// 1. If both are explicitly set, this is a valid variation
-		// 2. If one is not set, that means any, and we must 'create' the rest.
-		$valid = true; // so far
-		foreach ( $attributes as $slug => $args ) {
-			if ( array_key_exists( "attribute_$slug", $variation['attributes'] ) && ! empty( $variation['attributes']["attribute_$slug"] ) ) {
-				// Exists
-			} else {
-				// Not exists, create
-				$valid = false; // it contains 'anys'
-				// loop through all options for the 'ANY' attribute, and add each
-				foreach ( explode( '|', $attributes[ $slug ]['value'] ) as $attribute ) {
-					$attribute                                    = trim( $attribute );
-					$new_variant                                  = $variation;
-					$new_variant['attributes']["attribute_$slug"] = $attribute;
-					$new_variants[]                               = $new_variant;
-				}
-
-			}
-		}
-		// This contains ALL set attributes, and is itself a 'valid' variation.
-		if ( $valid ) {
-			$new_variants[] = $variation;
-		}
-
-	}
-
-	return $new_variants;
-}
-
-function get_variation_data_from_variation_id( $item_id ) {
-
-	$handle      = new WC_Product_Variable( $item_id );
-	$variations1 = $handle->get_available_variations();
-	echo "<pre>";
-	print_r( $variations1 );
-	echo "</pre>";
-	echo '<select>';
-	foreach ( $variations1 as $key => $value ) {
-		echo '<option  value="' . $value['variation_id'] . '">' . implode( '/', $value['attributes'] ) . '-' . $value['price_html'] . '</option>';
-
-	}
-	echo '</select>';
-
-	return; // $variation_detail will return string containing variation detail which can be used to print on website
-}
 
 /**
  * Check if WooCommerce is active

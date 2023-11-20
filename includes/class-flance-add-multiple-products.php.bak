@@ -97,11 +97,6 @@ class Flance_Add_Multiple_Products_order_form_Woocommerce_Pro {
 	private function load_dependencies() {
 
 		/**
-		 * helpers
-		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/helpers.php';
-
-		/**
 		 * The class responsible for orchestrating the actions and filters of the
 		 * core plugin.
 		 */

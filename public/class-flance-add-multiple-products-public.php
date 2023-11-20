@@ -19,7 +19,7 @@
  * @subpackage Flance_Add_Multiple_Products_order_form_Woocommerce/public
  * @author     Rusty <tutyou1972@gmail.com>
  */
-class Flance_Add_Multiple_Products_order_form_Woocommerce_Public {
+class Flance_Add_Multiple_Products_order_form_Woocommerce_Public_Pro {
 
 	/**
 	 * The ID of this plugin.
@@ -153,7 +153,7 @@ class Flance_Add_Multiple_Products_order_form_Woocommerce_Public {
 			$variation_id =(!empty($product_data['variation_id']))?$product_data['variation_id']: null;
 			$variations = $product_data;
 			if ($quantity > 0)
-			$result = Flance_Add_Multiple_Products_order_form_Woocommerce_Public::add_to_cart_action( $id, $quantity, $variation_id, $variations );
+			$result = Flance_Add_Multiple_Products_order_form_Woocommerce_Public_Pro::add_to_cart_action( $id, $quantity, $variation_id, $variations );
 		}
 		$response = array();
 		if ( $result === false ) {

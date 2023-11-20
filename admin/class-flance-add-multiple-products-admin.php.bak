@@ -115,8 +115,8 @@ class Flance_Add_Multiple_Products_order_form_Woocommerce_Admin_Pro {
 
 		//create new top-level menu
 		add_menu_page(
-			'WooMultiOrder Pro- Multiple Products Order Table to Add Cart for Woocommerce Settings',
-			'WooMultiOrder Pro',
+			'WooMultiOrder - Multiple Products Order Table to Add Cart for Woocommerce Settings',
+			'WooMultiOrder',
 			'administrator', 
 			'flance-add-multiple-products', 
 			array( $this, 'flance_amp_admin_settings_page' ) , 
