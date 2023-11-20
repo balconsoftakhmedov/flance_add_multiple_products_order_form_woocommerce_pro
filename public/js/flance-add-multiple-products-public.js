@@ -164,7 +164,7 @@ jQuery(document).ready(function () {
 								var redirect = WPURLS.params.redirect;
 								var reload = WPURLS.params.reload;
 								var redirectlink = WPURLS.params.redirectlink;
-
+								console.log(redirect, reload, redirectlink);
 								setTimeout(function () {
 									if (redirect == 'y') {
 										window.location = redirectlink;
