@@ -35,7 +35,7 @@ class Flance_Add_Multiple_Products_order_form_Woocommerce_i18n_Pro {
 	public function load_plugin_textdomain() {
 
 		load_plugin_textdomain(
-			'flance-add-multiple-products',
+			'woomultiorderpro',
 			false,
 			dirname( dirname( plugin_basename( __FILE__ ) ) ) . '/languages/'
 		);

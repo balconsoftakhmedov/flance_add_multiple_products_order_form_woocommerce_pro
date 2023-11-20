@@ -84,7 +84,7 @@
 	if ( 'y' == $params['showmfk'] ) {
 		$html .= "<th style='text-align:center;' class='brands header_class'>Manufacturer</th>\n";
 	}
-	$html .= "<th style='text-align:center;' class='cats header_class'>All Categories</th>\n";
+	$html .= "<th style='text-align:center;' class='cats header_class'>Categories</th>\n";
 	if ( 'y' == $params['showdesc'] ) {
 		$html .= "<th class='desc header_class'>Description</th>\n";
 	}

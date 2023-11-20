@@ -245,7 +245,7 @@ jQuery(document).ready(function () {
 				this.api().columns().every(function (i) {
 					var column = this;
 
-					if (this.header().innerHTML == "Category" || "All Categories" == this.header().innerHTML) {
+					if (this.header().innerHTML == "Categorye" || "All Categoriese" == this.header().innerHTML) {
 						var select = $('<select class="category-filter"><option value="">Category</option></select>')
 							.appendTo($(column.header()).empty())
 							.on("change", function () {
