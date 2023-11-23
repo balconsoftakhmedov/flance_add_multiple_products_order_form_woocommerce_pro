@@ -110,7 +110,7 @@ if ( ! class_exists( 'Woomultiorder_Elementor_Gmap' ) ) {
 		 *  Get Title
 		 */
 		public function get_title() {
-			return esc_html__( 'BS Google Map Pro', 'bsgmapspro' );
+			return esc_html__( 'BS Google Map Pro', 'woomultiorderpro' );
 		}
 
 		/**
@@ -140,7 +140,7 @@ if ( ! class_exists( 'Woomultiorder_Elementor_Gmap' ) ) {
 			$this->start_controls_section(
 				'locations_section',
 				array(
-					'label' => esc_html__( 'Locations Markers', 'bsgmapspro' ),
+					'label' => esc_html__( 'Locations Markers', 'woomultiorderpro' ),
 					'tab'   => Controls_Manager::TAB_CONTENT,
 				)
 			);
@@ -151,7 +151,7 @@ if ( ! class_exists( 'Woomultiorder_Elementor_Gmap' ) ) {
 					array(
 						'type' => Controls_Manager::RAW_HTML,
 						'raw'  => '<div class="bsgmapspro-notice">
-                                <a target="_blank" href="' . admin_url( 'admin.php?page=bsmaps' ) . '">' . esc_html__( 'Click Here', 'bsgmapspro' ) . '</a>' . esc_html__( 'to add google map api key.', 'bsgmapspro' ) . '</div>',
+                                <a target="_blank" href="' . admin_url( 'admin.php?page=bsmaps' ) . '">' . esc_html__( 'Click Here', 'woomultiorderpro' ) . '</a>' . esc_html__( 'to add google map api key.', 'woomultiorderpro' ) . '</div>',
 					)
 				);
 			}
@@ -159,14 +159,14 @@ if ( ! class_exists( 'Woomultiorder_Elementor_Gmap' ) ) {
 			$repeater->add_control(
 				'icon_url',
 				array(
-					'label' => esc_html__( 'Choose Image', 'bsgmapspro' ),
+					'label' => esc_html__( 'Choose Image', 'woomultiorderpro' ),
 					'type'  => Controls_Manager::MEDIA,
 				)
 			);
 			$repeater->add_control(
 				'icon_size',
 				array(
-					'label'      => esc_html__( 'Marker size', 'bsgmapspro' ),
+					'label'      => esc_html__( 'Marker size', 'woomultiorderpro' ),
 					'type'       => Controls_Manager::SLIDER,
 					'size_units' => array( 'px' ),
 					'range'      => array(
@@ -185,62 +185,62 @@ if ( ! class_exists( 'Woomultiorder_Elementor_Gmap' ) ) {
 			$repeater->add_control(
 				'lat',
 				array(
-					'label'       => esc_html__( 'Latitude', 'bsgmapspro' ),
+					'label'       => esc_html__( 'Latitude', 'woomultiorderpro' ),
 					'type'        => Controls_Manager::TEXT,
 					'dynamic'     => array(
 						'active' => true,
 					),
 					'default'     => '28.612912',
-					'placeholder' => esc_html__( 'Enter Latitude', 'bsgmapspro' ),
+					'placeholder' => esc_html__( 'Enter Latitude', 'woomultiorderpro' ),
 				)
 			);
 			$repeater->add_control(
 				'lng',
 				array(
-					'label'       => esc_html__( 'Longtitute', 'bsgmapspro' ),
+					'label'       => esc_html__( 'Longtitute', 'woomultiorderpro' ),
 					'type'        => Controls_Manager::TEXT,
 					'dynamic'     => array(
 						'active' => true,
 					),
 					'default'     => '77.229510',
-					'placeholder' => esc_html__( 'Enter Longtitute', 'bsgmapspro' ),
+					'placeholder' => esc_html__( 'Enter Longtitute', 'woomultiorderpro' ),
 				)
 			);
 			$repeater->add_control(
 				'name',
 				array(
-					'label'       => esc_html__( 'Location Name', 'bsgmapspro' ),
+					'label'       => esc_html__( 'Location Name', 'woomultiorderpro' ),
 					'type'        => Controls_Manager::TEXT,
 					'dynamic'     => array(
 						'active' => true,
 					),
 					'default'     => 'Some Location',
-					'placeholder' => esc_html__( 'Enter Location Name', 'bsgmapspro' ),
+					'placeholder' => esc_html__( 'Enter Location Name', 'woomultiorderpro' ),
 				)
 			);
 			$repeater->add_control(
 				'description',
 				array(
-					'label'       => esc_html__( 'Location description', 'bsgmapspro' ),
+					'label'       => esc_html__( 'Location description', 'woomultiorderpro' ),
 					'type'        => Controls_Manager::TEXTAREA,
 					'dynamic'     => array(
 						'active' => true,
 					),
 					'default'     => 'Some description',
-					'placeholder' => esc_html__( 'Enter description', 'bsgmapspro' ),
+					'placeholder' => esc_html__( 'Enter description', 'woomultiorderpro' ),
 				)
 			);
 			$this->add_control(
 				'markers',
 				array(
-					'label'   => esc_html__( 'Markers', 'bsgmapspro' ),
+					'label'   => esc_html__( 'Markers', 'woomultiorderpro' ),
 					'type'    => Controls_Manager::REPEATER,
 					'fields'  => $repeater->get_controls(),
 					'default' => array(
 						array(
 							'lat'     => '41',
 							'lng'     => '87',
-							'address' => esc_html__( 'Put Address Here', 'bsgmapspro' ),
+							'address' => esc_html__( 'Put Address Here', 'woomultiorderpro' ),
 						),
 					),
 				)
@@ -249,38 +249,38 @@ if ( ! class_exists( 'Woomultiorder_Elementor_Gmap' ) ) {
 			$this->start_controls_section(
 				'map_center_section',
 				array(
-					'label' => esc_html__( 'Map Center', 'bsgmapspro' ),
+					'label' => esc_html__( 'Map Center', 'woomultiorderpro' ),
 					'tab'   => Controls_Manager::TAB_CONTENT,
 				)
 			);
 			$this->add_control(
 				'map_center',
 				array(
-					'label'       => esc_html__( 'Map center coordinates', 'bsgmapspro' ),
+					'label'       => esc_html__( 'Map center coordinates', 'woomultiorderpro' ),
 					'type'        => \Elementor\Controls_Manager::TEXTAREA,
 					'row'         => '1',
 					'default'     => '41.881832,-87.623177',
-					'description' => esc_html__( 'Show this location as center of the map', 'bsgmapspro' ),
+					'description' => esc_html__( 'Show this location as center of the map', 'woomultiorderpro' ),
 				)
 			);
 			$this->end_controls_section();
 			$this->start_controls_section(
 				'map_settings_section',
 				array(
-					'label' => esc_html__( 'Map Settings', 'bsgmapspro' ),
+					'label' => esc_html__( 'Map Settings', 'woomultiorderpro' ),
 					'tab'   => Controls_Manager::TAB_CONTENT,
 				)
 			);
 			$this->add_control(
 				'activetype',
 				array(
-					'label'   => esc_html__( 'Map type', 'bsgmapspro' ),
+					'label'   => esc_html__( 'Map type', 'woomultiorderpro' ),
 					'type'    => Controls_Manager::SELECT,
 					'options' => array(
-						'satellite' => esc_html__( 'Satellite', 'bsgmapspro' ),
-						'hybrid'    => esc_html__( 'Hybrid', 'bsgmapspro' ),
-						'roadmap'   => esc_html__( 'Roadmap', 'bsgmapspro' ),
-						'terrain'   => esc_html__( 'Terrain', 'bsgmapspro' ),
+						'satellite' => esc_html__( 'Satellite', 'woomultiorderpro' ),
+						'hybrid'    => esc_html__( 'Hybrid', 'woomultiorderpro' ),
+						'roadmap'   => esc_html__( 'Roadmap', 'woomultiorderpro' ),
+						'terrain'   => esc_html__( 'Terrain', 'woomultiorderpro' ),
 					),
 					'default' => 'satellite',
 				)
@@ -288,7 +288,7 @@ if ( ! class_exists( 'Woomultiorder_Elementor_Gmap' ) ) {
 			$this->add_control(
 				'zoom',
 				array(
-					'label'   => esc_html__( 'Zoom', 'bsgmapspro' ),
+					'label'   => esc_html__( 'Zoom', 'woomultiorderpro' ),
 					'type'    => Controls_Manager::SLIDER,
 					'range'   => array(
 						'px' => array(
@@ -305,7 +305,7 @@ if ( ! class_exists( 'Woomultiorder_Elementor_Gmap' ) ) {
 			$this->add_control(
 				'overlay',
 				array(
-					'label'   => esc_html__( 'Overlay', 'bsgmapspro' ),
+					'label'   => esc_html__( 'Overlay', 'woomultiorderpro' ),
 					'type'    => Controls_Manager::SWITCHER,
 					'default' => 'off',
 				)
@@ -313,7 +313,7 @@ if ( ! class_exists( 'Woomultiorder_Elementor_Gmap' ) ) {
 			$this->add_control(
 				'full_screen_control',
 				array(
-					'label'   => esc_html__( 'Full screen control', 'bsgmapspro' ),
+					'label'   => esc_html__( 'Full screen control', 'woomultiorderpro' ),
 					'type'    => Controls_Manager::SWITCHER,
 					'default' => 'off',
 				)
@@ -321,7 +321,7 @@ if ( ! class_exists( 'Woomultiorder_Elementor_Gmap' ) ) {
 			$this->add_control(
 				'disable_map_drag',
 				array(
-					'label'   => esc_html__( 'Disable map drag', 'bsgmapspro' ),
+					'label'   => esc_html__( 'Disable map drag', 'woomultiorderpro' ),
 					'type'    => Controls_Manager::SWITCHER,
 					'default' => 'off',
 				)
@@ -329,7 +329,7 @@ if ( ! class_exists( 'Woomultiorder_Elementor_Gmap' ) ) {
 			$this->add_control(
 				'zoom_controls',
 				array(
-					'label'   => esc_html__( 'Zoom controls', 'bsgmapspro' ),
+					'label'   => esc_html__( 'Zoom controls', 'woomultiorderpro' ),
 					'type'    => Controls_Manager::SWITCHER,
 					'default' => 'off',
 				)
@@ -337,7 +337,7 @@ if ( ! class_exists( 'Woomultiorder_Elementor_Gmap' ) ) {
 			$this->add_control(
 				'scroll_wheel_zoom',
 				array(
-					'label'   => esc_html__( 'Scroll wheel zoom', 'bsgmapspro' ),
+					'label'   => esc_html__( 'Scroll wheel zoom', 'woomultiorderpro' ),
 					'type'    => Controls_Manager::SWITCHER,
 					'default' => 'off',
 				)
@@ -345,7 +345,7 @@ if ( ! class_exists( 'Woomultiorder_Elementor_Gmap' ) ) {
 			$this->add_control(
 				'map_type_control',
 				array(
-					'label'   => esc_html__( 'Map type control', 'bsgmapspro' ),
+					'label'   => esc_html__( 'Map type control', 'woomultiorderpro' ),
 					'type'    => Controls_Manager::SWITCHER,
 					'default' => 'off',
 				)
@@ -353,7 +353,7 @@ if ( ! class_exists( 'Woomultiorder_Elementor_Gmap' ) ) {
 			$this->add_control(
 				'street_view_control',
 				array(
-					'label'   => esc_html__( 'Street view control', 'bsgmapspro' ),
+					'label'   => esc_html__( 'Street view control', 'woomultiorderpro' ),
 					'type'    => Controls_Manager::SWITCHER,
 					'default' => 'off',
 				)
@@ -361,7 +361,7 @@ if ( ! class_exists( 'Woomultiorder_Elementor_Gmap' ) ) {
 			$this->add_control(
 				'hide_logo',
 				array(
-					'label'   => esc_html__( 'Hide logo', 'bsgmapspro' ),
+					'label'   => esc_html__( 'Hide logo', 'woomultiorderpro' ),
 					'type'    => Controls_Manager::SWITCHER,
 					'default' => 'off',
 				)
@@ -369,7 +369,7 @@ if ( ! class_exists( 'Woomultiorder_Elementor_Gmap' ) ) {
 			$this->add_control(
 				'hide_copyright',
 				array(
-					'label'   => esc_html__( 'Hide copyright', 'bsgmapspro' ),
+					'label'   => esc_html__( 'Hide copyright', 'woomultiorderpro' ),
 					'type'    => Controls_Manager::SWITCHER,
 					'default' => 'off',
 				)
@@ -377,7 +377,7 @@ if ( ! class_exists( 'Woomultiorder_Elementor_Gmap' ) ) {
 			$this->add_control(
 				'hide_terms',
 				array(
-					'label'   => esc_html__( 'Hide terms', 'bsgmapspro' ),
+					'label'   => esc_html__( 'Hide terms', 'woomultiorderpro' ),
 					'type'    => Controls_Manager::SWITCHER,
 					'default' => 'off',
 				)
@@ -385,7 +385,7 @@ if ( ! class_exists( 'Woomultiorder_Elementor_Gmap' ) ) {
 			$this->add_control(
 				'hide_report',
 				array(
-					'label'   => esc_html__( 'Hide report', 'bsgmapspro' ),
+					'label'   => esc_html__( 'Hide report', 'woomultiorderpro' ),
 					'type'    => Controls_Manager::SWITCHER,
 					'default' => 'off',
 				)
@@ -393,7 +393,7 @@ if ( ! class_exists( 'Woomultiorder_Elementor_Gmap' ) ) {
 			$this->add_control(
 				'hide_keyboard_shortcuts',
 				array(
-					'label'   => esc_html__( 'Hide keyboard shortcuts', 'bsgmapspro' ),
+					'label'   => esc_html__( 'Hide keyboard shortcuts', 'woomultiorderpro' ),
 					'type'    => Controls_Manager::SWITCHER,
 					'default' => 'off',
 				)
@@ -401,7 +401,7 @@ if ( ! class_exists( 'Woomultiorder_Elementor_Gmap' ) ) {
 			$this->add_control(
 				'hide_bottom_reqs',
 				array(
-					'label'   => esc_html__( 'Hide bottom reqs', 'bsgmapspro' ),
+					'label'   => esc_html__( 'Hide bottom reqs', 'woomultiorderpro' ),
 					'type'    => Controls_Manager::SWITCHER,
 					'default' => 'off',
 				)
@@ -409,7 +409,7 @@ if ( ! class_exists( 'Woomultiorder_Elementor_Gmap' ) ) {
 			$this->add_control(
 				'info_containers_always_opened',
 				array(
-					'label'   => esc_html__( 'Info containers always opened', 'bsgmapspro' ),
+					'label'   => esc_html__( 'Info containers always opened', 'woomultiorderpro' ),
 					'type'    => Controls_Manager::SWITCHER,
 					'default' => 'off',
 				)
@@ -417,7 +417,7 @@ if ( ! class_exists( 'Woomultiorder_Elementor_Gmap' ) ) {
 			$this->add_control(
 				'info_container_open_on_hover',
 				array(
-					'label'   => esc_html__( 'Info container open on hover', 'bsgmapspro' ),
+					'label'   => esc_html__( 'Info container open on hover', 'woomultiorderpro' ),
 					'type'    => Controls_Manager::SWITCHER,
 					'default' => 'off',
 				)
@@ -425,7 +425,7 @@ if ( ! class_exists( 'Woomultiorder_Elementor_Gmap' ) ) {
 			$this->add_control(
 				'marker_clusters',
 				array(
-					'label'   => esc_html__( 'Marker clusters', 'bsgmapspro' ),
+					'label'   => esc_html__( 'Marker clusters', 'woomultiorderpro' ),
 					'type'    => Controls_Manager::SWITCHER,
 					'default' => 'off',
 				)
@@ -434,23 +434,23 @@ if ( ! class_exists( 'Woomultiorder_Elementor_Gmap' ) ) {
 			$this->start_controls_section(
 				'map_style_section',
 				array(
-					'label' => esc_html__( 'Map Styles', 'bsgmapspro' ),
+					'label' => esc_html__( 'Map Styles', 'woomultiorderpro' ),
 					'tab'   => Controls_Manager::TAB_CONTENT,
 				)
 			);
 			$this->add_control(
 				'activemode',
 				array(
-					'label'   => esc_html__( 'Style Mode', 'bsgmapspro' ),
+					'label'   => esc_html__( 'Style Mode', 'woomultiorderpro' ),
 					'type'    => Controls_Manager::SELECT,
 					'options' => array(
-						'defaultMode'   => esc_html__( 'Default Mode', 'bsgmapspro' ),
-						'silverMode'    => esc_html__( 'Silver Mode', 'bsgmapspro' ),
-						'nightMode'     => esc_html__( 'Night Mode', 'bsgmapspro' ),
-						'retroMode'     => esc_html__( 'Retro Mode', 'bsgmapspro' ),
-						'darkMode'      => esc_html__( 'Dark Mode', 'bsgmapspro' ),
-						'aubergineMode' => esc_html__( 'Aubergine Mode', 'bsgmapspro' ),
-						'customMode'    => esc_html__( 'Custom Mode', 'bsgmapspro' ),
+						'defaultMode'   => esc_html__( 'Default Mode', 'woomultiorderpro' ),
+						'silverMode'    => esc_html__( 'Silver Mode', 'woomultiorderpro' ),
+						'nightMode'     => esc_html__( 'Night Mode', 'woomultiorderpro' ),
+						'retroMode'     => esc_html__( 'Retro Mode', 'woomultiorderpro' ),
+						'darkMode'      => esc_html__( 'Dark Mode', 'woomultiorderpro' ),
+						'aubergineMode' => esc_html__( 'Aubergine Mode', 'woomultiorderpro' ),
+						'customMode'    => esc_html__( 'Custom Mode', 'woomultiorderpro' ),
 					),
 					'default' => 'defaultMode',
 				)
@@ -458,11 +458,11 @@ if ( ! class_exists( 'Woomultiorder_Elementor_Gmap' ) ) {
 			$this->add_control(
 				'customMode',
 				array(
-					'label'       => esc_html__( 'Custom Style Json code', 'bsgmapspro' ),
+					'label'       => esc_html__( 'Custom Style Json code', 'woomultiorderpro' ),
 					'type'        => \Elementor\Controls_Manager::TEXTAREA,
 					'row'         => '11',
 					'default'     => '',
-					'placeholder' => esc_html__( 'Enter your JSON code here', 'bsgmapspro' ),
+					'placeholder' => esc_html__( 'Enter your JSON code here', 'woomultiorderpro' ),
 					'condition'   => array(
 						'activemode' => 'customMode',
 					),
