@@ -6,11 +6,11 @@ class Flance_Add_Multiple_Products_order_form_Woocommerce_Widget_Pro extends WP_
 	        // base ID of the widget
 	        'flance_add_multiple_products_widget',
 	        // name of the widget
-	        __( 'Flance Add Multiple Products order form for Woocommerce', 'flance-add-multiple-products-order-form-woocommerce-pro'),
+	        __( 'Flance Add Multiple Products order form for Woocommerce', 'woomultiorderpro'),
 	        // widget options
 	        array (
 				'classname' 	=>	'flance-amp-widget',
-	            'description' => __( 'Flance Add Multiple Products order form for Woocommerce Widget.', 'flance-add-multiple-products-order-form-woocommerce-pro')
+	            'description' => __( 'Flance Add Multiple Products order form for Woocommerce Widget.', 'woomultiorderpro')
 	        )
 	    );
     }

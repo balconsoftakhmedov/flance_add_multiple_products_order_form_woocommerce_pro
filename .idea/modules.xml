@@ -2,9 +2,12 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../../../../../client/balkonsoft/bs-map/wp-content/plugins/bsgmapspro/.idea/bsgmapspro.iml" filepath="$PROJECT_DIR$/../../../../../client/balkonsoft/bs-map/wp-content/plugins/bsgmapspro/.idea/bsgmapspro.iml" />
       <module fileurl="file://$PROJECT_DIR$/../flance-add-multiple-products-order-form-for-woocommerce/.idea/flance-add-multiple-products-order-form-for-woocommerce.iml" filepath="$PROJECT_DIR$/../flance-add-multiple-products-order-form-for-woocommerce/.idea/flance-add-multiple-products-order-form-for-woocommerce.iml" />
       <module fileurl="file://$PROJECT_DIR$/../../themes/flance-demo/.idea/flance-demo.iml" filepath="$PROJECT_DIR$/../../themes/flance-demo/.idea/flance-demo.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/flance_add_multiple_products_order_form_woocommerce_pro.iml" filepath="$PROJECT_DIR$/.idea/flance_add_multiple_products_order_form_woocommerce_pro.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../multiple-products-to-cart-for-woocommerce/.idea/multiple-products-to-cart-for-woocommerce.iml" filepath="$PROJECT_DIR$/../multiple-products-to-cart-for-woocommerce/.idea/multiple-products-to-cart-for-woocommerce.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../../../flance_local/wp-content/plugins/order-list-table-elementor-widget/.idea/order-list-table-elementor-widget.iml" filepath="$PROJECT_DIR$/../../../../flance_local/wp-content/plugins/order-list-table-elementor-widget/.idea/order-list-table-elementor-widget.iml" />
     </modules>
   </component>
 </project>

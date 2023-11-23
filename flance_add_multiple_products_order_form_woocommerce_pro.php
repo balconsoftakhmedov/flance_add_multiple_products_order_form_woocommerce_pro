@@ -85,7 +85,7 @@ function check_woocommerce_activation_pro() {
 
 function Flance_wamp_admin_notice__error_pro() {
 	$class   = 'notice notice-error';
-	$message = __( 'You don\'t have WooCommerce activated. Please Activate <b>WooCommerce</b> and then try to activate again <b>Flance Add Multiple Products order form for Woocommerce</b>.', 'flance-add-multiple-products-order-form-woocommerce-pro');
+	$message = __( 'You don\'t have WooCommerce activated. Please Activate <b>WooCommerce</b> and then try to activate again <b>Flance Add Multiple Products order form for Woocommerce</b>.', 'woomultiorderpro');
 	printf( '<div class="%1$s"><p>%2$s</p></div>', $class, $message );
 }
 

@@ -308,7 +308,7 @@ class Flance_Add_Multiple_Products_order_form_Woocommerce_Public_Pro {
 				foreach ( $rds as $rd ) {
 					$product   = new WC_Product( $rd );
 					$sku       = $product->get_sku();
-					$stock     = $product->is_in_stock() ? __( ' -- In stock', 'flance-add-multiple-products-order-form-woocommerce-pro') : __( ' -- Out of stock', 'flance-add-multiple-products-order-form-woocommerce-pro');
+					$stock     = $product->is_in_stock() ? __( ' -- In stock', 'woomultiorderpro') : __( ' -- Out of stock', 'woomultiorderpro');
 					$disablity = $product->is_in_stock() ? '' : 'disabled';
 					$products[] = $product;
 
@@ -320,7 +320,7 @@ class Flance_Add_Multiple_Products_order_form_Woocommerce_Public_Pro {
 			foreach ( $product_ids as $rd ) {
 				$product   = new WC_Product( $rd );
 				$sku       = $product->get_sku();
-				$stock     = $product->is_in_stock() ? __( ' -- In stock', 'flance-add-multiple-products-order-form-woocommerce-pro') : __( ' -- Out of stock', 'flance-add-multiple-products-order-form-woocommerce-pro');
+				$stock     = $product->is_in_stock() ? __( ' -- In stock', 'woomultiorderpro') : __( ' -- Out of stock', 'woomultiorderpro');
 				$disablity = $product->is_in_stock() ? '' : 'disabled';
 				$products[] = $product;
 
@@ -356,7 +356,7 @@ class Flance_Add_Multiple_Products_order_form_Woocommerce_Public_Pro {
 			foreach ( $rds as $rd ) {
 				$product   = new WC_Products( $rd );
 				$sku       = $product->get_sku();
-				$stock     = $product->is_in_stock() ? __( ' -- In stock', 'flance-add-multiple-products-order-form-woocommerce-pro') : __( ' -- Out of stock', 'flance-add-multiple-products-order-form-woocommerce-pro');
+				$stock     = $product->is_in_stock() ? __( ' -- In stock', 'woomultiorderpro') : __( ' -- Out of stock', 'woomultiorderpro');
 				$disablity = $product->is_in_stock() ? '' : 'disabled';
 				echo '<option datad="' . $sku . '" value="' . $rd . '"' . $disablity . '>' . $sku . " -- " . get_the_title( $rd ) . $stock . '</option>';
 			} // Loop End .

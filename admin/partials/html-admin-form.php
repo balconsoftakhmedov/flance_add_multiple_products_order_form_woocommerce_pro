@@ -21,7 +21,7 @@
 				<th scope="row">Product Category(s)</th>
 				<td>
 					<select id="flance_amp_product_cat" name="flance_amp_product_cat[]" multiple="multiple" required>
-						<optgroup label="<?php _e( 'Please select a product category....', 'flance-add-multiple-products-order-form-woocommerce-pro') ?>">
+						<optgroup label="<?php _e( 'Please select a product category....', 'woomultiorderpro') ?>">
 
 							<?php $this->flance_amp_admin_settings_get_product_cats(); ?>
 

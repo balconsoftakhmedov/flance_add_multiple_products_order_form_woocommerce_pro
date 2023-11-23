@@ -6,5 +6,8 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="flance-add-multiple-products-order-form-for-woocommerce" />
     <orderEntry type="module" module-name="flance-demo" />
+    <orderEntry type="module" module-name="multiple-products-to-cart-for-woocommerce" />
+    <orderEntry type="module" module-name="order-list-table-elementor-widget" />
+    <orderEntry type="module" module-name="bsgmapspro" />
   </component>
 </module>
