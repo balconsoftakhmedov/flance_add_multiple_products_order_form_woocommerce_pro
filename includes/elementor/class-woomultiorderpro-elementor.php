@@ -1,9 +1,9 @@
 <?php
 /**
- * BsMap Elementor Google Map
+ * Woo Multi Order Pro
  *
  * @author  Flance
- * @package BsMap
+ * @package Woomutiorderpro
  * @version 1.0.0
  * @since   1.0.0
  */
@@ -23,26 +23,26 @@ use Elementor\Group_Control_Typography;
 use Elementor\Core\Schemes\Typography;
 use Elementor\Icons_Manager;
 
-if ( ! class_exists( 'Woomultiorderpro_Elementor_Gmap' ) ) {
+if ( ! class_exists( 'Woomultiorderpro_Elementor' ) ) {
 	/**
-	 * Bs_Map shortcode class
+	 * WooMultiOrderPro shortcode class
 	 *
 	 * @return void
 	 */
-	class Woomultiorderpro_Elementor_Gmap extends Widget_Base {
+	class Woomultiorderpro_Elementor extends Widget_Base {
 		/**
 		 * Slug
 		 *
 		 * @var string
 		 */
-		protected $slug = 'woomultiorderpro-elementor-gmap';
+		protected $slug = 'woomultiorderpro-elementor';
 
 		/**
 		 * Handler Stiles, Javascript files.
 		 *
 		 * @var string
 		 */
-		protected $handler = 'woomultiorderpro-vc-gmap';
+		protected $handler = 'woomultiorderpro-vc';
 
 		/**
 		 * Name escaped
@@ -110,7 +110,7 @@ if ( ! class_exists( 'Woomultiorderpro_Elementor_Gmap' ) ) {
 		 *  Get Title
 		 */
 		public function get_title() {
-			return esc_html__( 'BS Google Map Pro', 'woomultiorderpro' );
+			return esc_html__( 'Woo Multi Order Pro', 'woomultiorderpro' );
 		}
 
 		/**
@@ -491,10 +491,10 @@ if ( ! class_exists( 'Woomultiorderpro_Elementor_Gmap' ) ) {
 				$atts['content'] = $content;
 			}
 			$arg_strings = woomultiorderpro_elementor_args( $atts );
-			echo do_shortcode( '[woomultiorderpro-vc-gmap-shortcode ' . $arg_strings . ']' );
+			echo do_shortcode( '[woomultiorderpro-vc-shortcode ' . $arg_strings . ']' );
 		}
 	}
 
-	\Elementor\Plugin::instance()->widgets_manager->register( new Woomultiorderpro_Elementor_Gmap() );
+	\Elementor\Plugin::instance()->widgets_manager->register( new Woomultiorderpro_Elementor() );
 
 }
