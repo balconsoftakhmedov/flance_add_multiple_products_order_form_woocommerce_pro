@@ -68,13 +68,7 @@ if ( ! class_exists( 'Woomultiorderpro_Elementor' ) ) {
 		 * @return string[]
 		 */
 		public function wp_register_script_style() {
-			if ( file_exists( WOOMULTIORDERPRO_PATH . '/assets/dist/components/' . $this->handler . '/css/app.css' ) ) {
-				wp_register_style( $this->handler, WOOMULTIORDERPRO_ASSETS . '/dist/components/' . $this->handler . '/css/app.css', array(), WOOMULTIORDERPRO_VERSION );
-			}
-			if ( file_exists( WOOMULTIORDERPRO_PATH . '/assets/dist/components/' . $this->handler . '/js/elementor/app.js' ) ) {
-				wp_deregister_script( $this->handler );
-				wp_register_script( $this->handler, WOOMULTIORDERPRO_ASSETS . '/dist/components/' . $this->handler . '/js/elementor/app.js', array( 'jquery' ), WOOMULTIORDERPRO_VERSION, true );
-			}
+
 
 			return array( $this->handler );
 		}
@@ -119,7 +113,7 @@ if ( ! class_exists( 'Woomultiorderpro_Elementor' ) ) {
 		 * @return string
 		 */
 		public function get_icon() {
-			return 'eicon-google-maps';
+			return 'eicon-price-table';
 		}
 
 		/**
