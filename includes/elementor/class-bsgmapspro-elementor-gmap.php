@@ -23,26 +23,26 @@ use Elementor\Group_Control_Typography;
 use Elementor\Core\Schemes\Typography;
 use Elementor\Icons_Manager;
 
-if ( ! class_exists( 'Woomultiorder_Elementor_Gmap' ) ) {
+if ( ! class_exists( 'Woomultiorderpro_Elementor_Gmap' ) ) {
 	/**
 	 * Bs_Map shortcode class
 	 *
 	 * @return void
 	 */
-	class Bsgmapspro_Elementor_Gmap extends Widget_Base {
+	class Woomultiorderpro_Elementor_Gmap extends Widget_Base {
 		/**
 		 * Slug
 		 *
 		 * @var string
 		 */
-		protected $slug = 'bsgmapspro-elementor-gmap';
+		protected $slug = 'woomultiorderpro-elementor-gmap';
 
 		/**
 		 * Handler Stiles, Javascript files.
 		 *
 		 * @var string
 		 */
-		protected $handler = 'bsgmapspro-vc-gmap';
+		protected $handler = 'woomultiorderpro-vc-gmap';
 
 		/**
 		 * Name escaped
@@ -68,12 +68,12 @@ if ( ! class_exists( 'Woomultiorder_Elementor_Gmap' ) ) {
 		 * @return string[]
 		 */
 		public function wp_register_script_style() {
-			if ( file_exists( BSGMAPSPRO_PATH . '/assets/dist/components/' . $this->handler . '/css/app.css' ) ) {
-				wp_register_style( $this->handler, BSGMAPSPRO_ASSETS . '/dist/components/' . $this->handler . '/css/app.css', array(), BSGMAPSPRO_VERSION );
+			if ( file_exists( WOOMULTIORDERPRO_PATH . '/assets/dist/components/' . $this->handler . '/css/app.css' ) ) {
+				wp_register_style( $this->handler, WOOMULTIORDERPRO_ASSETS . '/dist/components/' . $this->handler . '/css/app.css', array(), WOOMULTIORDERPRO_VERSION );
 			}
-			if ( file_exists( BSGMAPSPRO_PATH . '/assets/dist/components/' . $this->handler . '/js/elementor/app.js' ) ) {
+			if ( file_exists( WOOMULTIORDERPRO_PATH . '/assets/dist/components/' . $this->handler . '/js/elementor/app.js' ) ) {
 				wp_deregister_script( $this->handler );
-				wp_register_script( $this->handler, BSGMAPSPRO_ASSETS . '/dist/components/' . $this->handler . '/js/elementor/app.js', array( 'jquery' ), BSGMAPSPRO_VERSION, true );
+				wp_register_script( $this->handler, WOOMULTIORDERPRO_ASSETS . '/dist/components/' . $this->handler . '/js/elementor/app.js', array( 'jquery' ), WOOMULTIORDERPRO_VERSION, true );
 			}
 
 			return array( $this->handler );
@@ -128,7 +128,7 @@ if ( ! class_exists( 'Woomultiorder_Elementor_Gmap' ) ) {
 		 * @return string[]
 		 */
 		public function get_categories() {
-			return array( 'bsgmapspro-widgets' );
+			return array( 'woomultiorderpro-widgets' );
 		}
 
 		/**
@@ -144,13 +144,13 @@ if ( ! class_exists( 'Woomultiorder_Elementor_Gmap' ) ) {
 					'tab'   => Controls_Manager::TAB_CONTENT,
 				)
 			);
-			$woomultiorder_map_key = get_option( 'woomultiorder_gmap_key' );
-			if ( ! isset( $woomultiorder_map_key ) || '' === $woomultiorder_map_key ) {
+			$woomultiorderpro_map_key = get_option( 'woomultiorderpro_gmap_key' );
+			if ( ! isset( $woomultiorderpro_map_key ) || '' === $woomultiorderpro_map_key ) {
 				$this->add_control(
 					'notice',
 					array(
 						'type' => Controls_Manager::RAW_HTML,
-						'raw'  => '<div class="bsgmapspro-notice">
+						'raw'  => '<div class="woomultiorderpro-notice">
                                 <a target="_blank" href="' . admin_url( 'admin.php?page=bsmaps' ) . '">' . esc_html__( 'Click Here', 'woomultiorderpro' ) . '</a>' . esc_html__( 'to add google map api key.', 'woomultiorderpro' ) . '</div>',
 					)
 				);
@@ -490,11 +490,11 @@ if ( ! class_exists( 'Woomultiorder_Elementor_Gmap' ) ) {
 			if ( ! empty( $content ) ) {
 				$atts['content'] = $content;
 			}
-			$arg_strings = woomultiorder_elementor_args( $atts );
-			echo do_shortcode( '[bsgmapspro-vc-gmap-shortcode ' . $arg_strings . ']' );
+			$arg_strings = woomultiorderpro_elementor_args( $atts );
+			echo do_shortcode( '[woomultiorderpro-vc-gmap-shortcode ' . $arg_strings . ']' );
 		}
 	}
 
-	\Elementor\Plugin::instance()->widgets_manager->register( new Bsgmapspro_Elementor_Gmap() );
+	\Elementor\Plugin::instance()->widgets_manager->register( new Woomultiorderpro_Elementor_Gmap() );
 
 }
