@@ -1,8 +1,8 @@
-=== Flance Add Multiple Products order form for Woocommerce Pro ===
+=== WooMultiOrder Pro - Multiple Products Table - Orders Add Cart for Woocommerce ===
 Contributors: flance
 Tags: woocommerce, add-to-cart, ajax, cart, shopping-cart, addin multiple products to the carts
-Requires at least: 3.5.1
-Tested up to: 4.6.1
+Requires at least: 5
+Tested up to: 6.4.1
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -61,6 +61,8 @@ form id can be added by parameter form_id example [flance_products_form product_
 
 == Changelog ==
 
+= 4.0.0 ==
+ upgraded and modified to work with latest woocommerce
 = 1.1.3 =
 * Initial version.
 

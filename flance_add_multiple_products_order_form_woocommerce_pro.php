@@ -14,7 +14,7 @@
  * @wordpress-plugin
  * Plugin Name:       WooMultiOrder Pro - Multiple Products Table - Orders Add Cart for Woocommerce
  * Description:       The plugin gives functionality to have the form to add multiple products to the cart and calculate in same page the total price of the order. And you also can use shortcode to use the plugin other places. Just place the shortcode where you wanna put the input form and it's done !!! Pro vesrion has the functionality to show the product attributes on the page non commercial version does not have attribute show functionality.
- * Version:           4.0.0
+ * Version:           5.0.0
  * Author:            Rusty
  * Author URI:        http://www.flance.info
  * Text Domain:       flance-add-multiple-products-order-form-woocommerce-pro
