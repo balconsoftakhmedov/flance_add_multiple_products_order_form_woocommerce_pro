@@ -162,8 +162,10 @@ if ( ! class_exists( 'Woomultiorderpro_Elementor' ) ) {
 			if ( ! empty( $content ) ) {
 				$atts['content'] = $content;
 			}
-			$arg_strings = woomultiorderpro_elementor_args( $atts );
-			echo do_shortcode( '[flance_products_form ' . $arg_strings . ']' );
+			//$arg_strings = woomultiorderpro_elementor_args( $atts );
+			//echo do_shortcode( '[flance_products_form ' . $arg_strings . ']' );
+			echo do_shortcode( '[flance_products_form product_ids=19,20,18,8]' );
+
 		}
 	}
 

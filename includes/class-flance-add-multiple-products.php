@@ -1,5 +1,4 @@
 <?php
-
 /**
  * The file that defines the core plugin class
  *
@@ -35,7 +34,7 @@ class Flance_Add_Multiple_Products_order_form_Woocommerce_Pro {
 	 *
 	 * @since    1.1.3
 	 * @access   protected
-	 * @var      Flance_Add_Multiple_Products_order_form_Woocommerce_Loader    $loader    Maintains and registers all hooks for the plugin.
+	 * @var      Flance_Add_Multiple_Products_order_form_Woocommerce_Loader $loader Maintains and registers all hooks for the plugin.
 	 */
 	protected $loader;
 
@@ -44,7 +43,7 @@ class Flance_Add_Multiple_Products_order_form_Woocommerce_Pro {
 	 *
 	 * @since    1.1.3
 	 * @access   protected
-	 * @var      string    $Flance_wamp    The string used to uniquely identify this plugin.
+	 * @var      string $Flance_wamp The string used to uniquely identify this plugin.
 	 */
 	protected $Flance_wamp;
 
@@ -53,7 +52,7 @@ class Flance_Add_Multiple_Products_order_form_Woocommerce_Pro {
 	 *
 	 * @since    1.1.3
 	 * @access   protected
-	 * @var      string    $version    The current version of the plugin.
+	 * @var      string $version The current version of the plugin.
 	 */
 	protected $version;
 
@@ -69,8 +68,7 @@ class Flance_Add_Multiple_Products_order_form_Woocommerce_Pro {
 	public function __construct() {
 
 		$this->Flance_wamp = 'flance-add-multiple-products';
-		$this->version = '5.0.0';
-
+		$this->version     = '5.0.0';
 		$this->load_dependencies();
 		$this->set_locale();
 		$this->define_admin_hooks();
@@ -100,40 +98,48 @@ class Flance_Add_Multiple_Products_order_form_Woocommerce_Pro {
 		 * helpers
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/helpers.php';
-
 		/**
 		 * The class responsible for orchestrating the actions and filters of the
 		 * core plugin.
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-flance-add-multiple-products-loader.php';
-
 		/**
 		 * The class responsible for defining internationalization functionality
 		 * of the plugin.
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-flance-add-multiple-products-i18n.php';
-
 		/**
 		 * The class responsible for defining all actions that occur in the admin area.
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-flance-add-multiple-products-admin.php';
-
 		/**
 		 * The class responsible for defining all actions that occur in the public-facing
 		 * side of the site.
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-flance-add-multiple-products-public.php';
-
 		/**
 		 * The class responsible for defining all actions that occur in the public-facing
 		 * side of the site.
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'widget/class-flance-add-multiple-products-widget.php';
-
-
+		// Use the init hook to initialize your Elementor widget
+		add_action( 'init', array( $this, 'initialize_elementor_widget' ) );
+		/**
+		 * The class responsible for defining Elementor
+		 * side of the site.
+		 */
 		$this->loader = new Flance_Add_Multiple_Products_order_form_Woocommerce_Loader_Pro();
 
 	}
+
+// Hook to initialize your Elementor widget
+	public function initialize_elementor_widget() {
+		if ( class_exists( '\Elementor\Widget_Base' ) ) {
+			// Register your widget with Elementor
+			require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/elementor/class-woomultiorderpro-elementor.php';
+		}
+	}
+
 
 	/**
 	 * Define the locale for this plugin for internationalization.
@@ -147,7 +153,6 @@ class Flance_Add_Multiple_Products_order_form_Woocommerce_Pro {
 	private function set_locale() {
 
 		$plugin_i18n = new Flance_Add_Multiple_Products_order_form_Woocommerce_i18n_Pro();
-
 		$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
 
 	}
@@ -162,15 +167,13 @@ class Flance_Add_Multiple_Products_order_form_Woocommerce_Pro {
 	private function define_admin_hooks() {
 
 		$plugin_admin = new Flance_Add_Multiple_Products_order_form_Woocommerce_Admin_Pro( $this->get_Flance_wamp(), $this->get_version() );
-
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
-
 		$this->loader->add_action( 'admin_menu', $plugin_admin, 'flance_amp_admin_menu_page' );
 		//$this->loader->add_action( 'widgets_init', $plugin_admin, 'flance_widget' );
 		// Redirection after activation
 		$this->loader->add_action( 'admin_init', $plugin_admin, 'flance_amp_plugin_redirect' );
-		
+
 	}
 
 	/**
@@ -183,22 +186,17 @@ class Flance_Add_Multiple_Products_order_form_Woocommerce_Pro {
 	private function define_public_hooks() {
 
 		$plugin_public = new Flance_Add_Multiple_Products_order_form_Woocommerce_Public_Pro( $this->get_Flance_wamp(), $this->get_version() );
-
-		$this->loader->add_action( 'wp_enqueue_scripts', 					$plugin_public, 'enqueue_styles' );
-		$this->loader->add_action( 'wp_enqueue_scripts', 					$plugin_public, 'enqueue_scripts' );
-
-        // Action Hooks.
-        $this->loader->add_action( 'woocommerce_after_cart', 				$plugin_public, 'flance_amp_product_input_from' );
-        $this->loader->add_action( 'woocommerce_cart_is_empty', 			$plugin_public, 'flance_amp_product_input_from' );
-        
-        // Ajax product adding action hooks.
-        $this->loader->add_action( 'wp_ajax_flance_amp_add_to_cart', 		$plugin_public, 'flance_amp_add_to_cart' );
+		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
+		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
+		// Action Hooks.
+		$this->loader->add_action( 'woocommerce_after_cart', $plugin_public, 'flance_amp_product_input_from' );
+		$this->loader->add_action( 'woocommerce_cart_is_empty', $plugin_public, 'flance_amp_product_input_from' );
+		// Ajax product adding action hooks.
+		$this->loader->add_action( 'wp_ajax_flance_amp_add_to_cart', $plugin_public, 'flance_amp_add_to_cart' );
 		$this->loader->add_action( 'wp_ajax_nopriv_flance_amp_add_to_cart', $plugin_public, 'flance_amp_add_to_cart' );
-		
-			if ( ! is_admin() ) {
-   		// Shortcode for adding products input to different places
-        add_shortcode( 'flance_products_form', array( $plugin_public, 'flance_amp_product_shortcode_input_from' ) );
-} 
+		// Shortcode for adding products input to different places
+		add_shortcode( 'flance_products_form', array( $plugin_public, 'flance_amp_product_shortcode_input_from' ) );
+
 	}
 
 	/**
@@ -214,8 +212,8 @@ class Flance_Add_Multiple_Products_order_form_Woocommerce_Pro {
 	 * The name of the plugin used to uniquely identify it within the context of
 	 * WordPress and to define internationalization functionality.
 	 *
-	 * @since     2.0.0
 	 * @return    string    The name of the plugin.
+	 * @since     2.0.0
 	 */
 	public function get_Flance_wamp() {
 		return $this->Flance_wamp;
@@ -224,8 +222,8 @@ class Flance_Add_Multiple_Products_order_form_Woocommerce_Pro {
 	/**
 	 * The reference to the class that orchestrates the hooks with the plugin.
 	 *
-	 * @since     2.0.0
 	 * @return    Flance_Add_Multiple_Products_order_form_Woocommerce_Loader    Orchestrates the hooks of the plugin.
+	 * @since     2.0.0
 	 */
 	public function get_loader() {
 		return $this->loader;
@@ -234,8 +232,8 @@ class Flance_Add_Multiple_Products_order_form_Woocommerce_Pro {
 	/**
 	 * Retrieve the version number of the plugin.
 	 *
-	 * @since     2.0.0
 	 * @return    string    The version number of the plugin.
+	 * @since     2.0.0
 	 */
 	public function get_version() {
 		return $this->version;
