@@ -88,6 +88,11 @@ if ( ! class_exists( 'Woomultiorderpro_Elementor' ) ) {
 		 * @return string[]
 		 */
 		public function get_script_depends() {
+				wp_enqueue_script( 'woocommerce-chosen-js', $woocommerce->plugin_url() . '/assets/js/select2/select2' . $suffix . '.js', array( 'jquery' ), null, true );
+		wp_enqueue_script( $this->Flance_wamp, plugin_dir_url( __FILE__ ) . 'js/flance-add-multiple-products-public.js', array( 'woocommerce-chosen-js' ), time(), true );
+		wp_enqueue_script( 'flance-variations', plugin_dir_url( __FILE__ ) . 'js/flance-add-multiple-variations.js', array( 'woocommerce-chosen-js', 'jquery', 'wp-util', 'jquery-blockui', $this->Flance_wamp ), time(), true );
+		wp_enqueue_script( 'datatables', plugin_dir_url( __FILE__ ) . 'datatables/datatables.js', array( 'woocommerce-chosen-js' ), $this->version, true );
+
 			return array( $this->handler );
 		}
 
