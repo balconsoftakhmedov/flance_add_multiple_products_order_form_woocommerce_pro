@@ -32,6 +32,11 @@ if ( is_plugin_active( 'flance-add-multiple-products-order-form-for-woocommerce/
 	add_action( 'admin_notices', 'Flance_free_plugin_wamp_admin_notice__error_pro' );
 }
 
+
+/**
+ * define constant
+ */
+define('FLANCE_PLUGIN_TABLE_URL', plugin_dir_url( __FILE__ ));
 /**
  * The code that runs during plugin activation.
  * This action is documented in includes/class-flance-add-multiple-products-activator.php

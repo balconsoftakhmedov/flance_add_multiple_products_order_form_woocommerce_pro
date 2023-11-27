@@ -68,9 +68,19 @@ if ( ! class_exists( 'Woomultiorderpro_Elementor' ) ) {
 		 * @return string[]
 		 */
 		public function wp_register_script_style() {
+			global $woocommerce;
+			  // Register Chosen script first, as it's a dependency for other scripts
+    wp_register_script('woocommerce-chosen-js', $woocommerce->plugin_url() . '/assets/js/select2/select2.min.js', array('jquery'), null, true);
 
+    // Register DataTables script with 'woocommerce-chosen-js' as a dependency
+    wp_register_script('datatables', FLANCE_PLUGIN_TABLE_URL . 'public/datatables/datatables.js', array('woocommerce-chosen-js'), time(), true);
 
-			return array( $this->handler );
+    // Register other scripts with appropriate dependencies
+    wp_register_script('ttt', FLANCE_PLUGIN_TABLE_URL . 'public/js/flance-add-multiple-products-public.js', array('jquery', 'woocommerce-chosen-js', 'datatables'), time(), true);
+
+    wp_register_script('flance-variations', FLANCE_PLUGIN_TABLE_URL . 'public/js/flance-add-multiple-variations.js', array('elementor-frontend' , 'woocommerce-chosen-js', 'jquery', 'wp-util', 'jquery-blockui', 'ttt',), time(), true);
+
+			return array('ttt', 'flance-variations', 'datatables', 'woocommerce-chosen-js');
 		}
 
 		/**
@@ -79,7 +89,7 @@ if ( ! class_exists( 'Woomultiorderpro_Elementor' ) ) {
 		 * @return string[]
 		 */
 		public function get_style_depends() {
-			return array( $this->handler );
+			return array('woocommerce-chosen-js');
 		}
 
 		/**
@@ -88,12 +98,7 @@ if ( ! class_exists( 'Woomultiorderpro_Elementor' ) ) {
 		 * @return string[]
 		 */
 		public function get_script_depends() {
-				wp_enqueue_script( 'woocommerce-chosen-js', $woocommerce->plugin_url() . '/assets/js/select2/select2' . $suffix . '.js', array( 'jquery' ), null, true );
-		wp_enqueue_script( $this->Flance_wamp, plugin_dir_url( __FILE__ ) . 'js/flance-add-multiple-products-public.js', array( 'woocommerce-chosen-js' ), time(), true );
-		wp_enqueue_script( 'flance-variations', plugin_dir_url( __FILE__ ) . 'js/flance-add-multiple-variations.js', array( 'woocommerce-chosen-js', 'jquery', 'wp-util', 'jquery-blockui', $this->Flance_wamp ), time(), true );
-		wp_enqueue_script( 'datatables', plugin_dir_url( __FILE__ ) . 'datatables/datatables.js', array( 'woocommerce-chosen-js' ), $this->version, true );
-
-			return array( $this->handler );
+			return array('ttt', 'flance-variations', 'datatables', 'woocommerce-chosen-js');
 		}
 
 		/**

@@ -1,269 +1,280 @@
 var formclass_defined = 'flance';
 var flanceformclass = 'flance';
 var formclass = 'flance';
+var elementorInitExecuted = false;
+var table = {};
+console.log('init');
+(function ($) {
 
-jQuery(document).ready(function () {
+	function flance_elem_init() {
+		console.log('initial');
 
-	function updateCartTotals(totalQttflance, totaltaxflance, formclass_defined, cart) {
-		var totalQttflanceFormatted = totalQttflance.toFixed(2);
-		var totaltaxflanceFormatted = totaltaxflance.toFixed(2);
+		function updateCartTotals(totalQttflance, totaltaxflance, formclass_defined, cart) {
+			var totalQttflanceFormatted = totalQttflance.toFixed(2);
+			var totaltaxflanceFormatted = totaltaxflance.toFixed(2);
 
-		cart.find(".total").val(totalQttflanceFormatted);
-		cart.find(".prodtax" + formclass_defined).val(totaltaxflanceFormatted);
+			cart.find(".total").val(totalQttflanceFormatted);
+			cart.find(".prodtax" + formclass_defined).val(totaltaxflanceFormatted);
 
-		var prodtaxElement = cart.find(".prodtax" + formclass_defined);
-		prodtaxElement.html(totaltaxflanceFormatted || "0.00");
+			var prodtaxElement = cart.find(".prodtax" + formclass_defined);
+			prodtaxElement.html(totaltaxflanceFormatted || "0.00");
 
-		var prodtotalElement = cart.find(".prodtotal" + formclass_defined);
-		prodtotalElement.html(totalQttflanceFormatted || "0.00");
+			var prodtotalElement = cart.find(".prodtotal" + formclass_defined);
+			prodtotalElement.html(totalQttflanceFormatted || "0.00");
 
-		let flancetxt = jQuery('.' + formclass + '_error');
-		let flancetxt_1 = cart.find('.' + formclass + '_error_1');
+			let flancetxt = jQuery('.' + formclass + '_error');
+			let flancetxt_1 = cart.find('.' + formclass + '_error_1');
 
-		if (totalQttflance > 0) flancetxt.html("");
-		if (totalQttflance > 0) flancetxt_1.html("");
-	}
+			if (totalQttflance > 0) flancetxt.html("");
+			if (totalQttflance > 0) flancetxt_1.html("");
+		}
 
-	function calculateTotal(inputs, totalVariable) {
-		inputs.each(function () {
-			let priceInput = jQuery(this);
-			let quantityInput = priceInput.parent().find('.quantity-input');
+		function calculateTotal(inputs, totalVariable) {
+			inputs.each(function () {
+				let priceInput = jQuery(this);
+				let quantityInput = priceInput.parent().find('.quantity-input');
 
-			if (!isNaN(priceInput.val())) {
-				totalVariable += parseFloat(priceInput.val() * parseInt(quantityInput.val()));
+				if (!isNaN(priceInput.val())) {
+					totalVariable += parseFloat(priceInput.val() * parseInt(quantityInput.val()));
+				}
+			});
+
+			return totalVariable;
+		}
+
+		function plus_calculate(plusButton, cart) {
+
+			plusButton = jQuery(plusButton).closest('.qty_box').find('.quantity-input');
+
+			var Qtt = parseInt(plusButton.val());
+
+
+			if (!isNaN(Qtt)) {
+				plusButton.val(Qtt + 1);
+				var totalQttflance = 0;
+				var totaltaxflance = 0;
+
+				totalQttflance += calculateTotal(cart.find('input[name="pricequat"]'), totalQttflance);
+				totaltaxflance += calculateTotal(cart.find('input[name="pricetax"]'), totaltaxflance);
+
+				updateCartTotals(totalQttflance, totaltaxflance, formclass_defined, cart);
 			}
-		});
 
-		return totalVariable;
-	}
+		}
 
-	function plus_calculate(plusButton, cart) {
+		function trugger_calculate(cart) {
 
-		plusButton = jQuery(plusButton).closest('.qty_box').find('.quantity-input');
-
-		var Qtt = parseInt(plusButton.val());
-
-
-		if (!isNaN(Qtt)) {
-			plusButton.val(Qtt + 1);
 			var totalQttflance = 0;
 			var totaltaxflance = 0;
 
 			totalQttflance += calculateTotal(cart.find('input[name="pricequat"]'), totalQttflance);
 			totaltaxflance += calculateTotal(cart.find('input[name="pricetax"]'), totaltaxflance);
-
+			console.log(totalQttflance);
 			updateCartTotals(totalQttflance, totaltaxflance, formclass_defined, cart);
 		}
 
-	}
+		function minus_calculate(minusButton, cart) {
 
-	function trugger_calculate(cart) {
-
-		var totalQttflance = 0;
-		var totaltaxflance = 0;
-
-		totalQttflance += calculateTotal(cart.find('input[name="pricequat"]'), totalQttflance);
-		totaltaxflance += calculateTotal(cart.find('input[name="pricetax"]'), totaltaxflance);
-		console.log(totalQttflance);
-		updateCartTotals(totalQttflance, totaltaxflance, formclass_defined, cart);
-	}
-
-	function minus_calculate(minusButton, cart) {
-
-		minusButton = jQuery(minusButton).closest('.qty_box').find('.quantity-input');
-		var Qtt = parseInt(minusButton.val());
-		var totaltaxflance = 0;
-		var totalQttflance = 0;
-		if (!isNaN(Qtt) && Qtt > 0) {
-			minusButton.val(Qtt - 1);
-			totalQttflance += calculateTotal(cart.find('input[name="pricequat"]'), totalQttflance);
-			totaltaxflance += calculateTotal(cart.find('input[name="pricetax"]'), totaltaxflance);
-		} else {
-			minusButton.val(0);
-			totalQttflance += calculateTotal(cart.find('input[name="pricequat"]'), totalQttflance);
-			totaltaxflance += calculateTotal(cart.find('input[name="pricetax"]'), totaltaxflance);
+			minusButton = jQuery(minusButton).closest('.qty_box').find('.quantity-input');
+			var Qtt = parseInt(minusButton.val());
+			var totaltaxflance = 0;
+			var totalQttflance = 0;
+			if (!isNaN(Qtt) && Qtt > 0) {
+				minusButton.val(Qtt - 1);
+				totalQttflance += calculateTotal(cart.find('input[name="pricequat"]'), totalQttflance);
+				totaltaxflance += calculateTotal(cart.find('input[name="pricetax"]'), totaltaxflance);
+			} else {
+				minusButton.val(0);
+				totalQttflance += calculateTotal(cart.find('input[name="pricequat"]'), totalQttflance);
+				totaltaxflance += calculateTotal(cart.find('input[name="pricetax"]'), totaltaxflance);
+			}
+			updateCartTotals(totalQttflance, totaltaxflance, formclass_defined, cart);
 		}
-		updateCartTotals(totalQttflance, totaltaxflance, formclass_defined, cart);
-	}
 
-	var Virtuemartoneflance = {
-		allcarts: {},
-		flanceaddme: function (form, $) {
-			var paramObj = {};
-			let carts = $(form);
-			let cart = $(form);
-			let notSend = ['pricequat', 'pricetax', 'total', 'totaltaxflance'];
-			$.each(carts.serializeArray(), function (_, kv) {
+		var Virtuemartoneflance = {
+			allcarts: {},
+			flanceaddme: function (form, $) {
+				var paramObj = {};
+				let carts = $(form);
+				let cart = $(form);
+				let notSend = ['pricequat', 'pricetax', 'total', 'totaltaxflance'];
+				$.each(carts.serializeArray(), function (_, kv) {
 
-				var paramValue = paramObj[kv.name];
-				if ($.inArray(kv.name, notSend) !== -1) {
-					return;
-				}
-				let el = carts.find('[name="' + kv.name + '"]');
-				let product_id = el.attr('data-id');
-				paramObj[product_id] = paramObj[product_id] || {};
-				let attribute_name = el.attr('data-attribute_name_slug');
-				if (el.is('select')) {
-					var parentContainer = el.closest('.flance-variations-form');
-					let variation_id = parentContainer.attr('data-variation_id');
-
-					if (variation_id) {
-						paramObj[product_id][attribute_name] = paramValue ? paramValue.concat(kv.value) : kv.value;
-						paramObj[product_id]['variation_id'] = variation_id;
+					var paramValue = paramObj[kv.name];
+					if ($.inArray(kv.name, notSend) !== -1) {
+						return;
 					}
-				} else {
-					paramObj[product_id][attribute_name] = paramValue ? paramValue.concat(kv.value) : kv.value;
-				}
-			});
-			var quantityf = 0;
-			var ids = [];
+					let el = carts.find('[name="' + kv.name + '"]');
+					let product_id = el.attr('data-id');
+					paramObj[product_id] = paramObj[product_id] || {};
+					let attribute_name = el.attr('data-attribute_name_slug');
+					if (el.is('select')) {
+						var parentContainer = el.closest('.flance-variations-form');
+						let variation_id = parentContainer.attr('data-variation_id');
 
-			carts.each(function () {
-
-				let cart = jQuery(this);
-				let quantityInput = cart.find('.quantity-input');
-
-				quantityInput.each(function () {
-					let value = parseFloat(this.value);
-					let dataId = $(this).data('id');
-					if (!isNaN(value) && value > 0) {
-						ids.push(dataId);
-					}
-					quantityf += value;
-				});
-
-				var x = quantityf;
-				var errorline = {};
-
-				if (x == null || x == "" || x == 0 || x < 0) {
-					let text = "<div id=\"errorstyle\" >Please enter quantity more than 0 at least for one product</div>";
-					cart.prev('.' + formclass + '_error').html(text);
-					cart.find('.' + formclass + '_error_1').html(text);
-					return false;
-				} else {
-					setTimeout(function () {
-
-						$.ajax({
-							url: WPURLS.ajaxurl,
-							type: 'POST',
-							data: {action: 'flance_amp_add_to_cart', ids: ids, paramObj},
-							dataType: 'json',
-							beforeSend: function () {
-								// $('#wamp_add_order_item_'+formclass).attr('disabled', true);
-								console.log("edd");
-								cart.find('.wamp_add_order_item_' + formclass).nextAll().remove();
-								cart.find('.wamp_add_order_item_' + formclass).after('<img class="wamp_loading_img" style="padding-left: 10px;" src="' + WPURLS.siteurl + 'img/loading.gif"><b class="wamp_loading_text">Please Wait...</b>');
-
-							},
-							success: function (results) {
-
-								cart.find('.wamp_add_order_item_' + formclass).attr('disabled', false);
-								cart.find('.wamp_add_order_item_' + formclass).nextAll().remove();
-								cart.find('.wamp_add_order_item_' + formclass).after('<b class="wamp_loading_text">Successfully Added</b>');
-
-								var redirect = WPURLS.params.redirect;
-								var reload = WPURLS.params.reload;
-								var redirectlink = WPURLS.params.redirectlink;
-								console.log(redirect, reload, redirectlink);
-								setTimeout(function () {
-									if (redirect == 'y') {
-										window.location = redirectlink;
-									} else if (reload == 'y') {
-										window.location.reload();
-
-									}
-								}, 3000);
-							}
-						})
-
-					}, 1000);
-				}
-			});
-		},
-		formsubmit: function ($) {
-
-			$('.wamp_add_order_item_' + formclass).on('click', function () {
-
-				var form = $(this).closest('form[class*="' + formclass + '"]');
-
-				if (form.length > 0) {
-					var reload = Virtuemartoneflance.flanceaddme(form, $);
-				}
-			});
-		},
-		productone: function (carts) {
-			this.allcarts = carts;
-			console.log(carts);
-			carts.each(function () {
-
-				let cart = jQuery(this),
-					addtocart = cart.find('input.addtocart-button'),
-					virtuemart_product_id = cart.find('input[name="virtuemart_product_id[]"]').val();
-				let quantityControls = cart.find('.quantity-controls');
-
-				// Attach the click event listener to .quantity-controls within the current cart
-				quantityControls.on('click', function () {
-					let isPlusButton = jQuery(this).hasClass('quantity-plus');
-					let isMinusButton = jQuery(this).hasClass('quantity-minus');
-					if (isPlusButton || isMinusButton) {
-						var isPlus = isPlusButton;
-						if (isPlus) {
-							plus_calculate(this, cart);
-						} else {
-							minus_calculate(this, cart);
+						if (variation_id) {
+							paramObj[product_id][attribute_name] = paramValue ? paramValue.concat(kv.value) : kv.value;
+							paramObj[product_id]['variation_id'] = variation_id;
 						}
+					} else {
+						paramObj[product_id][attribute_name] = paramValue ? paramValue.concat(kv.value) : kv.value;
 					}
 				});
+				var quantityf = 0;
+				var ids = [];
 
-			});
+				carts.each(function () {
 
-		},
-		productonecalculate: function (carts) {
-			this.allcarts = carts;
-			carts.each(function () {
+					let cart = jQuery(this);
+					let quantityInput = cart.find('.quantity-input');
 
-				let cart = jQuery(this),
-					addtocart = cart.find('input.addtocart-button'),
-					virtuemart_product_id = cart.find('input[name="virtuemart_product_id[]"]').val();
+					quantityInput.each(function () {
+						let value = parseFloat(this.value);
+						let dataId = $(this).data('id');
+						if (!isNaN(value) && value > 0) {
+							ids.push(dataId);
+						}
+						quantityf += value;
+					});
 
-				trugger_calculate(cart);
-			});
+					var x = quantityf;
+					var errorline = {};
 
-		},
-		totalprice: function (form) {
-			return false; // prevent reload
-		},
-	};
-	jQuery.noConflict();
-	jQuery(document).ready(function ($) {
+					if (x == null || x == "" || x == 0 || x < 0) {
+						let text = "<div id=\"errorstyle\" >Please enter quantity more than 0 at least for one product</div>";
+						cart.prev('.' + formclass + '_error').html(text);
+						cart.find('.' + formclass + '_error_1').html(text);
+						return false;
+					} else {
+						setTimeout(function () {
+
+							$.ajax({
+								url: WPURLS.ajaxurl,
+								type: 'POST',
+								data: {action: 'flance_amp_add_to_cart', ids: ids, paramObj},
+								dataType: 'json',
+								beforeSend: function () {
+									// $('#wamp_add_order_item_'+formclass).attr('disabled', true);
+									console.log("edd");
+									cart.find('.wamp_add_order_item_' + formclass).nextAll().remove();
+									cart.find('.wamp_add_order_item_' + formclass).after('<img class="wamp_loading_img" style="padding-left: 10px;" src="' + WPURLS.siteurl + 'img/loading.gif"><b class="wamp_loading_text">Please Wait...</b>');
+
+								},
+								success: function (results) {
+
+									cart.find('.wamp_add_order_item_' + formclass).attr('disabled', false);
+									cart.find('.wamp_add_order_item_' + formclass).nextAll().remove();
+									cart.find('.wamp_add_order_item_' + formclass).after('<b class="wamp_loading_text">Successfully Added</b>');
+
+									var redirect = WPURLS.params.redirect;
+									var reload = WPURLS.params.reload;
+									var redirectlink = WPURLS.params.redirectlink;
+									console.log(redirect, reload, redirectlink);
+									setTimeout(function () {
+										if (redirect == 'y') {
+											window.location = redirectlink;
+										} else if (reload == 'y') {
+											window.location.reload();
+
+										}
+									}, 3000);
+								}
+							})
+
+						}, 1000);
+					}
+				});
+			},
+			formsubmit: function ($) {
+
+				$('.wamp_add_order_item_' + formclass).on('click', function () {
+
+					var form = $(this).closest('form[class*="' + formclass + '"]');
+
+					if (form.length > 0) {
+						var reload = Virtuemartoneflance.flanceaddme(form, $);
+					}
+				});
+			},
+			productone: function (carts) {
+				this.allcarts = carts;
+				console.log(carts);
+				carts.each(function () {
+
+					let cart = jQuery(this),
+						addtocart = cart.find('input.addtocart-button'),
+						virtuemart_product_id = cart.find('input[name="virtuemart_product_id[]"]').val();
+					let quantityControls = cart.find('.quantity-controls');
+
+					// Attach the click event listener to .quantity-controls within the current cart
+					quantityControls.on('click', function () {
+						let isPlusButton = jQuery(this).hasClass('quantity-plus');
+						let isMinusButton = jQuery(this).hasClass('quantity-minus');
+						if (isPlusButton || isMinusButton) {
+							var isPlus = isPlusButton;
+							if (isPlus) {
+								plus_calculate(this, cart);
+							} else {
+								minus_calculate(this, cart);
+							}
+						}
+					});
+
+				});
+
+			},
+			productonecalculate: function (carts) {
+				this.allcarts = carts;
+				carts.each(function () {
+
+					let cart = jQuery(this),
+						addtocart = cart.find('input.addtocart-button'),
+						virtuemart_product_id = cart.find('input[name="virtuemart_product_id[]"]').val();
+
+					trugger_calculate(cart);
+				});
+
+			},
+			totalprice: function (form) {
+				return false; // prevent reload
+			},
+		};
 
 		Virtuemartoneflance.productone($("form" + "." + formclass_defined));
 		Virtuemartoneflance.formsubmit($);
 
-		table = $(".jshproductsnap").DataTable({
-			initComplete: function () {
-				this.api().columns().every(function (i) {
-					var column = this;
+		$(".jshproductsnap").each(function () {
+			var currentTable = $(this);
 
-					if (this.header().innerHTML == "Categorye" || "All Categoriese" == this.header().innerHTML) {
-						var select = $('<select class="category-filter"><option value="">Category</option></select>')
-							.appendTo($(column.header()).empty())
-							.on("change", function () {
-								var val = $.fn.dataTable.util.escapeRegex($(this).val());
+			// Initialize DataTable for the current table
+			var table = currentTable.DataTable({
+				initComplete: function () {
+					this.api().columns().every(function (i) {
+						var column = this;
 
-								column
-									.search(val ? "^" + val + "$" : "", true, false)
-									.draw();
+						if (this.header().innerHTML == "Categorye" || "All Categoriese" == this.header().innerHTML) {
+							var select = $('<select class="category-filter"><option value="">Category</option></select>')
+								.appendTo($(column.header()).empty())
+								.on("change", function () {
+									var val = $.fn.dataTable.util.escapeRegex($(this).val());
+
+									column
+										.search(val ? "^" + val + "$" : "", true, false)
+										.draw();
+								});
+
+							column.data().unique().sort().each(function (d, j) {
+								select.append('<option value="' + d + '">' + d + '</option>');
 							});
+						}
+					});
+				}
+			});
 
-						column.data().unique().sort().each(function (d, j) {
-							select.append('<option value="' + d + '">' + d + '</option>');
-						});
-					}
-				});
-			}
+			// Clear and destroy the current DataTable
+			table.clear().destroy();
 		});
-
+		table.clear().destroy();
 		$("select.class_var").on("change", function () {
 
 			var quantityflance = "quantity" + formclass_defined;
@@ -300,8 +311,8 @@ jQuery(document).ready(function () {
 			return select_name_val;
 		}
 
-		function variation_select(selected){
-				// Get the data attributes of the parent container dynamically
+		function variation_select(selected) {
+			// Get the data attributes of the parent container dynamically
 			var parentContainer = $(selected).closest('.flance-variations-form');
 			var productId = parentContainer.data('product_id');
 			var productVariations = parentContainer.data('product_variations');
@@ -375,6 +386,7 @@ jQuery(document).ready(function () {
 			parentTrContainer.find('.qty_box input').prop('disabled', false);
 			parentTrContainer.find('.qty_box').removeClass('flance-disabled');
 		}
+
 		$('.variation-select').on('change', function () {
 			variation_select(this);
 		});
@@ -382,6 +394,7 @@ jQuery(document).ready(function () {
 		$('.variation-select').each(function () {
 			variation_select(this);
 		});
+
 // Function to find the matching variation based on selected attributes
 		function findMatchingVariation(selectedAttributes, productVariations) {
 
@@ -437,6 +450,42 @@ jQuery(document).ready(function () {
 			}
 			return true;
 		}
+	};
+	$(window).on('elementor/frontend/init', function () {
+		console.log('fronmtenfinit');
+
+		elementorFrontend.hooks.addAction("frontend/element_ready/global", (function () {
+			if (!elementorInitExecuted) {
+
+			}
+		}))
+		elementorFrontend.hooks.addAction('frontend/element_ready/woomultiorderpro-elementor.default', function () {
+			console.log('rrrr')
+			return !function () {
+
+			}()
+		});
+
+		var countedElements = 0;
+		elementorFrontend.hooks.addAction('frontend/element_ready/global', function ($scope) {
+			console.log('frontend/element_ready/global', '.jshproductsnap')
+			var elementorElCount = document.querySelectorAll('.jshproductsnap').length;
+			countedElements++;
+			console.log('elementorElCount', elementorElCount, 'countedElements', countedElements);
+			//if (elementorElCount == countedElements) {
+				console.log("Eld");
+				var event = new CustomEvent('cmplz_elementor_loaded');
+				document.dispatchEvent(event);
+			//}
+		});
+
+		document.addEventListener('cmplz_elementor_loaded', function (e) {
+			flance_elem_init();
+		});
+
 	});
 
-});
+
+})(jQuery)
+
+
