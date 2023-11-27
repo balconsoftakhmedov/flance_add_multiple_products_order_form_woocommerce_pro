@@ -243,38 +243,41 @@ console.log('init');
 		Virtuemartoneflance.productone($("form" + "." + formclass_defined));
 		Virtuemartoneflance.formsubmit($);
 
+
 		$(".jshproductsnap").each(function () {
 			var currentTable = $(this);
+			 if (currentTable.hasClass('dataTable'))  {
+				return true;
+			}
 
-			// Initialize DataTable for the current table
-			var table = currentTable.DataTable({
-				initComplete: function () {
-					this.api().columns().every(function (i) {
-						var column = this;
+			 table = 	 $(this).DataTable({
+					 initComplete: function () {
+						 this.api().columns().every(function (i) {
+							 var column = this;
 
-						if (this.header().innerHTML == "Categorye" || "All Categoriese" == this.header().innerHTML) {
-							var select = $('<select class="category-filter"><option value="">Category</option></select>')
-								.appendTo($(column.header()).empty())
-								.on("change", function () {
-									var val = $.fn.dataTable.util.escapeRegex($(this).val());
+							 if (this.header().innerHTML == "Categorye" || "All Categoriese" == this.header().innerHTML) {
+								 var select = $('<select class="category-filter"><option value="">Category</option></select>')
+									 .appendTo($(column.header()).empty())
+									 .on("change", function () {
+										 var val = $.fn.dataTable.util.escapeRegex($(this).val());
 
-									column
-										.search(val ? "^" + val + "$" : "", true, false)
-										.draw();
-								});
+										 column
+											 .search(val ? "^" + val + "$" : "", true, false)
+											 .draw();
+									 });
 
-							column.data().unique().sort().each(function (d, j) {
-								select.append('<option value="' + d + '">' + d + '</option>');
-							});
-						}
-					});
-				}
-			});
+								 column.data().unique().sort().each(function (d, j) {
+									 select.append('<option value="' + d + '">' + d + '</option>');
+								 });
+							 }
+						 });
+					 }
+				 });
 
-			// Clear and destroy the current DataTable
-			table.clear().destroy();
 		});
-		table.clear().destroy();
+
+
+
 		$("select.class_var").on("change", function () {
 
 			var quantityflance = "quantity" + formclass_defined;
@@ -395,7 +398,7 @@ console.log('init');
 			variation_select(this);
 		});
 
-// Function to find the matching variation based on selected attributes
+
 		function findMatchingVariation(selectedAttributes, productVariations) {
 
 			for (var i = 0; i < productVariations.length; i++) {
@@ -404,10 +407,9 @@ console.log('init');
 					return variation;
 				}
 			}
-			return null; // No matching variation found
+			return null;
 		}
 
-// Function to check if two sets of attributes match
 		function attributesMatch(attributes1, attributes2) {
 			const allValuesNotEmpty = Object.values(attributes1).every(value => value !== undefined && value !== null && value !== '');
 
@@ -452,39 +454,10 @@ console.log('init');
 		}
 	};
 	$(window).on('elementor/frontend/init', function () {
-		console.log('fronmtenfinit');
-
-		elementorFrontend.hooks.addAction("frontend/element_ready/global", (function () {
-			if (!elementorInitExecuted) {
-
-			}
-		}))
-		elementorFrontend.hooks.addAction('frontend/element_ready/woomultiorderpro-elementor.default', function () {
-			console.log('rrrr')
-			return !function () {
-
-			}()
-		});
-
-		var countedElements = 0;
 		elementorFrontend.hooks.addAction('frontend/element_ready/global', function ($scope) {
-			console.log('frontend/element_ready/global', '.jshproductsnap')
-			var elementorElCount = document.querySelectorAll('.jshproductsnap').length;
-			countedElements++;
-			console.log('elementorElCount', elementorElCount, 'countedElements', countedElements);
-			//if (elementorElCount == countedElements) {
-				console.log("Eld");
-				var event = new CustomEvent('cmplz_elementor_loaded');
-				document.dispatchEvent(event);
-			//}
-		});
-
-		document.addEventListener('cmplz_elementor_loaded', function (e) {
 			flance_elem_init();
 		});
-
 	});
-
 
 })(jQuery)
 
