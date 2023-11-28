@@ -197,7 +197,7 @@ if ( ! class_exists( 'Woomultiorderpro_Elementor' ) ) {
 				array(
 					'label'   => esc_html__( 'Show Image', 'woomultiorderpro' ),
 					'type'    => Controls_Manager::SELECT,
-					'default' => ( ! empty( get_option( 'showimage' ) ) ) ? get_option( 'showname' ) : 'n',
+					'default' => ( ! empty( get_option( 'showimage' ) ) ) ? get_option( 'showimage' ) : 'n',
 					'options' => array(
 						'y' => esc_html__( 'Yes', 'woomultiorderpro' ),
 						'n' => esc_html__( 'No', 'woomultiorderpro' ),
@@ -209,7 +209,7 @@ if ( ! class_exists( 'Woomultiorderpro_Elementor' ) ) {
 				array(
 					'label'   => esc_html__( 'Show Attribute', 'woomultiorderpro' ),
 					'type'    => Controls_Manager::SELECT,
-					'default' => ( ! empty( get_option( 'attribute' ) ) ) ? get_option( 'showname' ) : 'n',
+					'default' => ( ! empty( get_option( 'attribute' ) ) ) ? get_option( 'attribute' ) : 'n',
 					'options' => array(
 						'y' => esc_html__( 'Yes', 'woomultiorderpro' ),
 						'n' => esc_html__( 'No', 'woomultiorderpro' ),
@@ -221,7 +221,7 @@ if ( ! class_exists( 'Woomultiorderpro_Elementor' ) ) {
 				array(
 					'label'   => esc_html__( 'Show Manufacture', 'woomultiorderpro' ),
 					'type'    => Controls_Manager::SELECT,
-					'default' => ( ! empty( get_option( 'showmfk' ) ) ) ? get_option( 'showname' ) : 'n',
+					'default' => ( ! empty( get_option( 'showmfk' ) ) ) ? get_option( 'showmfk' ) : 'n',
 					'options' => array(
 						'y' => esc_html__( 'Yes', 'woomultiorderpro' ),
 						'n' => esc_html__( 'No', 'woomultiorderpro' ),
@@ -233,7 +233,7 @@ if ( ! class_exists( 'Woomultiorderpro_Elementor' ) ) {
 				array(
 					'label'   => esc_html__( 'Show Description', 'woomultiorderpro' ),
 					'type'    => Controls_Manager::SELECT,
-					'default' => ( ! empty( get_option( 'showdesc' ) ) ) ? get_option( 'showname' ) : 'n',
+					'default' => ( ! empty( get_option( 'showdesc' ) ) ) ? get_option( 'showdesc' ) : 'n',
 					'options' => array(
 						'y' => esc_html__( 'Yes', 'woomultiorderpro' ),
 						'n' => esc_html__( 'No', 'woomultiorderpro' ),
@@ -245,7 +245,7 @@ if ( ! class_exists( 'Woomultiorderpro_Elementor' ) ) {
 				array(
 					'label'   => esc_html__( 'Show SKU', 'woomultiorderpro' ),
 					'type'    => Controls_Manager::SELECT,
-					'default' => ( ! empty( get_option( 'showsku' ) ) ) ? get_option( 'showname' ) : 'n',
+					'default' => ( ! empty( get_option( 'showsku' ) ) ) ? get_option( 'showsku' ) : 'n',
 					'options' => array(
 						'y' => esc_html__( 'Yes', 'woomultiorderpro' ),
 						'n' => esc_html__( 'No', 'woomultiorderpro' ),
@@ -257,7 +257,7 @@ if ( ! class_exists( 'Woomultiorderpro_Elementor' ) ) {
 				array(
 					'label'   => esc_html__( 'Show PKG', 'woomultiorderpro' ),
 					'type'    => Controls_Manager::SELECT,
-					'default' => ( ! empty( get_option( 'showpkg' ) ) ) ? get_option( 'showname' ) : 'n',
+					'default' => ( ! empty( get_option( 'showpkg' ) ) ) ? get_option( 'showpkg' ) : 'n',
 					'options' => array(
 						'y' => esc_html__( 'Yes', 'woomultiorderpro' ),
 						'n' => esc_html__( 'No', 'woomultiorderpro' ),
@@ -269,7 +269,7 @@ if ( ! class_exists( 'Woomultiorderpro_Elementor' ) ) {
 				array(
 					'label'   => esc_html__( 'Show Price', 'woomultiorderpro' ),
 					'type'    => Controls_Manager::SELECT,
-					'default' => ( ! empty( get_option( 'showprice' ) ) ) ? get_option( 'showname' ) : 'n',
+					'default' => ( ! empty( get_option( 'showprice' ) ) ) ? get_option( 'showprice' ) : 'n',
 					'options' => array(
 						'y' => esc_html__( 'Yes', 'woomultiorderpro' ),
 						'n' => esc_html__( 'No', 'woomultiorderpro' ),
@@ -281,7 +281,7 @@ if ( ! class_exists( 'Woomultiorderpro_Elementor' ) ) {
 				array(
 					'label'   => esc_html__( 'Show Quantity', 'woomultiorderpro' ),
 					'type'    => Controls_Manager::SELECT,
-					'default' => ( ! empty( get_option( 'showquantity' ) ) ) ? get_option( 'showname' ) : 'n',
+					'default' => ( ! empty( get_option( 'showquantity' ) ) ) ? get_option( 'showquantity' ) : 'n',
 					'options' => array(
 						'y' => esc_html__( 'Yes', 'woomultiorderpro' ),
 						'n' => esc_html__( 'No', 'woomultiorderpro' ),
@@ -293,7 +293,7 @@ if ( ! class_exists( 'Woomultiorderpro_Elementor' ) ) {
 				array(
 					'label'   => esc_html__( 'Show Link', 'woomultiorderpro' ),
 					'type'    => Controls_Manager::SELECT,
-					'default' => ( ! empty( get_option( 'showlink' ) ) ) ? get_option( 'showname' ) : 'n',
+					'default' => ( ! empty( get_option( 'showlink' ) ) ) ? get_option( 'showlink' ) : 'n',
 					'options' => array(
 						'y' => esc_html__( 'Yes', 'woomultiorderpro' ),
 						'n' => esc_html__( 'No', 'woomultiorderpro' ),
@@ -305,7 +305,7 @@ if ( ! class_exists( 'Woomultiorderpro_Elementor' ) ) {
 				array(
 					'label'   => esc_html__( 'Show In Stock', 'woomultiorderpro' ),
 					'type'    => Controls_Manager::SELECT,
-					'default' => ( ! empty( get_option( 'instock' ) ) ) ? get_option( 'showname' ) : 'n',
+					'default' => ( ! empty( get_option( 'instock' ) ) ) ? get_option( 'instock' ) : 'n',
 					'options' => array(
 						'y' => esc_html__( 'Yes', 'woomultiorderpro' ),
 						'n' => esc_html__( 'No', 'woomultiorderpro' ),
@@ -317,7 +317,7 @@ if ( ! class_exists( 'Woomultiorderpro_Elementor' ) ) {
 				array(
 					'label'   => esc_html__( 'Show Add to Cart', 'woomultiorderpro' ),
 					'type'    => Controls_Manager::SELECT,
-					'default' => ( ! empty( get_option( 'showaddtocart' ) ) ) ? get_option( 'showname' ) : 'n',
+					'default' => ( ! empty( get_option( 'showaddtocart' ) ) ) ? get_option( 'showaddtocart' ) : 'n',
 					'options' => array(
 						'y' => esc_html__( 'Yes', 'woomultiorderpro' ),
 						'n' => esc_html__( 'No', 'woomultiorderpro' ),
@@ -329,7 +329,7 @@ if ( ! class_exists( 'Woomultiorderpro_Elementor' ) ) {
 				array(
 					'label'   => esc_html__( 'Redirection to the Link', 'woomultiorderpro' ),
 					'type'    => Controls_Manager::SELECT,
-					'default' => ( ! empty( get_option( 'redirect' ) ) ) ? get_option( 'showname' ) : 'n',
+					'default' => ( ! empty( get_option( 'redirect' ) ) ) ? get_option( 'redirect' ) : 'n',
 					'options' => array(
 						'y' => esc_html__( 'Yes', 'woomultiorderpro' ),
 						'n' => esc_html__( 'No', 'woomultiorderpro' ),
@@ -341,7 +341,7 @@ if ( ! class_exists( 'Woomultiorderpro_Elementor' ) ) {
 				array(
 					'label'   => esc_html__( 'Redirection Link', 'woomultiorderpro' ),
 					'type'    => Controls_Manager::TEXT,
-					'default' => ( ! empty( get_option( 'redirectlink' ) ) ) ? get_option( 'showname' ) : '',
+					'default' => ( ! empty( get_option( 'redirectlink' ) ) ) ? get_option( 'redirectlink' ) : '',
 				)
 			);
 			$this->add_control(
@@ -349,7 +349,7 @@ if ( ! class_exists( 'Woomultiorderpro_Elementor' ) ) {
 				array(
 					'label'   => esc_html__( 'Reload', 'woomultiorderpro' ),
 					'type'    => Controls_Manager::SELECT,
-					'default' => ( ! empty( get_option( 'reload' ) ) ) ? get_option( 'showname' ) : 'n',
+					'default' => ( ! empty( get_option( 'reload' ) ) ) ? get_option( 'reload' ) : 'n',
 					'options' => array(
 						'y' => esc_html__( 'Yes', 'woomultiorderpro' ),
 						'n' => esc_html__( 'No', 'woomultiorderpro' ),
