@@ -51,6 +51,24 @@ if ( ! class_exists( 'Woomultiorderpro_Elementor' ) ) {
 		 */
 		protected $name_escaped;
 
+		protected $params  	= array(
+				'showname',
+				'showimage',
+				'attribute',
+				'showdesc',
+				'showmfk',
+				'splitchild',
+				'showsku',
+				'showpkg',
+				'showprice',
+				'showlink',
+				'instock',
+				'showaddtocart',
+				'redirect',
+				'reload',
+				'redirectlink',
+			);
+
 		/**
 		 * Constructor .
 		 *
@@ -361,7 +379,7 @@ if ( ! class_exists( 'Woomultiorderpro_Elementor' ) ) {
 		}
 
 		private function get_products_options() {
-			$products = get_posts(
+			$products        = get_posts(
 				array(
 					'post_type'      => 'product',
 					'posts_per_page' => - 1,
@@ -394,9 +412,20 @@ if ( ! class_exists( 'Woomultiorderpro_Elementor' ) ) {
 			if ( ! empty( $content ) ) {
 				$atts['content'] = $content;
 			}
-			//$arg_strings = woomultiorderpro_elementor_args( $atts );
-			//echo do_shortcode( '[flance_products_form ' . $arg_strings . ']' );
-			echo do_shortcode( '[flance_products_form product_ids=19,20,18,8]' );
+			$params =[];
+			$args = [];
+			echo '<pre>';
+			foreach ($this->params as $param){
+				if (!empty($atts[$param])) 	$params[$param]= $atts[$param];
+			}
+			$args['params'] = $params;
+			$args['product_ids'] = $atts['selected_products'];
+
+			echo '</pre>';
+			$arg_strings = woomultiorderpro_elementor_args( $args );
+			print_r( $arg_strings );
+			echo do_shortcode( '[flance_products_form ' . $arg_strings . ']' );
+			//echo do_shortcode( '[flance_products_form product_ids=19,20,18,8]' );
 
 		}
 	}

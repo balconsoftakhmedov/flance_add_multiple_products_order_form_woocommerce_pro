@@ -167,3 +167,28 @@ $attribute_label = wc_attribute_label( $args['attribute'] );
 		echo apply_filters( 'woocommerce_dropdown_variation_attribute_options_html', $html, $args );
 	}
 }
+
+if ( ! function_exists( 'woomultiorderpro_elementor_args' ) ) {
+	/**
+	 * Parcing elementor arguments.
+	 *
+	 * @param array $args arguments.
+	 *
+	 * @return string
+	 *
+	 */
+	function woomultiorderpro_elementor_args( $args ) {
+		$arg_strings = '';
+		foreach ( $args as $key => $value ) {
+			if ( ! empty( $value ) ) {
+				if ( is_array( $value ) ) {
+					$arg_strings .= $key . '="' . rawurlencode( wp_json_encode( $value ) ) . '" ';
+				} else {
+					$arg_strings .= $key . '="' . $value . '" ';
+				}
+			}
+		}
+
+		return $arg_strings;
+	}
+}
