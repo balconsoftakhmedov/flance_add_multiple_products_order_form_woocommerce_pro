@@ -48,6 +48,17 @@ table.jshproductsnap thead tr th {
   color: #fff;
 }
 
+.flance_col {
+  display: flex;
+  flex-direction: row;
+}
+
+.flance_total_col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 a.flance-btn.purple-btn.btn-icon-left {
   display: none;
 }

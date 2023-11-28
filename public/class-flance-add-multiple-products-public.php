@@ -282,7 +282,7 @@ class Flance_Add_Multiple_Products_order_form_Woocommerce_Public_Pro {
 				}
 			} else {
 
-				$product_cats = $product_cat_setting;
+			//	$product_cats = $product_cat_setting;
 
 
 			}
@@ -321,7 +321,6 @@ class Flance_Add_Multiple_Products_order_form_Woocommerce_Public_Pro {
 					$products[] = $product;
 
 				} // Loop End .
-				include 'partials/html-public-table.php';
 			}
 		} else {
 			// Loop Start.
@@ -333,9 +332,9 @@ class Flance_Add_Multiple_Products_order_form_Woocommerce_Public_Pro {
 				$products[] = $product;
 
 			} // Loop End .
-			include 'partials/html-public-table.php';
-		}
 
+		}
+		include 'partials/html-public-table.php';
 		return $html;
 		wp_reset_postdata();
 	}

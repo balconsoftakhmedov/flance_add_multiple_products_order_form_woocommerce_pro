@@ -286,18 +286,6 @@ if ( ! class_exists( 'Woomultiorderpro_Elementor' ) ) {
 				)
 			);
 			$this->add_control(
-				'showpkg',
-				array(
-					'label'   => esc_html__( 'Show PKG', 'woomultiorderpro' ),
-					'type'    => Controls_Manager::SELECT,
-					'default' => ( ! empty( get_option( 'showpkg' ) ) ) ? get_option( 'showpkg' ) : 'n',
-					'options' => array(
-						'y' => esc_html__( 'Yes', 'woomultiorderpro' ),
-						'n' => esc_html__( 'No', 'woomultiorderpro' ),
-					),
-				)
-			);
-			$this->add_control(
 				'showprice',
 				array(
 					'label'   => esc_html__( 'Show Price', 'woomultiorderpro' ),

@@ -214,18 +214,25 @@ foreach ( $option_names as $option_name ) {
 	}
 	if ( 'y' == $params['showquantity'] ) {
 		$column_span = 1;
-		echo $column_span ;
+
 		$html .= "<th colspan='".$column_span."' class='qty_bottom'>
-                                                            <div class='taxfinal'>
-                                                            <div style='float:left;'> Tax: </div>
-                                                            <div style='margin-left:5px;float:left;' class='prodtax " . $formclass . "'>0</div>
-                                                            <div style='margin-left:5px;float:left;'>  " . $sym . "</div>
-                                                            </div>
+                                                            <div class='taxfinal flance_col'>
+                                                            <div style=''> Tax: </div>	<div class='flance_col'>	
+                                                            
+                                                            <div style='margin-left:5px;' class='prodtax " . $formclass . "'>0</div>
+                                                            <div style='margin-left:5px;'>  " . $sym . "</div>
+                                                            </div></div>
                                                              <div style='clear:both;' />\n";
 
 		$html .= '<input type="hidden" value="total" name="total" class="total">';
 		$html .= '<input type="hidden" value="totaltax' . $formclass . '" name="totaltax' . $formclass . '" class="totaltax' . $formclass . '">';
-		$html .= "<div> <div style='float:left;'>Total Price:  </div><div style='margin-left:5px;float:left;' class='prodtotal" . $formclass . "'>0</div><div style='float:left;margin-left:5px;'>  " . $sym . "</div></div> <div style='clear:both;' /></th>\n";
+		$html .= "<div class='flance_total_col'> <div style=''>Total Price:  </div>
+<div class='flance_col'>
+<div style='margin-left:5px;' class='prodtotal" . $formclass . "'>0</div>
+<div style='margin-left:5px;'>  " . $sym . "</div>
+</div>
+</div> <div style='clear:both;' />
+</th>\n";
 	}
 	$html .= "</tr>\n";
 	$html .= ' </table>
