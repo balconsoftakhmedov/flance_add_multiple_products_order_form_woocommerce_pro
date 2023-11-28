@@ -147,7 +147,7 @@ console.log('init');
 						return false;
 					} else {
 						setTimeout(function () {
-
+console.log(WPURLS);
 							$.ajax({
 								url: WPURLS.ajaxurl,
 								type: 'POST',
@@ -155,7 +155,6 @@ console.log('init');
 								dataType: 'json',
 								beforeSend: function () {
 									// $('#wamp_add_order_item_'+formclass).attr('disabled', true);
-									console.log("edd");
 									cart.find('.wamp_add_order_item_' + formclass).nextAll().remove();
 									cart.find('.wamp_add_order_item_' + formclass).after('<img class="wamp_loading_img" style="padding-left: 10px;" src="' + WPURLS.siteurl + 'img/loading.gif"><b class="wamp_loading_text">Please Wait...</b>');
 

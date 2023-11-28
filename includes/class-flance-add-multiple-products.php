@@ -122,13 +122,15 @@ class Flance_Add_Multiple_Products_order_form_Woocommerce_Pro {
 		 * side of the site.
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'widget/class-flance-add-multiple-products-widget.php';
-		// Use the init hook to initialize your Elementor widget
-		add_action( 'init', array( $this, 'initialize_elementor_widget' ) );
+
 		/**
 		 * The class responsible for defining Elementor
 		 * side of the site.
 		 */
 		$this->loader = new Flance_Add_Multiple_Products_order_form_Woocommerce_Loader_Pro();
+
+		// Use the init hook to initialize your Elementor widget
+		add_action( 'init', array( $this, 'initialize_elementor_widget' ) );
 
 	}
 

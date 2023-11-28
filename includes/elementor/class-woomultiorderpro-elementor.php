@@ -69,18 +69,40 @@ if ( ! class_exists( 'Woomultiorderpro_Elementor' ) ) {
 		 */
 		public function wp_register_script_style() {
 			global $woocommerce;
-			  // Register Chosen script first, as it's a dependency for other scripts
-    wp_register_script('woocommerce-chosen-js', $woocommerce->plugin_url() . '/assets/js/select2/select2.min.js', array('jquery'), null, true);
+			$params                  = [];
+			$params['showname']      = get_option( 'showname' );
+			$params['showimage']     = get_option( 'showimage' );
+			$params['attribute']     = get_option( 'attribute' );
+			$params['showdesc']      = get_option( 'showdesc' );
+			$params['showmfk']       = get_option( 'showmfk' );
+			$params['splitchild']    = get_option( 'splitchild' );
+			$params['showsku']       = get_option( 'showsku' );
+			$params['showpkg']       = get_option( 'showpkg' );
+			$params['showprice']     = get_option( 'showprice' );
+			$params['showlink']      = get_option( 'showlink' );
+			$params['instock']       = get_option( 'instock' );
+			$params['showaddtocart'] = get_option( 'showaddtocart' );
+			$params['redirect']      = get_option( 'redirect' );
+			$params['reload']        = get_option( 'reload' );
+			$params['redirectlink']  = get_option( 'redirectlink' );
+			// Register Chosen script first, as it's a dependency for other scripts
+			wp_register_script( 'woocommerce-chosen-js', $woocommerce->plugin_url() . '/assets/js/select2/select2.min.js', array( 'jquery' ), null, true );
+			// Register DataTables script with 'woocommerce-chosen-js' as a dependency
+			wp_register_script( 'datatables', FLANCE_PLUGIN_TABLE_URL . 'public/datatables/datatables.js', array( 'woocommerce-chosen-js' ), time(), true );
+			// Register other scripts with appropriate dependencies
+			wp_register_script( 'flance-add-multiple-products', FLANCE_PLUGIN_TABLE_URL . 'public/js/flance-add-multiple-products-public.js', array( 'jquery', 'woocommerce-chosen-js', 'datatables' ), time(), true );
+			wp_register_script( 'flance-variations', FLANCE_PLUGIN_TABLE_URL . 'public/js/flance-add-multiple-variations.js', array( 'elementor-frontend', 'woocommerce-chosen-js', 'jquery', 'wp-util', 'jquery-blockui', 'ttt', ), time(), true );
 
-    // Register DataTables script with 'woocommerce-chosen-js' as a dependency
-    wp_register_script('datatables', FLANCE_PLUGIN_TABLE_URL . 'public/datatables/datatables.js', array('woocommerce-chosen-js'), time(), true);
-
-    // Register other scripts with appropriate dependencies
-    wp_register_script('ttt', FLANCE_PLUGIN_TABLE_URL . 'public/js/flance-add-multiple-products-public.js', array('jquery', 'woocommerce-chosen-js', 'datatables'), time(), true);
-
-    wp_register_script('flance-variations', FLANCE_PLUGIN_TABLE_URL . 'public/js/flance-add-multiple-variations.js', array('elementor-frontend' , 'woocommerce-chosen-js', 'jquery', 'wp-util', 'jquery-blockui', 'ttt',), time(), true);
-
-			return array('ttt', 'flance-variations', 'datatables', 'woocommerce-chosen-js');
+			wp_localize_script(
+				'flance-add-multiple-products',
+				'WPURLS',
+				array(
+					'ajaxurl' => admin_url( 'admin-ajax.php' ),
+					'siteurl' => plugin_dir_url( __FILE__ ),
+					'params'  => $params,
+				)
+			);
+			return array( 'flance-add-multiple-products', 'flance-variations', 'datatables', 'woocommerce-chosen-js' );
 		}
 
 		/**
@@ -89,7 +111,7 @@ if ( ! class_exists( 'Woomultiorderpro_Elementor' ) ) {
 		 * @return string[]
 		 */
 		public function get_style_depends() {
-			return array('woocommerce-chosen-js');
+			return array( 'woocommerce-chosen-js' );
 		}
 
 		/**
@@ -98,7 +120,7 @@ if ( ! class_exists( 'Woomultiorderpro_Elementor' ) ) {
 		 * @return string[]
 		 */
 		public function get_script_depends() {
-			return array('ttt', 'flance-variations', 'datatables', 'woocommerce-chosen-js');
+			return array( 'flance-add-multiple-products', 'flance-variations', 'datatables', 'woocommerce-chosen-js' );
 		}
 
 		/**
@@ -148,8 +170,6 @@ if ( ! class_exists( 'Woomultiorderpro_Elementor' ) ) {
 					'tab'   => Controls_Manager::TAB_CONTENT,
 				)
 			);
-
-
 			$this->end_controls_section();
 
 		}
