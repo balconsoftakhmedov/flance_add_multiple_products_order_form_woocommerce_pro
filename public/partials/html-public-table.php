@@ -174,36 +174,48 @@ foreach ( $option_names as $option_name ) {
 		$sym = null;
 	}
 	$html .= "</tbody><tr style=''>\n";
+	$table_count = 0;
 	if ( 'y' == $params['showimage'] ) {
 		$html .= "<th style='text-align:center;'></th>\n";
+		$table_count++;
 	}
 	if ( 'y' == $params['showsku'] ) {
 		$html .= "<th style='text-align:center;'></th>\n";
+		$table_count++;
 	}
 	if ( 'y' == $params['showname'] ) {
 		$html .= "<th style='text-align:center;'></th>\n";
+		$table_count++;
 	}
 	if ( 'y' == $params['attribute'] ) {
 		$html .= "<th style='text-align:center;'></th>\n";
+		$table_count++;
 	}
 	if ( 'y' == $params['showmfk'] ) {
 		$html .= "<th style='text-align:center;'></th>\n";
+		$table_count++;
 	}
 	if ( 'y' == $params['category'] ) {
 		$html .= "<th style='text-align:center;' class='cats header_class'></th>\n";
+		$table_count++;
 	}
 
 	if ( 'y' == $params['showdesc'] ) {
 		$html .= "<th></th>\n";
+		$table_count++;
 	}
 	if ( 'y' == $params['instock'] ) {
 		$html .= "<th style='text-align:center;'></th>\n";
+		$table_count++;
 	}
 		if ( 'y' == $params['showprice'] ) {
 		$html .= "<th class='price header_class'></th>\n";
+		$table_count++;
 	}
 	if ( 'y' == $params['showquantity'] ) {
-		$html .= "<th colspan='1' class='qty_bottom'>
+		$column_span = 1;
+		echo $column_span ;
+		$html .= "<th colspan='".$column_span."' class='qty_bottom'>
                                                             <div class='taxfinal'>
                                                             <div style='float:left;'> Tax: </div>
                                                             <div style='margin-left:5px;float:left;' class='prodtax " . $formclass . "'>0</div>

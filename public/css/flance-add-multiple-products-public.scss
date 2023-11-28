@@ -42,6 +42,10 @@ table.jshproductsnap {
 		font-size: 16px;
 		height: 30px;
 		color: #fff;
+
+		&.qty_bottom {
+		  min-width: 130px;
+		}
 	  }
 
 	  td.image {
@@ -278,6 +282,7 @@ span.quantity-controls.js-recalculate {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+      margin: auto;
 }
 
 table.jshproductsnap.dataTable {

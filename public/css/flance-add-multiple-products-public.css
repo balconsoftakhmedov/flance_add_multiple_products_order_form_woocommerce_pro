@@ -35,6 +35,9 @@ table.jshproductsnap tbody tr th {
   height: 30px;
   color: #fff;
 }
+table.jshproductsnap tbody tr th.qty_bottom {
+  min-width: 130px;
+}
 table.jshproductsnap tbody tr td.image {
   width: 100px;
 }
@@ -233,6 +236,7 @@ span.quantity-controls.js-recalculate {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+  margin: auto;
 }
 
 table.jshproductsnap.dataTable thead th {
