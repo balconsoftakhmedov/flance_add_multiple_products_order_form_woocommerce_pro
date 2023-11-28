@@ -259,18 +259,21 @@ class Flance_Add_Multiple_Products_order_form_Woocommerce_Public_Pro {
 		}else{
 			$product_ids = explode( ",", $product_ids['product_ids'] );
 		}
-
+		$product_id_exist = null;
 		// Get category settings
 		$product_cat_setting = (array) get_option( 'flance_amp_product_cat' );
 		// check product ids for shortcode
-		foreach ( $product_ids as $prod_id ) {
+		if (!empty($product_ids)) {
+			foreach ( $product_ids as $prod_id ) {
 
-			if ( $prod_id > 0 ) {
-				$product_id_exist = 1;
+				if ( $prod_id > 0 ) {
+					$product_id_exist = 1;
+				}
+
+
 			}
-
-
 		}
+		$check_cat =null;
 		// product ids is given in short code
 		if ( $product_id_exist != 1 ) {
 			foreach ( $prod_cat_atts as $pr ): if ( ! empty( $pr ) ): $check_cat = 1; endif; endforeach;
@@ -286,6 +289,7 @@ class Flance_Add_Multiple_Products_order_form_Woocommerce_Public_Pro {
 
 
 			}
+			$product_cats = (!empty( $product_cats))? $product_cats: array();
 			if ( in_array( '-1', $product_cats ) ) {
 				// WP_Query arg for "Product" post type.
 				$args = array(

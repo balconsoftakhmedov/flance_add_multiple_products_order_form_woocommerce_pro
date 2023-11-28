@@ -289,13 +289,9 @@
 		</table>
 		Comments: By putting the shortcode parameters prod_cat (product categories) or product_ids (product ids)<br/>
 		as example: <br/>
-		[flance_products_form product_ids=99,96,93]
-		or <br/>
-		[flance_products_form prod_cat=15] <br/>
+		[flance_products_form product_ids=99,96,93] <br/>
 		the form will show the products with ids 99,96,93
-		or the products from the category with id=15 <br/>
 		In otherwords, the shortcode's parameters' values prioritized.
-
 
 		<?php submit_button(); ?>
 

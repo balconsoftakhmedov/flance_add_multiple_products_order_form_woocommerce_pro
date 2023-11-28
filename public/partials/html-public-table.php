@@ -141,31 +141,33 @@ foreach ( $option_names as $option_name ) {
 	}
 	$i    = 0;
 	$html .= $start;
-	foreach ( $products as $product ) {
+	if (!empty($products)) {
+		foreach ( $products as $product ) {
 
-		$sku        = $product->get_sku();
-		$name       = $product->get_name();
-		$id         = $product->get_id();
-		$term_names = get_the_term_list( $id, 'product_brand', $before = '', $sep = ', ', $after = '' );
-		if ( empty( $term_names->errors ) ) {
-			$term_names = strip_tags( $term_names );
-		} else {
-			$term_names = null;
-		}
-		$terms_cat     = get_the_term_list( $id, 'product_cat', $before = '', $sep = ', ', $after = '' );
-		$terms_cat     = strip_tags( $terms_cat );
-		$desc          = substr( wc_format_content( $product->get_short_description() ), 0, 80 );
-		$url           = $url = get_permalink( $id );
-		$product_price = wc_get_product( $id );
-		$variations    = find_valid_variations( $id );
-		if ( $variations ) {
-			if ( $params['splitchild'] == 'y' ) {
-				include( 'variation_sep_product_show.php' );
+			$sku        = $product->get_sku();
+			$name       = $product->get_name();
+			$id         = $product->get_id();
+			$term_names = get_the_term_list( $id, 'product_brand', $before = '', $sep = ', ', $after = '' );
+			if ( empty( $term_names->errors ) ) {
+				$term_names = strip_tags( $term_names );
 			} else {
-				include( 'variation_product_show.php' );
+				$term_names = null;
 			}
-		} else {
-			include( 'simple_product_show.php' );
+			$terms_cat     = get_the_term_list( $id, 'product_cat', $before = '', $sep = ', ', $after = '' );
+			$terms_cat     = strip_tags( $terms_cat );
+			$desc          = substr( wc_format_content( $product->get_short_description() ), 0, 80 );
+			$url           = $url = get_permalink( $id );
+			$product_price = wc_get_product( $id );
+			$variations    = find_valid_variations( $id );
+			if ( $variations ) {
+				if ( $params['splitchild'] == 'y' ) {
+					include( 'variation_sep_product_show.php' );
+				} else {
+					include( 'variation_product_show.php' );
+				}
+			} else {
+				include( 'simple_product_show.php' );
+			}
 		}
 	}
 	$html .= $end;
