@@ -17,20 +17,7 @@
 		<?php settings_fields( 'flance-amp-settings-group' ); ?>
 		<?php do_settings_sections( 'flance-amp-settings-group' ); ?>
 		<table class="form-table">
-			<tr valign="top">
-				<th scope="row">Product Category(s)</th>
-				<td>
-					<select id="flance_amp_product_cat" name="flance_amp_product_cat[]" multiple="multiple" required>
-						<optgroup label="<?php _e( 'Please select a product category....', 'woomultiorderpro') ?>">
 
-							<?php $this->flance_amp_admin_settings_get_product_cats(); ?>
-
-						</optgroup>
-					</select>
-					<br>
-					<span class="description"> <code>All Products</code> to show all products.</span>
-				</td>
-			</tr>
 			<tr valign="top">
 				<th scope="row">Show Name</th>
 				<td>
