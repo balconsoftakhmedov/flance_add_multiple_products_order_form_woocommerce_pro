@@ -51,7 +51,8 @@ if ( ! class_exists( 'Woomultiorderpro_Elementor' ) ) {
 		 */
 		protected $name_escaped;
 
-		protected $params  	= array(
+		protected $params
+			= array(
 				'showname',
 				'showimage',
 				'attribute',
@@ -409,24 +410,19 @@ if ( ! class_exists( 'Woomultiorderpro_Elementor' ) ) {
 		 */
 		protected function render() {
 			$atts = $this->get_settings_for_display();
-			if ( ! empty( $content ) ) {
-				$atts['content'] = $content;
+			$params = [];
+			$args   = [];
+			foreach ( $this->params as $param ) {
+				if ( ! empty( $atts[ $param ] ) ) {
+					$params[ $param ] = $atts[ $param ];
+				}
 			}
-			$params =[];
-			$args = [];
-			echo '<pre>';
-			foreach ($this->params as $param){
-				if (!empty($atts[$param])) 	$params[$param]= $atts[$param];
-			}
-			$args['params'] = $params;
-			$args['product_ids'] = $atts['selected_products'];
-
-			echo '</pre>';
+			$args['params']                = $params;
+			$args['params']['product_ids'] = $atts['selected_products'];
 			$arg_strings = woomultiorderpro_elementor_args( $args );
-			print_r( $arg_strings );
+
 			echo do_shortcode( '[flance_products_form ' . $arg_strings . ']' );
 			//echo do_shortcode( '[flance_products_form product_ids=19,20,18,8]' );
-
 		}
 	}
 

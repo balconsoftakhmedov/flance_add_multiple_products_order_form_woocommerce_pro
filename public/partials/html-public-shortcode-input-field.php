@@ -14,10 +14,17 @@
 $prod_cat_atts = shortcode_atts( array(
 	'prod_cat' => '',
 ), $atts );
+
 $product_ids   = shortcode_atts( array(
 	'product_ids' => '',
 ), $atts );
+
 $form_id       = shortcode_atts( array(
 	'form_id' => '',
 ), $atts );
-$html          = $this->flance_amp_get_products( $product_ids, $prod_cat_atts, $form_id );
+
+$params   = shortcode_atts( array(
+	'params' => '',
+), $atts );
+$params = (array)json_decode(rawurldecode($params['params']));
+$html          = $this->flance_amp_get_products( $product_ids, $prod_cat_atts, $form_id, $params );

@@ -13,6 +13,8 @@
 
 
 	$html                    = '<div id="wamp_form" class="flance-form">';
+
+	$flance_params = $params;
 	$params                  = array(
 			'id'            => '0',
 			'showname'      => 'y',
@@ -36,21 +38,30 @@
 			'styling'       => '',
 			'align'         => ''
 	);
-	$params['showname']      = get_option( 'showname' );
-	$params['showimage']     = get_option( 'showimage' );
-	$params['attribute']     = get_option( 'attribute' );
-	$params['showdesc']      = get_option( 'showdesc' );
-	$params['showmfk']       = get_option( 'showmfk' );
-	$params['splitchild']    = get_option( 'splitchild' );
-	$params['showsku']       = get_option( 'showsku' );
-	$params['showpkg']       = get_option( 'showpkg' );
-	$params['showprice']     = get_option( 'showprice' );
-	$params['showlink']      = get_option( 'showlink' );
-	$params['instock']       = get_option( 'instock' );
-	$params['showaddtocart'] = get_option( 'showaddtocart' );
-	$params['redirect']      = get_option( 'redirect' );
-	$params['reload']        = get_option( 'reload' );
-	$params['redirectlink']  = get_option( 'redirectlink' );
+$option_names = array(
+	'showname',
+	'showimage',
+	'attribute',
+	'showdesc',
+	'showmfk',
+	'splitchild',
+	'showsku',
+	'showpkg',
+	'showprice',
+	'showlink',
+	'instock',
+	'showaddtocart',
+	'redirect',
+	'reload',
+	'redirectlink'
+);
+
+// Loop through the option names
+foreach ( $option_names as $option_name ) {
+	// Check if the custom value exists in $flance_params, otherwise use the default option value
+	$params[ $option_name ] = ! empty( $flance_params[ $option_name ] ) ? $flance_params[ $option_name ] : get_option( $option_name );
+}
+
 	if ( ! empty( $form_id ['form_id'] ) ) {
 		$formclass = "flance_" . $form_id ['form_id'];
 

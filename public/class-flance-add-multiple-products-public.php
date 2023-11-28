@@ -250,8 +250,16 @@ class Flance_Add_Multiple_Products_order_form_Woocommerce_Public_Pro {
 	}
 
 	// Get products on list.
-	public static function flance_amp_get_products( $product_ids, $prod_cat_atts, $form_id ) {
-		$product_ids = explode( ",", $product_ids['product_ids'] );
+	public static function flance_amp_get_products( $product_ids, $prod_cat_atts, $form_id, $params ) {
+
+
+
+		if (empty($product_ids['product_ids'])){
+			$product_ids =$params['product_ids'];
+		}else{
+			$product_ids = explode( ",", $product_ids['product_ids'] );
+		}
+
 		// Get category settings
 		$product_cat_setting = (array) get_option( 'flance_amp_product_cat' );
 		// check product ids for shortcode
