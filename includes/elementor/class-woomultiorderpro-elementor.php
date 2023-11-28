@@ -98,7 +98,7 @@ if ( ! class_exists( 'Woomultiorderpro_Elementor' ) ) {
 				'WPURLS',
 				array(
 					'ajaxurl' => admin_url( 'admin-ajax.php' ),
-					'siteurl' => plugin_dir_url( __FILE__ ),
+					'siteurl' => plugins_url().'/flance_add_multiple_products_order_form_woocommerce_pro/public/',
 					'params'  => $params,
 				)
 			);
