@@ -53,7 +53,9 @@ $option_names = array(
 	'showaddtocart',
 	'redirect',
 	'reload',
-	'redirectlink'
+	'redirectlink',
+	'showquantity',
+	'category',
 );
 
 // Loop through the option names
@@ -95,7 +97,10 @@ foreach ( $option_names as $option_name ) {
 	if ( 'y' == $params['showmfk'] ) {
 		$html .= "<th style='text-align:center;' class='brands header_class'>Manufacturer</th>\n";
 	}
-	$html .= "<th style='text-align:center;' class='cats header_class'>Categories</th>\n";
+
+	if ( 'y' == $params['category'] ) {
+		$html .= "<th style='text-align:center;' class='cats header_class'>Categories</th>\n";
+	}
 	if ( 'y' == $params['showdesc'] ) {
 		$html .= "<th class='desc header_class'>Description</th>\n";
 	}
@@ -105,7 +110,7 @@ foreach ( $option_names as $option_name ) {
 	if ( 'y' == $params['showprice'] ) {
 		$html .= "<th class='price header_class'>Price</th>\n";
 	}
-	if ( 'y' == $params['showaddtocart'] ) {
+	if ( 'y' == $params['showquantity'] ) {
 		$html .= "<th class='qty header_class'>Qty</th>\n";
 	}
 	$html .= "</tr></thead><tbody>\n";
@@ -184,23 +189,27 @@ foreach ( $option_names as $option_name ) {
 	if ( 'y' == $params['showmfk'] ) {
 		$html .= "<th style='text-align:center;'></th>\n";
 	}
-	$html .= "<th style='text-align:center;'></th>\n";
+	if ( 'y' == $params['category'] ) {
+		$html .= "<th style='text-align:center;' class='cats header_class'></th>\n";
+	}
+
 	if ( 'y' == $params['showdesc'] ) {
 		$html .= "<th></th>\n";
 	}
 	if ( 'y' == $params['instock'] ) {
 		$html .= "<th style='text-align:center;'></th>\n";
 	}
-	if ( 'y' == $params['showprice'] ) {
-		$html .= "<th colspan='2' class='qty_bottom'>
+		if ( 'y' == $params['showprice'] ) {
+		$html .= "<th class='price header_class'></th>\n";
+	}
+	if ( 'y' == $params['showquantity'] ) {
+		$html .= "<th colspan='1' class='qty_bottom'>
                                                             <div class='taxfinal'>
                                                             <div style='float:left;'> Tax: </div>
                                                             <div style='margin-left:5px;float:left;' class='prodtax " . $formclass . "'>0</div>
                                                             <div style='margin-left:5px;float:left;'>  " . $sym . "</div>
                                                             </div>
                                                              <div style='clear:both;' />\n";
-	}
-	if ( 'y' == $params['showaddtocart'] ) {
 
 		$html .= '<input type="hidden" value="total" name="total" class="total">';
 		$html .= '<input type="hidden" value="totaltax' . $formclass . '" name="totaltax' . $formclass . '" class="totaltax' . $formclass . '">';

@@ -75,26 +75,28 @@ foreach ( $variations as $key => $value ) {
 		//   echo "<pre>"; print_r($variations);  echo "</pre>";
 		//     $variations = $product->get_available_variations();
 		$formatted_attributes = array();
-		$var_attrib = null;
-		$unique_id  = null;
+		$var_attrib           = null;
+		$unique_id            = null;
 		foreach ( $value['attributes'] as $key => $val ) {
-			$val = str_replace( array( '-', '_' ), ' ', $val );
-			$key = str_replace( '-', '=', $key );
-			$key_1 = str_replace( 'attribute_', '', $key );
-			$val_1 = str_replace( ' ', '__', $val );
+			$val        = str_replace( array( '-', '_' ), ' ', $val );
+			$key        = str_replace( '-', '=', $key );
+			$key_1      = str_replace( 'attribute_', '', $key );
+			$val_1      = str_replace( ' ', '__', $val );
 			$var_attrib .= '<span><input type="hidden" id="' . $id . '=' . $key . '" name="' . $id . '=' . $key . '" value="' . $val . '" />' . wc_attribute_label( $key_1 ) . ': ' . $val . '</span><br/>';
 			$unique_id  .= $id . '___' . $key . '___' . $val_1 . '_br_';
 
 		}
 		$attrib = $var_attrib;
-		$html .= $row_sep_top;
-		$html .= "<td class=\"attibute\" align=\"center\">" . $attrib . "</td>\n";
-		$html .= $row_sep_btm;
+		$html   .= $row_sep_top;
+		$html   .= "<td class=\"attibute\" align=\"center\">" . $attrib . "</td>\n";
+		$html   .= $row_sep_btm;
 	}
 	if ( 'y' == $params['showmfk'] ) {
 		$html .= "<td class='brands' style='text-align:center;'>" . $term_names . "</td>\n";
 	}
-	$html .= "<td class='cats' style='text-align:center;'>" . $terms_cat . "</td>\n";
+	if ( 'y' == $params['category'] ) {
+		$html .= "<td class='cats' style='text-align:center;'>" . $terms_cat . "</td>\n";
+	}
 	if ( 'y' == $params['showdesc'] ) {
 		$html .= $row_sep_top;
 		$html .= "<td class=\"desc\">" . $desc . "</td>\n";
@@ -122,13 +124,13 @@ foreach ( $variations as $key => $value ) {
 	if ( 'y' == $params['showprice'] ) {
 
 
-		$html .= $row_sep_top;
+		$html          .= $row_sep_top;
 		$product_price = wc_get_price_including_tax( $product );
 		$tax           = $product_price - $product->get_price();
 		$html          .= "<td class=\"price\">" . $value['display_price'] . "</td>\n";
 		$html          .= '<input type="hidden" value="' . $value['display_price'] . '" name="pricequat" id="pricequa' . $formclass . '_' . $unique_id . '">';
 		$html          .= '<input type="hidden" value="' . $tax . '" name="pricetax" id="pricetax' . $formclass . '_' . $unique_id . '">';
-		$html .= $row_sep_btm;
+		$html          .= $row_sep_btm;
 	}
 	$idi[ $i ] = $unique_id;
 	if ( 'y' == $params['showquantity'] ) {
@@ -146,7 +148,7 @@ foreach ( $variations as $key => $value ) {
 
                                         </span>
                                          <span class="quantity-box">
-                                         <input data-id="'. absint( $product->get_id() ).'" type="numbner" value="' . $qty . '" name="quantity['. absint( $product->get_id() ).']" id="quantity' . $formclass . '_' . $unique_id . '" size="4" class="quantity-input js-recalculate">
+                                         <input data-id="' . absint( $product->get_id() ) . '" type="numbner" value="' . $qty . '" name="quantity[' . absint( $product->get_id() ) . ']" id="quantity' . $formclass . '_' . $unique_id . '" size="4" class="quantity-input js-recalculate">
                                         </span>
                                         <span class="quantity-controls js-recalculate">
 

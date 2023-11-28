@@ -171,6 +171,7 @@ if ( 'y' == $params['attribute'] ) {
 if ( 'y' == $params['showmfk'] ) {
 	$html .= "<td class='brands' style='text-align:center;'>" . $term_names . "</td>\n";
 }
+if ( 'y' == $params['category'] )
 $html .= "<td class='cats' style='text-align:center;'>" . $terms_cat . "</td>\n";
 if ( 'y' == $params['showdesc'] ) {
 	$html .= $row_sep_top;
@@ -193,7 +194,7 @@ if ( 'y' == $params['instock'] ) {
 	$html .= $row_sep_btm;
 }
 if ( 'y' == $params['showprice'] ) {
-
+ $unique_id = (!empty($unique_id))?$unique_id: null;
 
 	$html                        .= $row_sep_top;
 	$product_price_including_tax = wc_get_price_including_tax( $product );
@@ -207,9 +208,11 @@ if ( empty( $unique_id ) ) {
 	$unique_id = $id;
 }
 // echo "<pre>";    print_r ($unique_id_array); echo "</pre>";
-foreach ( $unique_id_array as $uniq ) {
-	$idi[ $i ] = $uniq;
-	$i ++;
+if (!empty( $unique_id_array)) {
+	foreach ( $unique_id_array as $uniq ) {
+		$idi[ $i ] = $uniq;
+		$i ++;
+	}
 }
 // echo "<pre>"; print_r($idi); echo "</pre>";
 if ( 'y' == $params['showquantity'] ) {

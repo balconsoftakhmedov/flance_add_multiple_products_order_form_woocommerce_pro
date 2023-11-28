@@ -68,6 +68,8 @@ if ( ! class_exists( 'Woomultiorderpro_Elementor' ) ) {
 				'redirect',
 				'reload',
 				'redirectlink',
+				'showquantity',
+				'category',
 			);
 
 		/**
@@ -241,6 +243,18 @@ if ( ! class_exists( 'Woomultiorderpro_Elementor' ) ) {
 					'label'   => esc_html__( 'Show Manufacture', 'woomultiorderpro' ),
 					'type'    => Controls_Manager::SELECT,
 					'default' => ( ! empty( get_option( 'showmfk' ) ) ) ? get_option( 'showmfk' ) : 'n',
+					'options' => array(
+						'y' => esc_html__( 'Yes', 'woomultiorderpro' ),
+						'n' => esc_html__( 'No', 'woomultiorderpro' ),
+					),
+				)
+			);
+			$this->add_control(
+				'category',
+				array(
+					'label'   => esc_html__( 'Show Category', 'woomultiorderpro' ),
+					'type'    => Controls_Manager::SELECT,
+					'default' => ( ! empty( get_option('category' ) ) ) ? get_option( 'category' ) : 'n',
 					'options' => array(
 						'y' => esc_html__( 'Yes', 'woomultiorderpro' ),
 						'n' => esc_html__( 'No', 'woomultiorderpro' ),

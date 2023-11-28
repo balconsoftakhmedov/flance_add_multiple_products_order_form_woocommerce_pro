@@ -67,7 +67,9 @@ if ( 'y' == $params['attribute'] ) {
 if ( 'y' == $params['showmfk'] ) {
 	$html .= "<td class='brands' style='text-align:center;'>" . $term_names . "</td>\n";
 }
-$html .= "<td class='cats' style='text-align:center;'>" . $terms_cat . "</td>\n";
+if ( 'y' == $params['category'] ) {
+	$html .= "<td class='cats' style='text-align:center;'>" . $terms_cat . "</td>\n";
+}
 if ( 'y' == $params['showdesc'] ) {
 	$html .= $row_sep_top;
 	$html .= "<td class=\"desc\">" . $desc . "</td>\n";
@@ -136,10 +138,3 @@ if ( 'y' == $params['showquantity'] ) {
 $html .= $prod_btm;
 $i ++;
 ?>
-
-         	
-				   
-
-		   
-
-	
