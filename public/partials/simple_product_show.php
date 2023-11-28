@@ -98,7 +98,9 @@ if ( 'y' == $params['showprice'] ) {
 	$html .= $row_sep_top;
 	$product_price_including_tax = wc_get_price_including_tax( $product );
 	$tax                         = $product_price_including_tax - $product->get_price();
-	$html                        .= "<td class=\"price\">" . $product->get_price() . "</td>\n";
+	$raw_price = $product->get_price();
+	$price_with_currency = wc_price($raw_price);
+	$html                        .= "<td class=\"price\">" . $price_with_currency . "</td>\n";
 	$html                        .= '<input type="hidden" value="' . wc_get_price_including_tax( $product, array( 'qty' => 1 ) ) . '" name="pricequat" id="pricequa' . $formclass . '_' . $unique_id . '">';
 	$html                        .= '<input type="hidden" value="' . $tax . '" name="pricetax" id="pricetax' . $formclass . '_' . $unique_id . '">';
 	$html .= $row_sep_btm;
