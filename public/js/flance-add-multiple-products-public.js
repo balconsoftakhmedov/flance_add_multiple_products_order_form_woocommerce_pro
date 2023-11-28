@@ -3,11 +3,11 @@ var flanceformclass = 'flance';
 var formclass = 'flance';
 var elementorInitExecuted = false;
 var table = {};
-console.log('init');
+
 (function ($) {
 
 	function flance_elem_init() {
-		console.log('initial');
+
 
 		function updateCartTotals(totalQttflance, totaltaxflance, formclass_defined, cart) {
 			var totalQttflanceFormatted = totalQttflance.toFixed(2);
@@ -69,7 +69,7 @@ console.log('init');
 
 			totalQttflance += calculateTotal(cart.find('input[name="pricequat"]'), totalQttflance);
 			totaltaxflance += calculateTotal(cart.find('input[name="pricetax"]'), totaltaxflance);
-			console.log(totalQttflance);
+
 			updateCartTotals(totalQttflance, totaltaxflance, formclass_defined, cart);
 		}
 
@@ -147,7 +147,7 @@ console.log('init');
 						return false;
 					} else {
 						setTimeout(function () {
-console.log(WPURLS);
+
 							$.ajax({
 								url: WPURLS.ajaxurl,
 								type: 'POST',
@@ -174,7 +174,6 @@ console.log(WPURLS);
 											window.location = redirectlink;
 										} else if (reload == 'y') {
 											window.location.reload();
-
 										}
 									}, 3000);
 								}
@@ -197,7 +196,7 @@ console.log(WPURLS);
 			},
 			productone: function (carts) {
 				this.allcarts = carts;
-				console.log(carts);
+
 				carts.each(function () {
 
 					let cart = jQuery(this),
@@ -239,8 +238,8 @@ console.log(WPURLS);
 			},
 		};
 
-		Virtuemartoneflance.productone($("form" + "." + formclass_defined));
-		Virtuemartoneflance.formsubmit($);
+		//Virtuemartoneflance.productone($("form" + "." + formclass_defined));
+		//Virtuemartoneflance.formsubmit($);
 
 
 		$(".jshproductsnap").each(function () {
@@ -248,7 +247,9 @@ console.log(WPURLS);
 			 if (currentTable.hasClass('dataTable'))  {
 				return true;
 			}
-
+			let flance_form = currentTable.closest("form" + "." + formclass_defined);
+			 Virtuemartoneflance.productone(flance_form);
+			 Virtuemartoneflance.formsubmit($);
 			 table = 	 $(this).DataTable({
 					 initComplete: function () {
 						 this.api().columns().every(function (i) {
@@ -298,9 +299,6 @@ console.log(WPURLS);
 			});
 
 			select_name_val += other_attr;
-
-
-			console.log(select_name_val);
 
 			$("input." + quantityflance + "_" + select_name[0]).attr("id", select_name_val);
 
@@ -438,7 +436,7 @@ console.log(WPURLS);
 					}
 				}
 			}
-			console.log(attributes1);
+
 			for (var key in attributes1) {
 
 				if (attributes1.hasOwnProperty(key) && attributes2.hasOwnProperty(key)) {
