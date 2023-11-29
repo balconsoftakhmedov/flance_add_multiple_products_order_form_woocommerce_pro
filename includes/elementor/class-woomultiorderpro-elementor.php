@@ -184,6 +184,7 @@ if ( ! class_exists( 'Woomultiorderpro_Elementor' ) ) {
 		 * @author Flance
 		 */
 		protected function get_general_options() {
+
 			$this->start_controls_section(
 				'flance_table_products_section',
 				array(
@@ -199,6 +200,46 @@ if ( ! class_exists( 'Woomultiorderpro_Elementor' ) ) {
 					'label_block' => true,
 					'multiple'    => true,
 					'options'     => $this->get_products_options(), // Implement a method to retrieve WooCommerce products
+				)
+			);
+			$this->end_controls_section();
+			$this->start_controls_section(
+				'flance_table_settings_section',
+				array(
+					'label' => esc_html__( 'General Settings', 'woomultiorderpro' ),
+					'tab'   => Controls_Manager::TAB_CONTENT,
+				)
+			);
+			$this->add_control(
+				'redirect',
+				array(
+					'label'   => esc_html__( 'Redirection to the Link', 'woomultiorderpro' ),
+					'type'    => Controls_Manager::SELECT,
+					'default' => ( ! empty( get_option( 'redirect' ) ) ) ? get_option( 'redirect' ) : 'n',
+					'options' => array(
+						'y' => esc_html__( 'Yes', 'woomultiorderpro' ),
+						'n' => esc_html__( 'No', 'woomultiorderpro' ),
+					),
+				)
+			);
+			$this->add_control(
+				'redirectlink',
+				array(
+					'label'   => esc_html__( 'Redirection Link', 'woomultiorderpro' ),
+					'type'    => Controls_Manager::TEXT,
+					'default' => ( ! empty( get_option( 'redirectlink' ) ) ) ? get_option( 'redirectlink' ) : '',
+				)
+			);
+			$this->add_control(
+				'reload',
+				array(
+					'label'   => esc_html__( 'Reload', 'woomultiorderpro' ),
+					'type'    => Controls_Manager::SELECT,
+					'default' => ( ! empty( get_option( 'reload' ) ) ) ? get_option( 'reload' ) : 'n',
+					'options' => array(
+						'y' => esc_html__( 'Yes', 'woomultiorderpro' ),
+						'n' => esc_html__( 'No', 'woomultiorderpro' ),
+					),
 				)
 			);
 			$this->end_controls_section();
@@ -318,18 +359,6 @@ if ( ! class_exists( 'Woomultiorderpro_Elementor' ) ) {
 				)
 			);
 			$this->add_control(
-				'showlink',
-				array(
-					'label'   => esc_html__( 'Show Link', 'woomultiorderpro' ),
-					'type'    => Controls_Manager::SELECT,
-					'default' => ( ! empty( get_option( 'showlink' ) ) ) ? get_option( 'showlink' ) : 'n',
-					'options' => array(
-						'y' => esc_html__( 'Yes', 'woomultiorderpro' ),
-						'n' => esc_html__( 'No', 'woomultiorderpro' ),
-					),
-				)
-			);
-			$this->add_control(
 				'instock',
 				array(
 					'label'   => esc_html__( 'Show In Stock', 'woomultiorderpro' ),
@@ -347,38 +376,6 @@ if ( ! class_exists( 'Woomultiorderpro_Elementor' ) ) {
 					'label'   => esc_html__( 'Show Add to Cart', 'woomultiorderpro' ),
 					'type'    => Controls_Manager::SELECT,
 					'default' => ( ! empty( get_option( 'showaddtocart' ) ) ) ? get_option( 'showaddtocart' ) : 'n',
-					'options' => array(
-						'y' => esc_html__( 'Yes', 'woomultiorderpro' ),
-						'n' => esc_html__( 'No', 'woomultiorderpro' ),
-					),
-				)
-			);
-			$this->add_control(
-				'redirect',
-				array(
-					'label'   => esc_html__( 'Redirection to the Link', 'woomultiorderpro' ),
-					'type'    => Controls_Manager::SELECT,
-					'default' => ( ! empty( get_option( 'redirect' ) ) ) ? get_option( 'redirect' ) : 'n',
-					'options' => array(
-						'y' => esc_html__( 'Yes', 'woomultiorderpro' ),
-						'n' => esc_html__( 'No', 'woomultiorderpro' ),
-					),
-				)
-			);
-			$this->add_control(
-				'redirectlink',
-				array(
-					'label'   => esc_html__( 'Redirection Link', 'woomultiorderpro' ),
-					'type'    => Controls_Manager::TEXT,
-					'default' => ( ! empty( get_option( 'redirectlink' ) ) ) ? get_option( 'redirectlink' ) : '',
-				)
-			);
-			$this->add_control(
-				'reload',
-				array(
-					'label'   => esc_html__( 'Reload', 'woomultiorderpro' ),
-					'type'    => Controls_Manager::SELECT,
-					'default' => ( ! empty( get_option( 'reload' ) ) ) ? get_option( 'reload' ) : 'n',
 					'options' => array(
 						'y' => esc_html__( 'Yes', 'woomultiorderpro' ),
 						'n' => esc_html__( 'No', 'woomultiorderpro' ),
@@ -491,6 +488,18 @@ if ( ! class_exists( 'Woomultiorderpro_Elementor' ) ) {
 					'type'      => Controls_Manager::SWITCHER,
 					'selectors' => array(
 						'{{WRAPPER}} .flance-table-text-style' => 'font-weight: {{VALUE}};',
+					),
+				)
+			);
+			$this->add_control(
+				'showlink',
+				array(
+					'label'   => esc_html__( 'Product Title Underline', 'woomultiorderpro' ),
+					'type'    => Controls_Manager::SELECT,
+					'default' => ( ! empty( get_option( 'showlink' ) ) ) ? get_option( 'showlink' ) : 'n',
+					'options' => array(
+						'y' => esc_html__( 'Yes', 'woomultiorderpro' ),
+						'n' => esc_html__( 'No', 'woomultiorderpro' ),
 					),
 				)
 			);
