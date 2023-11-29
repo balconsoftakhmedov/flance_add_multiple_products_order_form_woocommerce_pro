@@ -185,9 +185,9 @@ if ( ! class_exists( 'Woomultiorderpro_Elementor' ) ) {
 		 */
 		protected function get_general_options() {
 			$this->start_controls_section(
-				'flance_table_section',
+				'flance_table_products_section',
 				array(
-					'label' => esc_html__( 'Products Table Settings', 'woomultiorderpro' ),
+					'label' => esc_html__( 'Products Selection', 'woomultiorderpro' ),
 					'tab'   => Controls_Manager::TAB_CONTENT,
 				)
 			);
@@ -199,6 +199,14 @@ if ( ! class_exists( 'Woomultiorderpro_Elementor' ) ) {
 					'label_block' => true,
 					'multiple'    => true,
 					'options'     => $this->get_products_options(), // Implement a method to retrieve WooCommerce products
+				)
+			);
+			$this->end_controls_section();
+			$this->start_controls_section(
+				'flance_table_section',
+				array(
+					'label' => esc_html__( 'Table Columns', 'woomultiorderpro' ),
+					'tab'   => Controls_Manager::TAB_CONTENT,
 				)
 			);
 			$this->add_control(
@@ -254,7 +262,7 @@ if ( ! class_exists( 'Woomultiorderpro_Elementor' ) ) {
 				array(
 					'label'   => esc_html__( 'Show Category', 'woomultiorderpro' ),
 					'type'    => Controls_Manager::SELECT,
-					'default' => ( ! empty( get_option('category' ) ) ) ? get_option( 'category' ) : 'n',
+					'default' => ( ! empty( get_option( 'category' ) ) ) ? get_option( 'category' ) : 'n',
 					'options' => array(
 						'y' => esc_html__( 'Yes', 'woomultiorderpro' ),
 						'n' => esc_html__( 'No', 'woomultiorderpro' ),
@@ -378,7 +386,130 @@ if ( ! class_exists( 'Woomultiorderpro_Elementor' ) ) {
 				)
 			);
 			$this->end_controls_section();
+			$this->start_controls_section(
+				'flance_table_dezign_section',
+				array(
+					'label' => esc_html__( 'Appearance', 'woomultiorderpro' ),
+					'tab'   => Controls_Manager::TAB_CONTENT,
+				)
+			);
+			$this->start_controls_tabs(
+				'flance_table_color_tabs',
+				array(
+					'label' => esc_html__( 'Colors', 'woomultiorderpro' ),
+				) );
+			$this->start_controls_tab(
+				'flance_table_color_tab',
+				array(
+					'label' => esc_html__( 'Colors', 'woomultiorderpro' ),
+				)
+			);
+// Add Color Control for Text Color
+			$this->add_control(
+				'header_background_color',
+				array(
+					'label'     => esc_html__( 'Header/Footer Background ', 'woomultiorderpro' ),
+					'type'      => Controls_Manager::COLOR,
+					'selectors' => array(
+						'{{WRAPPER}} .flance-header-brd-color' => 'background-color: {{VALUE}};',
+					),
+				)
+			);
+// Add Color Control for Background Color
+			$this->add_control(
+				'header_text_color',
+				array(
+					'label'     => esc_html__( 'Header/Footer Text', 'woomultiorderpro' ),
+					'type'      => Controls_Manager::COLOR,
+					'selectors' => array(
+						'{{WRAPPER}} .flance-header-brd-color' => 'color: {{VALUE}};',
+					),
+				)
+			);
+			$this->add_control(
+				'cart_background_color',
+				array(
+					'label'     => esc_html__( 'Add to Cart Button Background', 'woomultiorderpro' ),
+					'type'      => Controls_Manager::COLOR,
+					'selectors' => array(
+						'{{WRAPPER}} .flance-cart-brd-color' => 'color: {{VALUE}};',
+					),
+				)
+			);
+			$this->add_control(
+				'cart_text_color',
+				array(
+					'label'     => esc_html__( 'Add to Cart Button Text', 'woomultiorderpro' ),
+					'type'      => Controls_Manager::COLOR,
+					'selectors' => array(
+						'{{WRAPPER}} .flance-cart-brd-color' => 'color: {{VALUE}};',
+					),
+				)
+			);
+			$this->end_controls_tab();
+			$this->start_controls_tab(
+				'flance_table_text_style',
+				array(
+					'label' => esc_html__( 'Table Row Text Style', 'woomultiorderpro' ),
+				)
+			);
+			$this->add_control(
+				'table_text_color',
+				array(
+					'label'     => esc_html__( 'Row Text Color', 'woomultiorderpro' ),
+					'type'      => Controls_Manager::COLOR,
+					'selectors' => array(
+						'{{WRAPPER}} .flance-table-text-style' => 'color: {{VALUE}};',
+					),
+				)
+			);
+// Add Color Control for Background Color
+			$this->add_control(
+				'table_text_background_color',
+				array(
+					'label'     => esc_html__( 'Row Text Background Color', 'woomultiorderpro' ),
+					'type'      => Controls_Manager::COLOR,
+					'selectors' => array(
+						'{{WRAPPER}} .flance-table-text-style' => 'background-color: {{VALUE}};',
+					),
+				)
+			);
+			$this->add_control(
+				'table_text_font_size',
+				array(
+					'label'     => esc_html__( 'Font Size', 'woomultiorderpro' ),
+					'type'      => Controls_Manager::SLIDER,
+					'selectors' => array(
+						'{{WRAPPER}} .flance-table-text-style' => 'font-size: {{SIZE}}px;',
+					),
+				)
+			);
+			$this->add_control(
+				'table_text_font_bold',
+				array(
+					'label'     => esc_html__( 'Font Bold', 'woomultiorderpro' ),
+					'type'      => Controls_Manager::SWITCHER,
+					'selectors' => array(
+						'{{WRAPPER}} .flance-table-text-style' => 'font-weight: {{VALUE}};',
+					),
+				)
+			);
+			$this->end_controls_tab();
+			$this->end_controls_tabs();
+			$this->end_controls_section();
 
+
+			/* Header & Pagination Background
+
+			Select Color
+			Header & Pagination Text
+
+			Select Color
+			Cart Button Background
+
+			Select Color
+			Cart Button Text
+			*/
 		}
 
 		private function get_products_options() {
@@ -411,7 +542,7 @@ if ( ! class_exists( 'Woomultiorderpro_Elementor' ) ) {
 		 * Render.
 		 */
 		protected function render() {
-			$atts = $this->get_settings_for_display();
+			$atts   = $this->get_settings_for_display();
 			$params = [];
 			$args   = [];
 			foreach ( $this->params as $param ) {
@@ -421,8 +552,7 @@ if ( ! class_exists( 'Woomultiorderpro_Elementor' ) ) {
 			}
 			$args['params']                = $params;
 			$args['params']['product_ids'] = $atts['selected_products'];
-			$arg_strings = woomultiorderpro_elementor_args( $args );
-
+			$arg_strings                   = woomultiorderpro_elementor_args( $args );
 			echo do_shortcode( '[flance_products_form ' . $arg_strings . ']' );
 			//echo do_shortcode( '[flance_products_form product_ids=19,20,18,8]' );
 		}
