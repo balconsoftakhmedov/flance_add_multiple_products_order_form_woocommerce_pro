@@ -447,7 +447,7 @@ if ( ! class_exists( 'Woomultiorderpro_Elementor' ) ) {
 			$this->start_controls_tab(
 				'flance_table_text_style',
 				array(
-					'label' => esc_html__( 'Table Row Text Style', 'woomultiorderpro' ),
+					'label' => esc_html__( 'Table Body', 'woomultiorderpro' ),
 				)
 			);
 			$this->add_control(
