@@ -163,7 +163,6 @@ $attribute_label = wc_attribute_label( $args['attribute'] );
 
 		$html .= '</select>';
 
-		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		echo apply_filters( 'woocommerce_dropdown_variation_attribute_options_html', $html, $args );
 	}
 }

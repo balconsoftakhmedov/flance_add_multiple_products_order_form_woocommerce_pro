@@ -10,33 +10,30 @@
  * happen. When this occurs the version of the template file will be bumped and
  * the readme will list any important changes.
  *
- * @see https://docs.woocommerce.com/document/template-structure/
+ * @see     https://docs.woocommerce.com/document/template-structure/
  * @package WooCommerce/Templates
  * @version 3.4.1
  */
 
 defined( 'ABSPATH' ) || exit;
-
 $attribute_keys = array_keys( $attributes );
-
 ?>
 
 
 
-				<?php foreach ( $attributes as $attribute_name => $options ) : ?>
+<?php foreach ( $attributes as $attribute_name => $options ) : ?>
 
-						<td class="label"><label for="<?php echo esc_attr( sanitize_title( $attribute_name ) ); ?>"><?php echo wc_attribute_label( $attribute_name ); // WPCS: XSS ok. ?></label></td>
-						<td class="value">
-							<?php
-								wc_dropdown_variation_attribute_options( array(
-									'options'   => $options,
-									'attribute' => $attribute_name,
-									'product'   => $_product,
-								) );
+	<td class="label"><label for="<?php echo esc_attr( sanitize_title( $attribute_name ) ); ?>"><?php echo wc_attribute_label( $attribute_name ); // WPCS: XSS ok. ?></label></td>
+	<td class="value">
+		<?php
+		wc_dropdown_variation_attribute_options( array(
+				'options'   => $options,
+				'attribute' => $attribute_name,
+				'product'   => $_product,
+		) );
+		?>
+	</td>
 
-                            ?>
-						</td>
-
-				<?php endforeach; ?>
+<?php endforeach; ?>
 
 

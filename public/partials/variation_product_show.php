@@ -58,18 +58,11 @@ if ( 'y' == $params['showsku'] ) {
 	$html .= $row_sep_btm;
 }
 if ( 'y' == $params['attribute'] ) {
-	// $attrib = $this->get_attribute($id);
-	if ( ! empty( $attrib ) ) {
-		//   $attrib = $this->get_attribute($id);
-	} else {
-		//      $attrib = 'No Product attibute';
-	}
+
 	// Get product attributes
 	$attributes = $product->get_attributes();
 	$variations = find_valid_variations( $id );
-	//  echo "<pre>"; print_r($variations);  echo "</pre>";
-	//    $variations = $product->get_available_variations();
-	// echo "<pre>"; print_r ($product) ;echo "</pre>";
+
 	$_product             = wc_get_product( $id );
 	$formatted_attributes = array();
 	$available_variations = $_product->get_available_variations();
@@ -207,14 +200,14 @@ if ( 'y' == $params['showprice'] ) {
 if ( empty( $unique_id ) ) {
 	$unique_id = $id;
 }
-// echo "<pre>";    print_r ($unique_id_array); echo "</pre>";
+
 if (!empty( $unique_id_array)) {
 	foreach ( $unique_id_array as $uniq ) {
 		$idi[ $i ] = $uniq;
 		$i ++;
 	}
 }
-// echo "<pre>"; print_r($idi); echo "</pre>";
+
 if ( 'y' == $params['showquantity'] ) {
 	if ( @$params['quantity'] > - 1 ) {
 		$qty = $params['quantity'][0];
