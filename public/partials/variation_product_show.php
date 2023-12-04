@@ -97,7 +97,7 @@ if ( 'y' == $params['attribute'] ) {
 				</div>
 			<?php endforeach; ?>
 			<div class="flance-stock flance-table-text-style">
-				<?php echo esc_html__( 'In Stock', 'flance-add-multiple-products-order-form-woocommerce' ) ?>
+				<?php echo esc_html__( 'In Stock', 'woomultiorderpro' ) ?>
 			</div>
 		</div>
 	<?php endif;

@@ -17,7 +17,7 @@
  * Version:           5.0.0
  * Author:            Rusty
  * Author URI:        http://www.flance.info
- * Text Domain:       flance-add-multiple-products-order-form-woocommerce-pro
+ * Text Domain:       woomultiorderpro
  * Domain Path:       /languages
  */
 
