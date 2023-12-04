@@ -83,35 +83,35 @@ foreach ( $option_names as $option_name ) {
 	$html .= "\n";
 	$html .= "<thead><tr style=''>\n";
 	if ( 'y' == $params['showimage'] ) {
-		$html .= "<th class='img header_class' style='text-align:center;'>Image</th>\n";
+		$html .= "<th class='img header_class flance-header-brd-color'  style='text-align:center;'>Image</th>\n";
 	}
 	if ( 'y' == $params['showname'] ) {
-		$html .= "<th class='header_class' style='text-align:center;'>Product</th>\n";
+		$html .= "<th class='header_class flance-header-brd-color'  style='text-align:center;'>Product</th>\n";
 	}
 	if ( 'y' == $params['showsku'] ) {
-		$html .= "<th class='header_class' style='text-align:center;'>SKU</th>\n";
+		$html .= "<th class='header_class flance-header-brd-color'  style='text-align:center;'>SKU</th>\n";
 	}
 	if ( 'y' == $params['attribute'] ) {
-		$html .= "<th class='attibute header_class' style='text-align:center;'>Attributes</th>\n";
+		$html .= "<th class='attibute header_class flance-header-brd-color'  style='text-align:center;'>Attributes</th>\n";
 	}
 	if ( 'y' == $params['showmfk'] ) {
-		$html .= "<th style='text-align:center;' class='brands header_class'>Manufacturer</th>\n";
+		$html .= "<th style='text-align:center;' class='brands header_class flance-header-brd-color' >Manufacturer</th>\n";
 	}
 
 	if ( 'y' == $params['category'] ) {
-		$html .= "<th style='text-align:center;' class='cats header_class'>Categories</th>\n";
+		$html .= "<th style='text-align:center;' class='cats header_class flance-header-brd-color' >Categories</th>\n";
 	}
 	if ( 'y' == $params['showdesc'] ) {
-		$html .= "<th class='desc header_class'>Description</th>\n";
+		$html .= "<th class='desc header_class flance-header-brd-color' >Description</th>\n";
 	}
 	if ( 'y' == $params['instock'] ) {
-		$html .= "<th class='instock header_class'>In Stock</th>\n";
+		$html .= "<th class='instock header_class flance-header-brd-color' >In Stock</th>\n";
 	}
 	if ( 'y' == $params['showprice'] ) {
-		$html .= "<th class='price header_class'>Price</th>\n";
+		$html .= "<th class='price header_class flance-header-brd-color' >Price</th>\n";
 	}
 	if ( 'y' == $params['showquantity'] ) {
-		$html .= "<th class='qty header_class'>Qty</th>\n";
+		$html .= "<th class='qty header_class flance-header-brd-color' >Qty</th>\n";
 	}
 	$html .= "</tr></thead><tbody>\n";
 	// set up how the rows and columns are displayed
@@ -198,7 +198,7 @@ foreach ( $option_names as $option_name ) {
 		$table_count++;
 	}
 	if ( 'y' == $params['category'] ) {
-		$html .= "<th style='text-align:center;' class='cats header_class'></th>\n";
+		$html .= "<th style='text-align:center;' class='cats header_class flance-header-brd-color' ></th>\n";
 		$table_count++;
 	}
 
@@ -211,7 +211,7 @@ foreach ( $option_names as $option_name ) {
 		$table_count++;
 	}
 		if ( 'y' == $params['showprice'] ) {
-		$html .= "<th class='price header_class'></th>\n";
+		$html .= "<th class='price header_class flance-header-brd-color' ></th>\n";
 		$table_count++;
 	}
 	if ( 'y' == $params['showquantity'] ) {
