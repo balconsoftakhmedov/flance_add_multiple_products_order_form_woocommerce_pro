@@ -242,6 +242,18 @@ if ( ! class_exists( 'Woomultiorderpro_Elementor' ) ) {
 					),
 				)
 			);
+			$this->add_control(
+				'showaddtocart',
+				array(
+					'label'   => esc_html__( 'Show Add to Cart', 'woomultiorderpro' ),
+					'type'    => Controls_Manager::SELECT,
+					'default' => ( ! empty( get_option( 'showaddtocart' ) ) ) ? get_option( 'showaddtocart' ) : 'n',
+					'options' => array(
+						'y' => esc_html__( 'Yes', 'woomultiorderpro' ),
+						'n' => esc_html__( 'No', 'woomultiorderpro' ),
+					),
+				)
+			);
 			$this->end_controls_section();
 			$this->start_controls_section(
 				'flance_table_section',
@@ -370,18 +382,7 @@ if ( ! class_exists( 'Woomultiorderpro_Elementor' ) ) {
 					),
 				)
 			);
-			$this->add_control(
-				'showaddtocart',
-				array(
-					'label'   => esc_html__( 'Show Add to Cart', 'woomultiorderpro' ),
-					'type'    => Controls_Manager::SELECT,
-					'default' => ( ! empty( get_option( 'showaddtocart' ) ) ) ? get_option( 'showaddtocart' ) : 'n',
-					'options' => array(
-						'y' => esc_html__( 'Yes', 'woomultiorderpro' ),
-						'n' => esc_html__( 'No', 'woomultiorderpro' ),
-					),
-				)
-			);
+
 			$this->end_controls_section();
 			$this->start_controls_section(
 				'flance_table_dezign_section',
