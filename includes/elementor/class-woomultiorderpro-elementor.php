@@ -184,8 +184,13 @@ if ( ! class_exists( 'Woomultiorderpro_Elementor' ) ) {
 		 * @author Flance
 		 */
 		protected function get_general_options() {
+			$this->flance_table_products_section();
+			$this->flance_table_column_section();
+			$this->flance_table_dezign_section();
+		}
 
-			$this->start_controls_section(
+		protected function flance_table_products_section() {
+						$this->start_controls_section(
 				'flance_table_products_section',
 				array(
 					'label' => esc_html__( 'Products Selection', 'woomultiorderpro' ),
@@ -255,7 +260,9 @@ if ( ! class_exists( 'Woomultiorderpro_Elementor' ) ) {
 				)
 			);
 			$this->end_controls_section();
-			$this->start_controls_section(
+		}
+		protected function flance_table_column_section(){
+						$this->start_controls_section(
 				'flance_table_section',
 				array(
 					'label' => esc_html__( 'Table Columns', 'woomultiorderpro' ),
@@ -384,7 +391,9 @@ if ( ! class_exists( 'Woomultiorderpro_Elementor' ) ) {
 			);
 
 			$this->end_controls_section();
-			$this->start_controls_section(
+		}
+		protected function flance_table_dezign_section(){
+						$this->start_controls_section(
 				'flance_table_dezign_section',
 				array(
 					'label' => esc_html__( 'Appearance', 'woomultiorderpro' ),
@@ -507,21 +516,7 @@ if ( ! class_exists( 'Woomultiorderpro_Elementor' ) ) {
 			$this->end_controls_tab();
 			$this->end_controls_tabs();
 			$this->end_controls_section();
-
-
-			/* Header & Pagination Background
-
-			Select Color
-			Header & Pagination Text
-
-			Select Color
-			Cart Button Background
-
-			Select Color
-			Cart Button Text
-			*/
 		}
-
 		private function get_products_options() {
 			$products        = get_posts(
 				array(
