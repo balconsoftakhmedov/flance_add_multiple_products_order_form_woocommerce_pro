@@ -123,7 +123,7 @@ if ( 'y' == $params['showquantity'] ) {
 
                                         </span>
                                          <span class="quantity-box">
-                                         <input data-attribute_name_slug="quantity" data-id="' . absint( $product->get_id() ) . '" type="number" value="' . $qty . '" name="quantity[' . absint( $product->get_id() ) . ']" id="quantity' . $formclass . '_' . $unique_id . '" size="4" class="quantity-input js-recalculate">
+                                         <input data-attribute_name_slug="quantity" data-id="' . absint( $product->get_id() ) . '" type="number" value="' . $qty . '" name="quantity[' . absint( $product->get_id() ) . ']" id="quantity' . $formclass . '_' . $unique_id . '" size="4" class="quantity-input js-recalculate flance-table-text-style">
                                         </span>
                                         <span class="quantity-controls js-recalculate">
 
