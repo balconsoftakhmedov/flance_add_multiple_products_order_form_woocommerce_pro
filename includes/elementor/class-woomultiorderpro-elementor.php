@@ -486,6 +486,7 @@ if ( ! class_exists( 'Woomultiorderpro_Elementor' ) ) {
 				array(
 					'label'     => esc_html__( 'Font Size', 'woomultiorderpro' ),
 					'type'      => Controls_Manager::SLIDER,
+					'default'   => '14',
 					'selectors' => array(
 						'{{WRAPPER}} .flance-table-text-style' => 'font-size: {{SIZE}}px;',
 					),
@@ -571,7 +572,7 @@ if ( ! class_exists( 'Woomultiorderpro_Elementor' ) ) {
 			$args['params']['product_ids'] = $atts['selected_products'];
 			$arg_strings                   = woomultiorderpro_elementor_args( $args );
 			echo do_shortcode( '[flance_products_form ' . $arg_strings . ']' );
-			//echo do_shortcode( '[flance_products_form product_ids=19,20,18,8]' );
+
 		}
 	}
 
