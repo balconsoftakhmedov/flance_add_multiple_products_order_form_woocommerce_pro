@@ -16,7 +16,7 @@ if ( 'y' == $params['showimage'] ) {
 
 
 	$html .= $row_sep_top;
-	$html .= "<td class=\"image\" align=\"center\">";
+	$html .= "<td class=\"image flance-table-text-style\" align=\"center\">";
 	if ( has_post_thumbnail( $id ) ) {
 
 
@@ -28,7 +28,7 @@ if ( 'y' == $params['showimage'] ) {
 	}
 
 	if ( $params['showlink'] == 'y' ) {
-		$html .= "<a href=\"" . $url . "\">
+		$html .= "<a href=\"" . $url . "\" class='flance-table-text-style'>
 
                                 " . $image;
 		$html .= "</a></td>\n";
@@ -44,10 +44,10 @@ if ( 'y' == $params['showname'] ) {
 
 	$html .= $row_sep_top;
 	if ( $params['showlink'] == 'y' ) {
-		$html .= "<td class=\"product_name\" align=\"center\"><a href=\"" . $url . "\">" . $name . "</a></td>\n";
+		$html .= "<td class=\"product_name flance-table-text-style\" align=\"center\"><a href=\"" . $url . "\">" . $name . "</a></td>\n";
 
 	} else {
-		$html .= "<td class=\"product_name\" align=\"center\">" . $name . "</td>\n";
+		$html .= "<td class=\"product_name flance-table-text-style\" align=\"center\">" . $name . "</td>\n";
 
 
 	}
@@ -55,24 +55,24 @@ if ( 'y' == $params['showname'] ) {
 }
 if ( 'y' == $params['showsku'] ) {
 	$html .= $row_sep_top;
-	$html .= "<td class=\"product_name\" align=\"center\">" . $sku . "</td>\n";
+	$html .= "<td class=\"product_name flance-table-text-style\" align=\"center\">" . $sku . "</td>\n";
 	$html .= $row_sep_btm;
 }
 if ( 'y' == $params['attribute'] ) {
 	$attrib = '';
 	$html .= $row_sep_top;
-	$html .= "<td class=\"attibute\" align=\"center\">" . $attrib . "</td>\n";
+	$html .= "<td class=\"attibute flance-table-text-style\" align=\"center\">" . $attrib . "</td>\n";
 	$html .= $row_sep_btm;
 }
 if ( 'y' == $params['showmfk'] ) {
-	$html .= "<td class='brands' style='text-align:center;'>" . $term_names . "</td>\n";
+	$html .= "<td class='brands flance-table-text-style' style='text-align:center;'>" . $term_names . "</td>\n";
 }
 if ( 'y' == $params['category'] ) {
-	$html .= "<td class='cats' style='text-align:center;'>" . $terms_cat . "</td>\n";
+	$html .= "<td class='cats flance-table-text-style' style='text-align:center;'>" . $terms_cat . "</td>\n";
 }
 if ( 'y' == $params['showdesc'] ) {
 	$html .= $row_sep_top;
-	$html .= "<td class=\"desc\">" . $desc . "</td>\n";
+	$html .= "<td class=\"desc flance-table-text-style\">" . $desc . "</td>\n";
 	$html .= $row_sep_btm;
 }
 if ( 'y' == $params['instock'] ) {
@@ -91,7 +91,7 @@ if ( 'y' == $params['instock'] ) {
 
 		$qty = "Out of Stock";
 	}
-	$html .= "<td class=\"stock\">" . $qty . "</td>\n";
+	$html .= "<td class=\"stock flance-table-text-style\">" . $qty . "</td>\n";
 	$html .= $row_sep_btm;
 }
 if ( 'y' == $params['showprice'] ) {
@@ -102,7 +102,7 @@ if ( 'y' == $params['showprice'] ) {
 	$tax                         = $product_price_including_tax - $product->get_price();
 	$raw_price = $product->get_price();
 	$price_with_currency = wc_price($raw_price);
-	$html                        .= "<td class=\"price\">" . $price_with_currency . "</td>\n";
+	$html                        .= "<td class=\"price flance-table-text-style\">" . $price_with_currency . "</td>\n";
 	$html                        .= '<input type="hidden" value="' . wc_get_price_including_tax( $product, array( 'qty' => 1 ) ) . '" name="pricequat" id="pricequa' . $formclass . '_' . $unique_id . '">';
 	$html                        .= '<input type="hidden" value="' . $tax . '" name="pricetax" id="pricetax' . $formclass . '_' . $unique_id . '">';
 	$html .= $row_sep_btm;
@@ -115,7 +115,7 @@ if ( 'y' == $params['showquantity'] ) {
 		$qty = $params['quantity'][0];
 	}
 	$html .= $row_sep_top;
-	$html .= "<td class=\"addtocart\" style='width:70px;'>";
+	$html .= "<td class=\"addtocart flance-table-text-style\" style='width:70px;'>";
 	$html .= '
                                     <div class="qty_box">
                                      <span class="quantity-controls js-recalculate">

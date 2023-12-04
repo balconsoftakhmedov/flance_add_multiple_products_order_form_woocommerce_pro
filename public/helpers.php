@@ -133,7 +133,7 @@ $attribute_label = wc_attribute_label( $args['attribute'] );
 			$options    = $attributes[ $attribute ];
 		}
 
-		$html  = '<select data-id="'. absint( $product_id ).'" id="' . esc_attr( $id ) . '___' . esc_attr( $product_id ) . '"  class="' . esc_attr( $class ) . ' variation-select" name="' . esc_attr( $name ) . '[' . esc_attr( $product_id ) . ']" data-attribute_name="attribute_' . esc_attr( sanitize_title( $attribute ) ) . '___' . esc_attr( $product_id ) . '"  data-attribute_name_slug="' . esc_attr( $name ) . '"  data-show_option_none="' . ( $show_option_none ? 'yes' : 'no' ) . '"' . ( $required ? ' required' : '' ) . '>';
+		$html  = '<select data-id="'. absint( $product_id ).'" id="' . esc_attr( $id ) . '___' . esc_attr( $product_id ) . '"  class="' . esc_attr( $class ) . ' variation-select flance-table-text-style" name="' . esc_attr( $name ) . '[' . esc_attr( $product_id ) . ']" data-attribute_name="attribute_' . esc_attr( sanitize_title( $attribute ) ) . '___' . esc_attr( $product_id ) . '"  data-attribute_name_slug="' . esc_attr( $name ) . '"  data-show_option_none="' . ( $show_option_none ? 'yes' : 'no' ) . '"' . ( $required ? ' required' : '' ) . '>';
 		$html .= '<option value="">' . esc_html( $show_option_none_text ) . '</option>';
 
 		if ( ! empty( $options ) ) {

@@ -116,14 +116,14 @@ foreach ( $option_names as $option_name ) {
 	$html .= "</tr></thead><tbody>\n";
 	// set up how the rows and columns are displayed
 	if ( 'v' == $params['displayeach'] ) {
-		$row_sep_top = "<tr>\n";
+		$row_sep_top = "<tr class='flance-table-text-style'>\n";
 		$row_sep_btm = "</tr>\n";
 	} else {
 		$row_sep_top = "";
 		$row_sep_btm = "";
 	}
 	if ( 'h' == $params['displaylist'] ) {
-		$start = "<tr class='flance-tr-parent'>\n";
+		$start = "<tr class='flance-tr-parent flance-table-text-style'>\n";
 		$end   = "</tr>\n";
 	} else {
 		$start = "";
@@ -136,7 +136,7 @@ foreach ( $option_names as $option_name ) {
 		$prod_top = "";
 		$prod_btm = "";
 	} else {
-		$prod_top = "<tr>\n";
+		$prod_top = "<tr class='flance-table-text-style'>\n";
 		$prod_btm = "</tr>\n";
 	}
 	$i    = 0;
@@ -178,23 +178,23 @@ foreach ( $option_names as $option_name ) {
 	$html .= "</tbody><tr style=''>\n";
 	$table_count = 0;
 	if ( 'y' == $params['showimage'] ) {
-		$html .= "<th style='text-align:center;'></th>\n";
+		$html .= "<th style='text-align:center;' class='flance-header-brd-color'></th>\n";
 		$table_count++;
 	}
 	if ( 'y' == $params['showsku'] ) {
-		$html .= "<th style='text-align:center;'></th>\n";
+		$html .= "<th style='text-align:center;' class='flance-header-brd-color'></th>\n";
 		$table_count++;
 	}
 	if ( 'y' == $params['showname'] ) {
-		$html .= "<th style='text-align:center;'></th>\n";
+		$html .= "<th style='text-align:center;' class='flance-header-brd-color'></th>\n";
 		$table_count++;
 	}
 	if ( 'y' == $params['attribute'] ) {
-		$html .= "<th style='text-align:center;'></th>\n";
+		$html .= "<th style='text-align:center;' class='flance-header-brd-color'></th>\n";
 		$table_count++;
 	}
 	if ( 'y' == $params['showmfk'] ) {
-		$html .= "<th style='text-align:center;'></th>\n";
+		$html .= "<th style='text-align:center;' class='flance-header-brd-color'></th>\n";
 		$table_count++;
 	}
 	if ( 'y' == $params['category'] ) {
@@ -203,11 +203,11 @@ foreach ( $option_names as $option_name ) {
 	}
 
 	if ( 'y' == $params['showdesc'] ) {
-		$html .= "<th></th>\n";
+		$html .= "<th class='flance-header-brd-color'></th>\n";
 		$table_count++;
 	}
 	if ( 'y' == $params['instock'] ) {
-		$html .= "<th style='text-align:center;'></th>\n";
+		$html .= "<th style='text-align:center;' class='flance-header-brd-color'></th>\n";
 		$table_count++;
 	}
 		if ( 'y' == $params['showprice'] ) {
@@ -217,7 +217,7 @@ foreach ( $option_names as $option_name ) {
 	if ( 'y' == $params['showquantity'] ) {
 		$column_span = 1;
 
-		$html .= "<th colspan='".$column_span."' class='qty_bottom'>
+		$html .= "<th colspan='".$column_span."' class='qty_bottom flance-header-brd-color'>
                                                             <div class='taxfinal flance_col'>
                                                             <div style=''> Tax: </div>	<div class='flance_col'>	
                                                             
@@ -245,7 +245,7 @@ foreach ( $option_names as $option_name ) {
 				 id="wamp_add_items_button_' . $formclass . '"
 				 type="button" title="Add Items to Order"  
 				value="	Add Item (s) to Order"
-				 class="addtocart_button' . $formclass . '  add_order_item wamp_add_order_item_' . $formclass . '">
+				 class="addtocart_button' . $formclass . '  add_order_item wamp_add_order_item_' . $formclass . ' flance-cart-brd-color">
 
 
 				</div>';

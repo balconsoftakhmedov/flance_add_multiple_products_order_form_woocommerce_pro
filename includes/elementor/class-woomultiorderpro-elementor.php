@@ -439,7 +439,7 @@ if ( ! class_exists( 'Woomultiorderpro_Elementor' ) ) {
 					'label'     => esc_html__( 'Add to Cart Button Background', 'woomultiorderpro' ),
 					'type'      => Controls_Manager::COLOR,
 					'selectors' => array(
-						'{{WRAPPER}} .flance-cart-brd-color' => 'color: {{VALUE}};',
+						'{{WRAPPER}} .flance-cart-brd-color' => 'background-color: {{VALUE}};',
 					),
 				)
 			);
@@ -492,10 +492,22 @@ if ( ! class_exists( 'Woomultiorderpro_Elementor' ) ) {
 				)
 			);
 			$this->add_control(
-				'table_text_font_bold',
+				'table_text_font_weight',
 				array(
-					'label'     => esc_html__( 'Font Bold', 'woomultiorderpro' ),
-					'type'      => Controls_Manager::SWITCHER,
+					'label'     => esc_html__( 'Font Weight', 'woomultiorderpro' ),
+					'type'      => Controls_Manager::SELECT,
+					'default'   => '400', // Set the default value to '400' (normal)
+					'options'   => array(
+						'100' => esc_html__( '100', 'woomultiorderpro' ),
+						'200' => esc_html__( '200', 'woomultiorderpro' ),
+						'300' => esc_html__( '300', 'woomultiorderpro' ),
+						'400' => esc_html__( '400 (Normal)', 'woomultiorderpro' ),
+						'500' => esc_html__( '500', 'woomultiorderpro' ),
+						'600' => esc_html__( '600', 'woomultiorderpro' ),
+						'700' => esc_html__( '700 (Bold)', 'woomultiorderpro' ),
+						'800' => esc_html__( '800', 'woomultiorderpro' ),
+						'900' => esc_html__( '900', 'woomultiorderpro' ),
+					),
 					'selectors' => array(
 						'{{WRAPPER}} .flance-table-text-style' => 'font-weight: {{VALUE}};',
 					),
