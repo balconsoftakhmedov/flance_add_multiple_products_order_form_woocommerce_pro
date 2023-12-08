@@ -455,7 +455,7 @@ var table = {};
 			flance_elem_init();
 		});
 	});
-
+	flance_elem_init();
 })(jQuery)
 
 

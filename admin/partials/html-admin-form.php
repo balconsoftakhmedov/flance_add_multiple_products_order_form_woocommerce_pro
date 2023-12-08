@@ -102,6 +102,26 @@
 				</td>
 			</tr>
 			<tr valign="top">
+				<th scope="row">Show Category</th>
+				<td>
+					<select id="category" name="category" required>
+
+						<option <?php if ( get_option( 'category' ) == "y" ) {
+							echo "selected";
+						} ?> value="y" ;>Yes
+						</option>
+						<option <?php if ( get_option( 'category' ) == "n" ) {
+							echo "selected";
+						} ?> value="n">No
+						</option>
+
+
+					</select>
+					<br>
+					<span class="description"> <code>Show the Category of the products. </code> .</span>
+				</td>
+			</tr>
+			<tr valign="top">
 				<th scope="row">Show Description</th>
 				<td>
 					<select id="showdesc" name="showdesc" required>

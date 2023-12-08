@@ -39,6 +39,7 @@ class Flance_Add_Multiple_Products_order_form_Woocommerce_Activator {
 		add_option( 'showdesc', 'y' );
 		add_option( 'showsku', 'y' );
 		add_option( 'showmfk', 'n' );
+		add_option( 'category', 'n' );
 		add_option( 'showpkg', 'y' );
 		add_option( ' splitchild', 'y' );
 		add_option( 'showprice', 'y' );

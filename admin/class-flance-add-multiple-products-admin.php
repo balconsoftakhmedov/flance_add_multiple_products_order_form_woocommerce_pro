@@ -139,6 +139,7 @@ class Flance_Add_Multiple_Products_order_form_Woocommerce_Admin_Pro {
         register_setting( 'flance-amp-settings-group', 'splitchild' );
 
         register_setting( 'flance-amp-settings-group', 'showmfk' );
+		register_setting( 'flance-amp-settings-group', 'category' );
 		register_setting( 'flance-amp-settings-group', 'showpkg' );
 		register_setting( 'flance-amp-settings-group', 'showprice' );
 		register_setting( 'flance-amp-settings-group', 'showquantity' );
