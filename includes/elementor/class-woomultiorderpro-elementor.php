@@ -393,7 +393,7 @@ if ( ! class_exists( 'Woomultiorderpro_Elementor' ) ) {
 			$this->end_controls_section();
 		}
 		protected function flance_table_dezign_section(){
-						$this->start_controls_section(
+		$this->start_controls_section(
 				'flance_table_dezign_section',
 				array(
 					'label' => esc_html__( 'Appearance', 'woomultiorderpro' ),
@@ -486,7 +486,7 @@ if ( ! class_exists( 'Woomultiorderpro_Elementor' ) ) {
 				array(
 					'label'     => esc_html__( 'Font Size', 'woomultiorderpro' ),
 					'type'      => Controls_Manager::SLIDER,
-					'default'   => '14',
+					'default'   => ['14'],
 					'selectors' => array(
 						'{{WRAPPER}} .flance-table-text-style' => 'font-size: {{SIZE}}px;',
 					),

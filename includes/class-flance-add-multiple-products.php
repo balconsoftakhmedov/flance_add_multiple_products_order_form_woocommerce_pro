@@ -136,6 +136,7 @@ class Flance_Add_Multiple_Products_order_form_Woocommerce_Pro {
 
 // Hook to initialize your Elementor widget
 	public function initialize_elementor_widget() {
+
 		if ( class_exists( '\Elementor\Widget_Base' ) ) {
 			// Register your widget with Elementor
 			require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/elementor/class-woomultiorderpro-elementor.php';
