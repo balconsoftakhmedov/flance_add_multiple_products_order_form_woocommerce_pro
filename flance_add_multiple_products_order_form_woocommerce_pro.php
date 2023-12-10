@@ -14,7 +14,7 @@
  * @wordpress-plugin
  * Plugin Name:       WooMultiOrder Pro - Multiple Products Table - Orders Add Cart for Woocommerce
  * Description:       The plugin gives functionality to have the form to add multiple products to the cart and calculate in same page the total price of the order. And you also can use shortcode to use the plugin other places. Just place the shortcode where you wanna put the input form and it's done !!! Pro vesrion has the functionality to show the product attributes on the page non commercial version does not have attribute show functionality.
- * Version:           5.0.0
+ * Version:           6.0.0
  * Author:            Rusty
  * Author URI:        http://www.flance.info
  * Text Domain:       woomultiorderpro
@@ -25,8 +25,65 @@
 if ( ! defined( 'WPINC' ) ) {
 	die;
 }
+if ( ! function_exists( 'wptlampaof_fs' ) ) {
+	// Create a helper function for easy SDK access.
+	function wptlampaof_fs() {
+		global $wptlampaof_fs;
+		if ( ! isset( $wptlampaof_fs ) ) {
+			// Activate multisite network integration.
+			if ( ! defined( 'WP_FS__PRODUCT_14054_MULTISITE' ) ) {
+				define( 'WP_FS__PRODUCT_14054_MULTISITE', true );
+			}
+			// Include Freemius SDK.
+			require_once dirname( __FILE__ ) . '/freemius/start.php';
+			$wptlampaof_fs = fs_dynamic_init( array(
+				'id'                  => '14054',
+				'slug'                => 'woocommerce-product-table-list-and-multiple-products-add-order',
+				'premium_slug'        => 'woocommerce-product-table-list-and-multiple-products-add-order-f-premium',
+				'type'                => 'plugin',
+				'public_key'          => 'pk_b7901fa8b045662400ff3918629c1',
+				'is_premium'          => true,
+				'premium_suffix'      => '',
+				// If your plugin is a serviceware, set this option to false.
+				'has_premium_version' => true,
+				'has_addons'          => false,
+				'has_paid_plans'      => true,
+				'is_org_compliant'    => false,
+				'menu'                => array(
+					'slug'    => 'flance-add-multiple-products',
+					'support' => false,
+					'network' => true,
+				),
+			) );
+		}
+
+		return $wptlampaof_fs;
+	}
+if ( ! function_exists( 'is_plugin_active' ) ) require_once( ABSPATH . '/wp-admin/includes/plugin.php' );
+	if ( is_plugin_active( 'flance-add-multiple-products-order-form-for-woocommerce/flance_add_multiple_products_order_form_woocommerce.php' ) ) {
+		add_action( 'admin_notices', 'Flance_free_plugin_wamp_admin_notice__error_pro' );
+	} else {
+		// Init Freemius.
+		wptlampaof_fs();
+		// Signal that SDK was initiated.
+		do_action( 'wptlampaof_fs_loaded' );
+	}
+
+}
+/*
+ * Activation the freemius
+ */
+function wptlampaof_verify() {
+	if ( function_exists( 'wptlampaof_fs' ) ) {
+
+		return wptlampaof_fs()->is__premium_only() && wptlampaof_fs()->can_use_premium_code();
+	}
+
+	return true;
+}
+
 if ( ! function_exists( 'is_plugin_active' ) ) {
-	require_once( ABSPATH . '/wp-admin/includes/plugin.php' );
+	require_once( ABSPATH . '/wp-aactivate_flance_add_multiple_products_prodmin/includes/plugin.php' );
 }
 if ( is_plugin_active( 'flance-add-multiple-products-order-form-for-woocommerce/flance_add_multiple_products_order_form_woocommerce.php' ) ) {
 	add_action( 'admin_notices', 'Flance_free_plugin_wamp_admin_notice__error_pro' );
@@ -68,7 +125,7 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-flance-add-multiple-produc
  **/
 add_action('plugins_loaded', 'check_woocommerce_activation_pro');
 function check_woocommerce_activation_pro() {
-
+	if ( wptlampaof_verify() ) {
 		// Check if WooCommerce is active
 		if ( class_exists( 'WooCommerce' ) ) {
 			if ( is_plugin_active( 'flance-add-multiple-products-order-form-for-woocommerce/flance_add_multiple_products_order_form_woocommerce.php' ) ) {
@@ -85,7 +142,7 @@ function check_woocommerce_activation_pro() {
 			// WooCommerce is not active, handle it accordingly
 			add_action( 'admin_notices', 'flance_wamp_admin_notice_error_pro' );
 		}
-
+	}
 }
 
 function Flance_wamp_admin_notice__error_pro() {

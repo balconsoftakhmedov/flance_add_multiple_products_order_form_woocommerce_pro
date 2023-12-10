@@ -2,6 +2,7 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../../../../../client/balkonsoft/bs-map/wp-content/plugins/bsgmapspro" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../../themes/flance-demo" vcs="Git" />
   </component>
